@@ -1,0 +1,18 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 07-18-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<aura:component implements="force:hasRecordId,lightning:actionOverride,force:lightningQuickActionWithoutHeader,lightning:isUrlAddressable,flexiPage:availableForAllPageTypes" 
+                access="global">
+
+    <aura:attribute name="recordId" type="String"/>
+
+    <!-- <aura:handler name='init' value='{!this}' action='{!c.myAction}'/> -->
+
+    <div>
+        <c:aCaseView recordId="{!v.recordId}"></c:aCaseView>
+    </div>
+</aura:component>

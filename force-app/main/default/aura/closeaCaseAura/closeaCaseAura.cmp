@@ -1,0 +1,16 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 06-22-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome,lightning:actionOverride,force:lightningQuickActionWithoutHeader,lightning:isUrlAddressable" access="global">
+
+    <!-- id값 받아서 lwc에 넘겨주기 -->
+    <aura:attribute name="recordId" type="String"/>
+    <div>
+        <c:closeaCase recordId="{!v.recordId}"></c:closeaCase>
+    </div>
+
+</aura:component>

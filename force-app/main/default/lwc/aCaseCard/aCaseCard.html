@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 08-03-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+    <lightning-card title={title} icon-name="standard:reward">
+        <div class="slds-m-around_medium">
+            <lightning-record-form record-id={recordId}
+                                    object-api-name="aCase__c"
+                                    columns="2"
+                                    layout-type="Full"
+                                    mode="view"
+                                    onsuccess={editSuccess}>
+            </lightning-record-form>
+        </div>
+    </lightning-card>
+</template>

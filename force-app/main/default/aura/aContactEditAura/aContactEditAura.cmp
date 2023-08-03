@@ -1,0 +1,16 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 06-16-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<aura:component implements="force:hasRecordId,lightning:actionOverride,force:lightningQuickActionWithoutHeader,lightning:isUrlAddressable" 
+                access="global">
+
+    <!-- Id값 가져와서 LWC에 넘겨주기 -->
+    <aura:attribute name="recordId" type="String"/>
+    <div>
+        <c:aContactEdit recordId="{!v.recordId}"></c:aContactEdit>
+    </div>
+</aura:component>

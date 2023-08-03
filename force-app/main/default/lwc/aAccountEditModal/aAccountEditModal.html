@@ -1,0 +1,162 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 06-12-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-show slds-modal slds-fade-in-open slds-modal_small">
+        <div class="slds-modal__container">
+            <lightning-button-icon icon-name="utility:close" alternative-text="close" size="large" variant="bare-inverse" class="slds-button slds-button_icon slds-modal__close" onclick={modalClose}></lightning-button-icon>
+    
+            <div class="slds-scrollable_y" style="background: white;">
+                <!-- header -->
+                <header class="slds-modal__header">
+                    <h1  class="slds-modal__title slds-hyphenate">Edit {name}</h1>
+                </header>
+                
+                <!-- body -->
+                <lightning-record-edit-form object-api-name="aAccount__c" record-id={recordId} onsubmit={handleOnsubmit} onsuccess={submitSuccess}>
+                    <div class="fieldContainer slds-m-around_x-small">
+                        <!-- aAccount Information -->
+                        <div class="slds-grid slds-wrap slds-m-horizontal_small">
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <lightning-output-field field-name="OwnerId" style="margin-bottom: 19px;"></lightning-output-field>
+                                <lightning-input-field field-name="Name" required="true"></lightning-input-field>
+                                <lightning-input-field field-name="Parent__c"></lightning-input-field>
+                                <lightning-input-field field-name="AccountNumber__c"></lightning-input-field>
+                                <lightning-input-field field-name="Site__c"></lightning-input-field>
+                                <lightning-input-field field-name="Type__c"></lightning-input-field>
+                                <lightning-input-field field-name="Industry__c"></lightning-input-field>
+                                <lightning-input-field field-name="AnnualRevenue__c"></lightning-input-field>
+                            </div>
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <lightning-input-field field-name="Rating__c"></lightning-input-field>
+                                <lightning-input-field field-name="Phone__c"></lightning-input-field>
+                                <lightning-input-field field-name="Fax__c"></lightning-input-field>
+                                <lightning-input-field field-name="Website__c"></lightning-input-field>
+                                <lightning-input-field field-name="TickerSymbol__c"></lightning-input-field>
+                                <lightning-input-field field-name="Ownership__c"></lightning-input-field>
+                                <lightning-input-field field-name="Employees__c"></lightning-input-field>
+                                <lightning-input-field field-name="Sic__c"></lightning-input-field>
+                            </div>
+                        </div>
+
+                        <!-- Address Information -->
+                        <div class="slds-grid slds-wrap slds-m-horizontal_small">
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <fieldset class="slds-form-element slds-form-element_compound">
+                                    <legend class="slds-form-element__legend slds-form-element__label slds-m-left_xx-small">BillingAdress</legend>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__row">
+                                            <lightning-input-field field-name="BillingState__c" class="slds-form-element slds-show slds-size_2-of-6"></lightning-input-field>
+                                            <lightning-input-field field-name="BillingCity__c" class="slds-form-element slds-show slds-size_4-of-6"></lightning-input-field>
+                                        </div>
+                                        <div class="slds-form-element__row">
+                                            <lightning-input-field field-name="BillingStreet__c"></lightning-input-field>
+                                        </div>
+                                        <div class="slds-form-element__row">
+                                            <lightning-input-field field-name="BillingPostalCode__c" class="slds-form-element slds-show slds-size_4-of-6"></lightning-input-field>
+                                            <lightning-input-field field-name="BillingCountry__c" class="slds-form-element slds-show slds-size_2-of-6"></lightning-input-field>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <fieldset class="slds-form-element slds-form-element_compound">
+                                    <legend class="slds-form-element__legend slds-form-element__label slds-m-left_xx-small">ShippingAddress</legend>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__row">
+                                            <lightning-input-field field-name="ShippingState__c" class="slds-form-element slds-show slds-size_2-of-6"></lightning-input-field>
+                                            <lightning-input-field field-name="ShippingCity__c" class="slds-form-element slds-show slds-size_4-of-6"></lightning-input-field>
+                                        </div>
+                                        <div class="slds-form-element__row">
+                                            <lightning-input-field field-name="ShippingStreet__c"></lightning-input-field>
+                                        </div>
+                                        <div class="slds-form-element__row">
+                                            <lightning-input-field field-name="ShippingPostalCode__c" class="slds-form-element slds-show slds-size_4-of-6"></lightning-input-field>
+                                            <lightning-input-field field-name="ShippingCountry__c" class="slds-form-element slds-show slds-size_2-of-6"></lightning-input-field>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <!-- Additional Information -->
+                        <div class="slds-grid slds-wrap slds-m-horizontal_small">
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <lightning-input-field field-name="CustomerPriority__c"></lightning-input-field>
+                                <lightning-input-field field-name="SLAExpirationDate__c"></lightning-input-field>
+                                <lightning-input-field field-name="NumberofLocations__c"></lightning-input-field>
+                                <lightning-input-field field-name="Active__c"></lightning-input-field>
+                            </div>
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <lightning-input-field field-name="SLA__c"></lightning-input-field>
+                                <lightning-input-field field-name="SLASerialNumber__c"></lightning-input-field>
+                                <lightning-input-field field-name="UpsellOpportunity__c"></lightning-input-field>
+                            </div>
+                        </div>
+
+                        <!-- system -->
+                        <div class="slds-grid slds-wrap slds-m-horizontal_small">
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <fieldset>
+                                    <legend>Created By</legend>
+                                    <p>
+                                        <span class="record-avatar-container slds-avatar slds-avatar_x-small slds-avatar--circle icon slds-m-right_xx-small slds-avatar_profile-image-small" style="background-color: #1B96FF"></span>
+                                        {createdByName}, <lightning-formatted-date-time value={createdDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                                                                                        minute="2-digit"></lightning-formatted-date-time>
+                                    </p>
+                                </fieldset>
+                            </div>
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <fieldset>
+                                    <legend>Last Modified By</legend>
+                                    <p>
+                                        <span class="record-avatar-container slds-avatar slds-avatar_x-small slds-avatar--circle icon slds-m-right_xx-small slds-avatar_profile-image-small" style="background-color: #1B96FF"></span>
+                                        {lastModifiedByName}, <lightning-formatted-date-time value={lastModifiedDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                                                                            minute="2-digit"></lightning-formatted-date-time>
+                                    </p>
+                                </fieldset>
+                           </div>
+                        </div>
+
+                        <!-- Description Information -->
+                        <div class="slds-m-horizontal_small">
+                            <div class="slds-box_small">
+                                <lightning-input-field field-name="Description__c"></lightning-input-field>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <!-- footer -->
+                    <div class="slds-modal__footer slds-grid slds-grid_align-center slds-is-absolute" style="width: 100%;">
+                        <lightning-button class="slds-m-horizontal_xx-small"
+                                            label="Cancel" 
+                                            onclick={modalClose}>
+                        </lightning-button>
+
+                        <lightning-button class="slds-m-horizontal_xx-small"
+                                            label="Save &amp; New"
+                                            type="submit"
+                                            onclick={saveNew}>
+                        </lightning-button>
+
+                        <lightning-button class="slds-m-horizontal_xx-small" 
+                                        variant="brand" 
+                                        label="Save" 
+                                        type="submit"
+                                        onclick={save}>
+                        </lightning-button>
+                    </div>
+                </lightning-record-edit-form>
+            </div>
+        </div>
+    </section>
+    <!-- 검은색 배경처리 -->
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

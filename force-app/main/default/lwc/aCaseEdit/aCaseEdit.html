@@ -1,0 +1,132 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 07-04-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-show slds-modal slds-fade-in-open slds-modal_small">
+        <div class="slds-modal__container">
+            <lightning-button-icon icon-name="utility:close" 
+                                    alternative-text="close" 
+                                    size="large" variant="bare-inverse" 
+                                    class="slds-button slds-button_icon slds-modal__close" 
+                                    onclick={modalClose}>
+            </lightning-button-icon>
+
+            <div class="slds-scrollable_y" style="background-color :white;">
+                <!-- header -->
+                <header class="slds-modal__header">
+                    <h1  class="slds-modal__title slds-hyphenate">Edit {Name}</h1>
+                </header>
+
+                <lightning-record-edit-form object-api-name="aCase__c" record-id={recordId} onsubmit={handleOnsubmit} onsuccess={handleOnSuccess}>
+                    <!-- body -->
+                    <div class="slds-m-around_x-small" style="height: 60vh;">
+                        <div class="slds-text-align_right" style="padding-top: 8px; margin-top: 8px; margin-bottom: 9px;">
+                            <abbr class="slds-required"> * </abbr>
+                            = Required Information
+                        </div>  
+
+                        <!-- aCase Information -->
+                        <div class="slds-grid slds-wrap slds-m-horizontal_small">
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <lightning-output-field field-name="OwnerId" style="margin-bottom: 19px;"></lightning-output-field>
+                                <lightning-output-field field-name="Name" style="margin-bottom: 19px;"></lightning-output-field>
+                                
+                                <lightning-input-field field-name="aContactId__c"></lightning-input-field>
+                                <lightning-input-field field-name="aAccountId__c"></lightning-input-field>
+                                <lightning-input-field field-name="Type__c"></lightning-input-field>
+                                <lightning-input-field field-name="Reason__c"></lightning-input-field>
+                            </div>
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <lightning-input-field field-name="Status__c"></lightning-input-field>
+                                <lightning-input-field field-name="Priority__c"></lightning-input-field>
+                                <div class="slds-m-top_small">
+                                    <fieldset class="slds-form-element">
+                                        <legend>aContact Phone</legend>
+                                        <a href="" style="font-size: 14px;">{aContactPhone}</a>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset class="slds-form-element">
+                                        <legend>aContact Email</legend>
+                                        <a href="" style="font-size: 14px;">{aContactEmail}</a>
+                                    </fieldset>
+                                </div>
+                                <br>
+                                <lightning-input-field field-name="Origin__c"></lightning-input-field>
+                                <!-- <div style="height: 148px;"></div> -->
+                            </div>
+                        </div>
+                        <br>
+
+                         <!-- Web Information -->
+                         
+                        <div class="slds-grid slds-wrap slds-m-horizontal_small">
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <lightning-input-field field-name="SuppliedEmail__c"></lightning-input-field>
+                                <lightning-input-field field-name="SuppliedName__c"></lightning-input-field>
+                                <lightning-output-field field-name="CreatedDate__c"></lightning-output-field>
+                            </div>
+                            
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <lightning-input-field field-name="SuppliedCompany__c"></lightning-input-field>
+                                <lightning-input-field field-name="SuppliedPhone__c"></lightning-input-field>
+                                <lightning-output-field field-name="ClosedDate__c"></lightning-output-field>
+                            </div>
+                        </div>
+                        <br>
+
+                        <!-- Additional Information -->
+                        <div class="slds-grid slds-wrap slds-m-horizontal_small">
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <lightning-input-field field-name="Product__c"></lightning-input-field>
+                                <lightning-input-field field-name="PotentialLiability__c"></lightning-input-field>
+                            </div>
+                            <div class = "slds-size_1-of-2 slds-box_small">
+                                <lightning-input-field field-name="EngineeringReqNumber__c"></lightning-input-field>
+                                <lightning-input-field field-name="SLAViolation__c"></lightning-input-field>
+                            </div>
+                        </div>
+                        <br>
+
+                        <!-- Description Information -->
+                        <div class="slds-m-horizontal_small">
+                            <div class="slds-box_small">
+                                <lightning-input-field field-name="Subject__c"></lightning-input-field>
+                                <lightning-input-field field-name="Description__c"></lightning-input-field>
+                                <lightning-input-field field-name="Comments__c"></lightning-input-field>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    
+                    <!-- footer -->
+                    <div class="slds-modal__footer slds-grid slds-grid_align-center slds-is-absolute" style="width: 100%;">
+                        <lightning-button class="slds-m-horizontal_xx-small"
+                                            label="Cancel" 
+                                            onclick={modalClose}>
+                        </lightning-button>
+
+                        <lightning-button class="slds-m-horizontal_xx-small"
+                                            label="Save &amp; New"
+                                            type="submit"
+                                            onclick={saveNew}>
+                        </lightning-button>
+
+                        <lightning-button class="slds-m-horizontal_xx-small" 
+                                        variant="brand" 
+                                        label="Save" 
+                                        type="submit"
+                                        onclick={save}>
+                        </lightning-button>
+                    </div>
+                
+                </lightning-record-edit-form>
+            </div>
+        </div>
+    </section>
+    <!-- 검은색 배경처리 -->
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

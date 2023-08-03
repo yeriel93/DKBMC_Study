@@ -1,0 +1,58 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 05-23-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+    <!-- 새로추가된 lightning-modal 태그를 이용하여 modal 생성 -->
+        <!--lightning-record-edit-form object-api-name="Account" record-id={recordId}>
+            <lightning-modal-header label="testModal"></lightning-modal-header>
+            <lightning-modal-body>
+                <lightning-input-field field-name="Name"></lightning-input-field>
+                <lightning-input-field field-name="Phone"></lightning-input-field>
+            </lightning-modal-body>
+            <lightning-modal-footer>
+                <lightning-button label="close" onclick={handleClose} class="slds-m-right_small"></lightning-button>
+                <lightning-button label="submit" type="submit" variant="brand"></lightning-button>
+            </lightning-modal-footer-->
+        <!--/lightning-record-edit-form-->
+
+        <!-- 기존에 쓰던 방식으로 modal 생성 기본 section과 div 사용 -->
+        <!--template if:true={modalOpen}--> <!-- 화면에 modal 표시 제어 --> <!-- 주로 다른모달에서 버튼형식으로 모달 표시할때 사용 -->
+            <!--section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-show slds-modal slds-fade-in-open slds-modal_medium"-->
+                <div> <!-- class="slds-modal__container" modal을 전체 감싸는 div slds-modal_container 로 모달안의 내용을 묶어줌 -->
+                    <!-- Modal Header -->
+                    <header class="slds-modal__header"><!-- modal의 Header div -->
+                        <!-- 닫기 -->
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleClose}>
+                            <lightning-icon icon-name="utility:close"
+                                            alternative-text="close"
+                                            variant="inverse"
+                                            size="small">
+                            </lightning-icon>                        
+                        </button>
+                        
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Test Modal</h2>
+                    </header>
+    
+                    <!-- Modal Body -->
+                    <lightning-record-edit-form object-api-name="Account" record-id={recordId} onsuccess={handleSuccess}> <!-- editForm 을 사용하여 제어하기위해 Body와 Footer를 감싸줌 -->
+                        <div class="slds-modal__content"><!-- modal의 Body -->
+                            <lightning-input-field field-name="Name"></lightning-input-field>
+                            <lightning-input-field field-name="Phone"></lightning-input-field>
+                            <lightning-input-field field-name="Id"></lightning-input-field>
+                            <lightning-input-field field-name="ParentId"></lightning-input-field>
+                        </div>
+        
+                        <div class="slds-modal__footer"> <!-- modal의 footer -->
+                            <lightning-button label="close" onclick={handleClose} class="slds-m-right_small"></lightning-button>
+                            <lightning-button label="submit" type="submit" variant="brand"></lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+                </div>
+            <!--/section-->
+            <!--div class="slds-backdrop slds-backdrop_open"></div--> <!-- modal 띄운후 뒷배경 검은바탕처리 -->
+        <!--/template-->
+</template>

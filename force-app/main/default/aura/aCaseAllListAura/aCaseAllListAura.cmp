@@ -1,0 +1,13 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 07-04-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<aura:component implements="force:hasRecordId,lightning:actionOverride,force:lightningQuickActionWithoutHeader,lightning:isUrlAddressable,flexipage:availableForAllPageTypes" 
+                access="global">
+
+    <c:aCaseAllList></c:aCaseAllList>
+
+</aura:component>

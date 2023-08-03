@@ -1,0 +1,153 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 06-21-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-show slds-modal slds-fade-in-open slds-modal_small">
+        <div class="slds-modal__container">
+            <lightning-button-icon icon-name="utility:close" alternative-text="close" 
+                                    size="large" variant="bare-inverse" 
+                                    class="slds-button slds-button_icon slds-modal__close" 
+                                    onclick={modalClose}>
+            </lightning-button-icon>
+
+            <div style="background: white; border-radius: 10%;">
+                <!-- header -->
+                <header class="slds-modal__header" style="background-color:rgb(238, 238, 238);">
+                    <h1  class="slds-modal__title slds-hyphenate">New aContact List</h1>
+                </header>
+
+                <!-- body -->
+                <div class="slds-p-around_medium">
+                    <table aria-multiselectable="true" class="slds-table slds-no-row-hover slds-table_fixed-layout slds-table_resizable-cols" role="grid" aria-label="Example product list">
+                        <thead>
+                            <!-- <tr class="slds-line-height_reset">
+                                <th aria-label="Product Code" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                    <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="-1">
+                                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                            <span class="slds-truncate" title="Product Code">Name</span>
+                                            <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                            </span>
+                                        </div>
+                                    </a>
+                                    <div class="slds-resizable">
+                                        <input type="range" aria-label="Product Code column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="-1" />
+                                        <span class="slds-resizable__handle">
+                                            <span class="slds-resizable__divider"></span>
+                                        </span>
+                                    </div>
+                                </th>
+                                <th aria-label="Product Code" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                    <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="-1">
+                                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                            <span class="slds-truncate" title="Product Code">Title</span>
+                                            <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                            </span>
+                                        </div>
+                                    </a>
+                                    <div class="slds-resizable">
+                                        <input type="range" aria-label="Product Code column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="-1" />
+                                        <span class="slds-resizable__handle">
+                                            <span class="slds-resizable__divider"></span>
+                                        </span>
+                                    </div>
+                                </th>
+                                <th aria-label="Product Code" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                    <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="-1">
+                                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                            <span class="slds-truncate" title="Product Code">Email</span>
+                                            <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                            </span>
+                                        </div>
+                                    </a>
+                                    <div class="slds-resizable">
+                                        <input type="range" aria-label="Product Code column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="-1" />
+                                        <span class="slds-resizable__handle">
+                                            <span class="slds-resizable__divider"></span>
+                                        </span>
+                                    </div>
+                                </th>
+                                <th aria-label="Product Code" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                    <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="-1">
+                                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                            <span class="slds-truncate" title="Product Code">Phone</span>
+                                            <span class="slds-icon_container slds-icon-utility-arrowdown"></span>
+                                        </div>
+                                    </a>
+                                    <div class="slds-resizable">
+                                        <input type="range" aria-label="Product Code column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="-1" />
+                                        <span class="slds-resizable__handle">
+                                            <span class="slds-resizable__divider"></span>
+                                        </span>
+                                    </div>
+                                </th>
+                                <th aria-label="Product Code" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                    <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="-1">
+                                        <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                            <span class="slds-truncate" title="Product Code">button</span>
+                                            <span class="slds-icon_container slds-icon-utility-arrowdown"></span>
+                                        </div>
+                                    </a>
+                                </th>
+                            </tr>  -->
+                        </thead>
+                        <tbody>
+                            <template for:each={aContactList} for:item="con" for:index="i">                            
+                                <tr key={con.Id}>
+                                    <!-- <td>
+                                        <p>{i}</p>
+                                    </td> -->
+                                    <td>
+                                        <lightning-input type="text" label="Last Name" value={con.LastName__c} data-idx={i} data-fieldname="LastName__c" data-id={con.Id} onchange={inputData} required></lightning-input>
+                                    </td>
+                                    <td>
+                                        <lightning-input type="text" label="First Name" value={con.FirstName__c} data-idx={i} data-fieldname="FirstName__c" data-id={con.Id} onchange={inputData}></lightning-input>
+                                    </td>
+                                    <td>
+                                        <lightning-input type="text" label="Title" value={con.Title__c} data-idx={i} data-fieldname="Title__c" data-id={con.Id} onchange={inputData}></lightning-input>
+                                    </td>
+                                    <td>
+                                        <lightning-input type="text" label="Email" value={con.Email__c} data-idx={i} data-fieldname="Email__c" data-id={con.Id} onchange={inputData}></lightning-input>
+                                    </td>
+                                    <td>
+                                        <lightning-input type="text" label="Phone" value={con.Phone__c} data-idx={i} data-fieldname="Phone__c" data-id={con.Id} onchange={inputData}></lightning-input>
+                                    </td>
+                                    <td style="width: 11%;">
+                                        <div style="margin-bottom: 24px;"></div>
+                                        <lightning-button class="slds-m-horizontal_xx-small"
+                                                            variant="destructive-text" 
+                                                            label="Delete" 
+                                                            data-idx={i}
+                                                            data-id={con.Id}
+                                                            onclick={deleteLow}>
+                                        </lightning-button>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- footer -->
+                <div class="slds-modal__footer">
+                    <lightning-button class="slds-m-horizontal_xx-small" 
+                                        variant="neutral" 
+                                        label="Add" 
+                                        onclick={addLow}>
+                    </lightning-button>
+                    <lightning-button class="slds-m-horizontal_xx-small" 
+                                        variant="brand" 
+                                        label="Save" 
+                                        onclick={save}>
+                    </lightning-button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 검은색 배경처리 -->
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

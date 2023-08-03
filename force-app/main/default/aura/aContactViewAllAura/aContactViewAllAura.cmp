@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 06-19-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<aura:component implements="force:hasRecordId,lightning:actionOverride,force:lightningQuickActionWithoutHeader,lightning:isUrlAddressable,flexiPage:availableForAllPageTypes" 
+                access="global">
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="recordName" type="String"/>
+
+
+    <aura:handler name='init' value='{!this}' action='{!c.myAction}'/>
+
+    
+    <div>
+        <c:aContactViewAll aAccountId="{!v.recordId}" aAccountName="{!v.recordName}"></c:aContactViewAll>
+    </div>
+</aura:component>

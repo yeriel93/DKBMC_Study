@@ -1,0 +1,229 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 07-18-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+  <!-- header -->
+  <!-- <template if:true={onload}> -->
+    <div class="slds-page-header slds-page-header_record-home">
+      <div class="slds-page-header__row">
+        <div class="slds-page-header__col-title">
+          <div class="slds-media">
+            <div class="slds-media__figure">
+              <span class="slds-icon_container slds-icon-standard-opportunity">
+                <lightning-icon icon-name="custom:custom53" title="custom53" ></lightning-icon>
+              </span>
+            </div>
+            <div class="slds-media__body">
+              <div class="slds-page-header__name">
+                <div class="slds-page-header__name-title">
+                  <h1>
+                    <span>aCase</span>
+                    <span class="slds-page-header__title slds-truncate" title="Acme - 1,200 Widgets">{subject}</span>
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-page-header__col-actions">
+          <div class="slds-page-header__controls">
+            <!-- <div class="slds-page-header__control">
+              <button class="slds-button slds-button_neutral slds-button_stateful slds-not-selected" aria-live="assertive" aria-pressed="false">
+                <span>
+                  <lightning-icon icon-name="utility:add" title="add" size="x-small" style="margin-right: 7px;"></lightning-icon>
+                </span>
+                <span>Follow</span>
+              </button>
+            </div> -->
+            <div class="slds-page-header__control">
+              <ul class="slds-button-group-list">
+                <li>
+                  <button class="slds-button slds-button_neutral" onclick={openEditModal}>Edit</button>
+                </li>
+                <li>
+                  <button class="slds-button slds-button_neutral" onclick={recordDelete}>Delete</button>
+                </li>
+                <li>
+                  <button class="slds-button slds-button_neutral" onclick={openModal}>Close aCase</button>
+                </li>
+                <!-- <li>
+                  <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                    <button class="slds-button slds-button_icon slds-button_icon-border-filled" aria-haspopup="true" title="More Actions">
+                      <svg class="slds-button__icon" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                      </svg>
+                      <span class="slds-assistive-text">More Actions</span>
+                    </button>
+                  </div>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slds-page-header__row slds-page-header__row_gutters">
+        <div class="slds-page-header__col-details">
+          <ul class="slds-page-header__detail-row">
+            <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate" title="Field 1">Priority</div>
+              <div class="slds-truncate">{priority}</div>
+            </li>
+            <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate">Status
+                <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                  <button class="slds-button slds-button_icon slds-button_icon" aria-haspopup="true"></button>
+                </div>
+              </div>
+              <div class="slds-truncate" >{Status}</div>
+            </li>
+            <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate">Case Number</div>
+              <div class="slds-truncate" ><p>{caseNumber}</p></div>
+            </li>
+            <!-- <li class="slds-page-header__detail-block">
+              <div class="slds-text-title slds-truncate" title="Field 4">Field 4</div>
+              <div class="slds-truncate" title="Description (2-line truncation—must use JS to truncate).">Description (2-line truncati...</div>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  <!-- </template> -->
+
+    <div class="slds-grid">
+      
+        <!-- related List -->
+        <article class="slds-card slds-m-top_x-small slds-col" style="width: 65%; display: flex; justify-content: center;" if:true={accessable}>
+            <div class="slds-tabs_default slds-m-around_medium">
+                <h1 class="slds-card__header slds-card__header-title">
+                    <a class="slds-tabs_default__link" href="#" role="tab" tabindex="0" aria-selected="true">Related</a>
+                </h1>
+                <hr style="background-color: black; height: 0.2px; margin-top: -16px; margin-bottom: 0px;">
+                
+                <div id="tab-default-1" class="slds-tabs_default__content slds-grid" role="tabpanel" style="justify-content: center;">
+                    <article class="slds-card slds-card_boundary" style="width: 100%;">
+                        <div class="slds-card__header slds-card_boundary slds-grid" style="background-color: #f3f2f2; margin-bottom: -12px; padding-bottom: 12px;">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__figure">
+                                    <lightning-icon icon-name="custom:custom53" size="small"></lightning-icon>
+                                </div>
+                
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                        <a href="#" class="slds-card__header-link slds-truncate" title="aContacts">
+                                            <span>aCase Team Member ({teamDataLength})</span>
+                                        </a>
+                                    </h2>
+                                </div>
+                
+                                <div class="slds-no-flex">
+                                    <button class="slds-button slds-button_neutral" onclick={openTeamModal}>New</button>
+                                </div>
+                            </header>
+                        </div>
+                        
+                        <template if:true={TeamBoolean}>
+                            <div class="slds-card__body" style="display: flex; justify-content: space-between; flex-wrap:wrap">
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col">
+                                                <span class="slds-truncate">aCase Team Member Name</span>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <span class="slds-truncate">User/Group ID</span>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <span class="slds-truncate">AccessLevel</span>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <span class="slds-truncate">Created Date</span>
+                                            </th>
+                                            <th class="" scope="col">
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <template for:each={teamData} for:index="index" for:item="team">
+                                        <tbody key={team.Id}>
+                                            <tr class="slds-hint-parent" >
+                                                <td data-label={team.Name}>
+                                                    <span class="slds-truncate">{team.Name}</span>
+                                                </td>
+                                                <td data-label={team.UserOrGroupId__r.Name}>
+                                                    <span class="slds-truncate">{team.UserOrGroupId__r.Name}</span>
+                                                </td>
+                                                <td data-label={team.AccessLevel__c}>
+                                                    <span class="slds-truncate">{team.AccessLevel__c}</span>
+                                                </td>
+                                                <td data-label={team.CreatedDate}>
+                                                    <span class="slds-truncate">
+                                                        <!-- {team.CreatedDate} -->
+                                                        <lightning-formatted-date-time value={team.CreatedDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                                                                        minute="2-digit" hour12={ampm}></lightning-formatted-date-time>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <div class="lgc-bg slds-button_icon-x-small" style="margin-bottom: 4px;">
+                                                        <lightning-button-menu alternative-text="Show menu" icon-size="small">
+                                                            <!-- <lightning-menu-item value="Edit" label="Edit" onclick={recordEdit} data-msg={team.Id}></lightning-menu-item> -->
+                                                            <lightning-menu-item value="Delete" label="Delete" onclick={teamDelete} data-msg={team.Id}></lightning-menu-item>
+                                                        </lightning-button-menu>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </template>
+                                </table>
+                            </div>
+                            
+                        </template>
+                            <footer class="slds-card__footer">
+                                <template if:true={TeamBoolean}>
+                                    <a class="slds-card__footer-action" href={viewAllUrl}>View All</a>
+                                </template>
+                            </footer>
+                    </article>
+                </div>
+            </div>
+
+        </article>
+
+        <!-- detail page -->
+        <article class="slds-card slds-col" style="margin-top: 8px; width: 33%;"> 
+            <div class="slds-m-around_large">
+                <h1 class="slds-card__header slds-card__header-title">Details</h1>
+                <hr style="background-color: black; height: 0.2px; margin-top: -4px;">
+        
+                <lightning-record-form record-id={recordId}
+                                        object-api-name="aCase__c"
+                                        columns="2"
+                                        layout-type="Full"
+                                        mode="view"
+                                        onsuccess={editSuccess}>
+                </lightning-record-form>
+            </div>
+        </article>
+    </div>
+
+
+    <!-- close aCase Modal -->
+    <template if:true={modal}>
+        <c-closea-case record-id={recordId} oncloseevent={closeModal}></c-closea-case>
+    </template>
+
+    <!-- edit Modal -->
+    <template if:true={editmodal}>
+        <c-a-case-edit record-id={recordId} onclose={closeModal}></c-a-case-edit>
+    </template>
+
+    <template if:true={teamNewModal}>
+        <c-a-case-team-new record-id={recordId} onclose={closeModal}></c-a-case-team-new>
+    </template>
+
+</template>

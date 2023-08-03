@@ -1,0 +1,54 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 06-28-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <lightning-button-icon icon-name="utility:close" alternative-text="close" 
+                                    size="large" variant="bare-inverse" 
+                                    class="slds-button slds-button_icon slds-modal__close" 
+                                    onclick={modalClose}>
+            </lightning-button-icon>
+
+            <div style="background: white; border-radius: 10%;">
+                <!-- header -->
+                <header class="slds-modal__header" style="width: 100%;">
+                <h1  class="slds-modal__title">Close aCase</h1>
+                </header>
+                <br>
+
+                <lightning-record-edit-form object-api-name="aCase__c" record-id={recordId} onsuccess={onSuccenss}>
+                
+                <!-- body -->
+                <div>
+                    <lightning-input-field field-name="Status__c" value="Closed" disabled="true"></lightning-input-field>
+                    <lightning-input-field field-name="Reason__c"></lightning-input-field>
+                    <lightning-input-field field-name="Comments__c"></lightning-input-field>
+                </div>
+                <br>
+
+                <!-- footer -->
+                <div class="slds-modal__footer slds-grid" style="justify-content: flex-end;">
+                    <lightning-button class="slds-m-horizontal_xx-small"
+                                        label="Cancel" 
+                                        onclick={modalClose}>
+                    </lightning-button>
+            
+                    <lightning-button class="slds-m-horizontal_xx-small" 
+                                    variant="brand" 
+                                    label="Save" 
+                                    type="submit"
+                                    onclick={save}>
+                    </lightning-button>
+                </div>
+                </lightning-record-edit-form>
+            </div>
+        </div>
+    </section>
+
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>

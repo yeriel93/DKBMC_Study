@@ -1,0 +1,43 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 08-03-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+    <lightning-card title="aCase List Component" icon-name="standard:contact_list">
+        <div style="background-color: rgb(238, 238, 238); height: 84%;">
+            <!-- loader -->
+            <div if:true={showSpinner}>
+                <lightning-spinner
+                    alternative-text="Loading..." variant="brand">
+                </lightning-spinner>
+            </div>
+            <!-- dataTable -->
+            <template if:true={allList}>
+                <div class="slds-truncate">
+                    <lightning-datatable key-field="Id"
+                                        data={dataList}
+                                        columns={columns}
+                                        hide-checkbox-column
+                                        show-row-number-column = "true"
+                                        onrowaction={handleRowAction}
+                                        sorted-by={sortBy}
+                                        sorted-direction={sortDirection}
+                                        onsort={doSorting}
+                                        onsave={handleSave}
+                                        draft-values={draftValues}>
+                    </lightning-datatable>
+                </div>
+            </template>
+
+            <br><br><br><br><br><br><br><br><br>
+        </div>
+    </lightning-card>
+
+    <!-- edit Modal -->
+    <template if:true={editmodal}>
+        <c-a-case-edit record-id={editId} onclose={closeEditModal}></c-a-case-edit>
+    </template>
+</template>
