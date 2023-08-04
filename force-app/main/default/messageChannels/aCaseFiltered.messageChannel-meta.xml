@@ -2,11 +2,9 @@
 <LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>This event is fired when aCase filters change.</description>
     <isExposed>false</isExposed>
-
     <lightningMessageFields>
         <description>Current aCase filters</description>
         <fieldName>filters</fieldName>
     </lightningMessageFields>
-    
     <masterLabel>aCaseFiltered</masterLabel>
 </LightningMessageChannel>

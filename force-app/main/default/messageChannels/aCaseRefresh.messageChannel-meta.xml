@@ -2,11 +2,9 @@
 <LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>aCase에서 데이터 수정시 리스트 새로고침</description>
     <isExposed>false</isExposed>
-    
     <lightningMessageFields>
         <description>Refresh aCase List</description>
         <fieldName>refreshaCase</fieldName>
     </lightningMessageFields>
-    
     <masterLabel>aCaseRefresh</masterLabel>
 </LightningMessageChannel>

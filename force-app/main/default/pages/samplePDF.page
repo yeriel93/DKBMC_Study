@@ -1,0 +1,186 @@
+<!-- apex:page attribute 설정 
+    showHeader => Salesforce 탭 헤더 표시 유무
+    applyHtmlTag : Visaulforce 에서 자동으로 html 태그 생성 여부
+    renderAs="pdf" => visualForce Page 를 pdf 형식으로 랜더링
+    
+    standardController="" => visualForce page 에 Object 를 연결할 경우 사용 ex) standardController="Account"
+    standardController 로 Object 연결할 경우 {!Object명.fieldName} 으로 필드 가져올수있음
+    ex) {!Account.Name}
+    extensions="" => standardController 와 Apex Controller 를 동시에 사용할 경우 extensions 에 Apex Controller 이름으로 연결 ex) extensions="Apex class 명"
+    
+    standardController 에 object 연결시 => class 의 생성자 재정의 하여 record 정보 불러올수있음
+    ex)
+    public testController{
+        public 연결Obj stdObject {get;set;}
+        public testController(ApexPages.StandardController stdController){
+            this.stdObject = (연결한 object api 명)stdController.getRecord();
+        }
+
+    }
+    
+    
+    controller="" => object 연결 없이 Apex Class 만 연결할 경우 사용 ex) controller="Apex class 명"
+    => controller 에서 setting 한 변수는 {!클래스에서 선언한 변수명} 으로 page 내에서 사용할수있음
+    => ex) class 에 pulic list testList{get;set;} => {!testList}
+-->
+<apex:page renderAs="pdf"                                  
+           showHeader="false"
+           sidebar="false"
+           standardStylesheets="false"
+           applyBodyTag="false"
+           applyHtmlTag="false"
+           language="utf-8">
+           
+    <html>
+        <head>
+            <style type="/text/css">
+                /*style 지정*/
+                html, body {
+                    font-family: 'Arial Unicode MS'; /* 한글 사용 위해서 font-family 설정*/
+                }
+                @page {/* 페이지 설정 */
+                    size : A4 landscape; /*A4 landscape (가로) *//* A4 portrait (세로) */
+                    margin-top: 5mm;
+                    margin-left: 5mm;
+                    margin-right: 5mm;
+                    margin-bottom: 0mm;
+                }
+                table {
+                    table-layout: fixed;
+                }    
+            </style>
+        </head>
+        <body>
+            <table width="100%"> <!-- 전체 Table -->
+                <col width="45%" /><col width="5%" /><col width="45%" /> <!-- col (column width 값으로 칸별 비율 설정) -->
+                <tr> <!-- 첫줄 -->
+                    <td>
+                        <table width="100%">
+                            <col width="20%" /><col width="10%" /><col width="70%" />
+                            <tr>
+                                <td>
+                                    <apex:outputText value="영업그룹"></apex:outputText> <!-- outputText 는 value 값을 화면에 표현 (lightning-formattedText 와 비슷한 느낌) -->
+                                </td>
+                                <td>
+                                    <apex:outputText value=" : "></apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value="153 아이누리 ) 아이누리 1팀"></apex:outputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputText value="영업사원"></apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value=" : "></apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value="00255262 우도희"></apex:outputText>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td></td>
+                    <td>
+                        <table width="100%">
+                            <col width="10%" /><col width="10%" /><col width="80%" />
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <table width="100%"> 
+                                        <col width="45%" /><col width="5%" /><col width="50%" />
+                                        <tr style="text-align : right;">
+                                            <td >
+                                                <apex:outputText value="고객사 팩스 번호"></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value=" : "></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value="031-333-3333"></apex:outputText>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>   
+                    </td>
+                </tr>
+                <tr style="height:75%;">
+                    <!-- 거래내역 통지서 -->
+                    <td> 
+                        <table width="100%" style="border : 1px solid black; height : 100%; padding : 3mm;">
+                            <tr>
+                                <td>
+                                    <apex:outputText value="(보 관 용)"></apex:outputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputText value="거 래 내 역 통 지 서" style="text-decoration: underline;"></apex:outputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p> 날로 번창하는 .........</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table>
+                                        <col width="5%" /><col width="30%" /><col width="5%" /><col width="60%" />
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="우편번호"></apex:outputText>
+                                            </td>
+                                            <td>
+                                                :
+                                            </td>
+                                            <td>
+                                                <apex:outputText value="02534"></apex:outputText>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <!-- 가운데 세로선 -->
+                    </td>
+                    <!-- 외상 잔고 확인서 -->
+                    <td> 
+                        <table width="100%" style="border : 1px solid black; height : 100%; padding : 3mm;">
+                            <tr>
+                                <td>
+                                    <apex:outputText value="(회 수 용)"></apex:outputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputText value="외 상 잔 고 확 인 서" style="text-decoration: underline;"></apex:outputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- Static Resource 의 image 를 가져다 쓸 경우 -->
+                                    <!-- 
+                                        apex:image tag 사용
+                                        url => URLFOR() 함수를 이용하여 url 형식으로 변환
+                                        URLFOR() 파라미터 => $Resource.StaticResource 이름, static resource 안의 파일 이름 => static Resource 파일이 zip 파일일 경우
+                                        Resource 가 단일 파일일 경우 StaticResource 주소만 입력해 줘도 가능 ex) url="{$Resource.staticResource 이름}"
+                                    -->
+                                    <!--apex:image id="text" url="{!URLFOR($Resource.staticResource이름, 파일명)}" width="300px" height="90px" /-->
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </body>
+    </html>
+    
+</apex:page>
