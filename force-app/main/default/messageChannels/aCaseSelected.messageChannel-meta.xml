@@ -2,9 +2,11 @@
 <LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>This event is fired when a aCase is selected.</description>
     <isExposed>false</isExposed>
+    
     <lightningMessageFields>
         <description>Selected aCase Id.</description>
         <fieldName>aCaseId</fieldName>
     </lightningMessageFields>
+    
     <masterLabel>aCaseSelected</masterLabel>
 </LightningMessageChannel>

@@ -78,14 +78,15 @@ export default class ACaseList extends NavigationMixin(LightningElement) {
 
     connectedCallback() {
         this.callList();
-
+        // Filter component에서 보내준 데이터 받기
         this.aCaseFilterSubscription = subscribe(
             this.messageContext,
             aCase_FILTERED_MESSAGE,
             (message) => this.handleFilterChange(message)
         );
     }
-
+    
+    //Filter component에서 보내준 데이터 전달 
     handleFilterChange(message) {
         // console.log('message = ', message.filters);
         //메세지로 넘어온 데이터는 proxy(프록시)때문에 제대로 된 데이터가 apex로 안 넘어갈 수 있어서 한번 풀어서 다시 리스트로 넣어줌
@@ -100,11 +101,12 @@ export default class ACaseList extends NavigationMixin(LightningElement) {
         this.callList();
     }
 
+    //aCase List 가져오기 
     callList(){
         getaCaseRecords({searchKeywords : this.searchKeywordList})
         .then((data)=>{
             this.dataList = data;
-            console.log('dataList = ', this.dataList);
+            // console.log('dataList = ', this.dataList);
 
             if(this.dataList){
                 this.dataList.forEach(i => {
@@ -151,8 +153,8 @@ export default class ACaseList extends NavigationMixin(LightningElement) {
         }
     }
 
-     // dataTable에서 하나의 필드값 수정 후 저장이벤트
-     handleSave(event){
+    // dataTable에서 하나의 필드값 수정 후 저장이벤트
+    handleSave(event){
         this.showSpinner = true;
         this.allList = false;
         // console.log('draftValues', event.detail.draftValues);

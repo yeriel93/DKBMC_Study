@@ -1,8 +1,9 @@
 import { LightningElement, api, track, wire } from 'lwc';
 
 // Lightning Message Service and a message channel
-import { publish, MessageContext } from 'lightning/messageService';
+import { publish, subscribe, MessageContext } from 'lightning/messageService';
 import aCase_FILTERED_MESSAGE from '@salesforce/messageChannel/aCaseFiltered__c';
+import aCase_REFRESH_MESSAGE from '@salesforce/messageChannel/aCaseRefresh__c';
 
 export default class ACaseFilters extends LightningElement {
     delayTimeout;
@@ -22,12 +23,21 @@ export default class ACaseFilters extends LightningElement {
     Keywords;
     searchKeywordList;
 
-    @wire(MessageContext)
-    messageContext;
+    @wire(MessageContext)messageContext;
 
-    SearchName(event){
-        console.log('name = ', event.target.value);
-        // this.delayedFireFilterChangeEvent();
+    connectedCallback(){
+        //card component에서 보낸 메시지 받기 
+        this.subscription = subscribe(
+            this.messageContext,
+            aCase_REFRESH_MESSAGE,
+            (message) => this.aCaseListRefresh(message)
+        );
+    }
+
+    // card component에서 데이터 수정시 리스트 새로고침 이벤트
+    aCaseListRefresh(message){
+        console.log(message);
+        this.searchHandle();
     }
 
 
@@ -47,7 +57,7 @@ export default class ACaseFilters extends LightningElement {
 
                 this.searchKeywordList.push(this.Keywords);                    
             });
-            console.log('filter => searchKeywordsList =', JSON.parse(JSON.stringify(this.searchKeywordList)));
+            // console.log('filter => searchKeywordsList =', JSON.parse(JSON.stringify(this.searchKeywordList)));
 
             publish(this.messageContext, aCase_FILTERED_MESSAGE, {
                 filters: this.searchKeywordList
@@ -62,7 +72,7 @@ export default class ACaseFilters extends LightningElement {
     //검색값 리셋
     resetHandle(){
         const list = this.template.querySelectorAll('.inputTag');
-        console.log('input =>', list);
+        // console.log('input =>', list);
         if(list){
             list.forEach(col => {
                 col.value = '';
