@@ -1,3 +1,67 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 08-04-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
 <template>
-    
+    <header class="slds-m-bottom_small"> 
+        <div class="slds-page-header">
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container">
+                                <!-- <lightning-icon icon-name="custom:custom53" title="custom53" size="mideum"></lightning-icon> -->
+                                <lightning-icon icon-name="custom:custom55" title="custom55" size="mideum"></lightning-icon>
+                            </span>
+                        </div>
+                        <div class="slds-media__body">
+                            <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                    <h1>
+                                        <span>Custom Case</span>
+                                        <span class="slds-page-header__title slds-truncate" style="font-size: 18px;">All</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-page-header__col-actions">
+                    <div class="slds-page-header__controls">
+                        <!-- 첫번째줄 버튼div -->
+                        <div class="slds-page-header__control">
+                            <ul class="slds-button-group-list">
+                                <li>
+                                    <button class="slds-button slds-button_neutral" onclick={openNewModal} style="margin-top: 8px;">New</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- component -->
+    <div class="slds-grid">
+        <div style="width: 18%;" class="slds-m-right_small">
+            <!-- <c-a-case-filters></c-a-case-filters> -->
+            <c-a-case-filters_-l-w-c></c-a-case-filters_-l-w-c>
+        </div>
+        <div style="width: 55%;" class="slds-m-right_small">
+            <c-a-case-list></c-a-case-list>
+        </div>
+        <div style="width: 27%;">
+            <c-a-case-card></c-a-case-card>
+        </div>
+    </div>
+
+    <!-- New modal -->
+    <template if:true={newModal}>
+        <c-a-case-new oncloseevent={closeNewModal}></c-a-case-new>
+    </template>
 </template>
