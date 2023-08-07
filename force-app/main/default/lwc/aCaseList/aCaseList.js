@@ -77,7 +77,6 @@ export default class ACaseList extends NavigationMixin(LightningElement) {
     messageContext;
 
     connectedCallback() {
-        this.callList();
         // Filter component에서 보내준 데이터 받기
         this.aCaseFilterSubscription = subscribe(
             this.messageContext,
@@ -94,7 +93,6 @@ export default class ACaseList extends NavigationMixin(LightningElement) {
         message.filters.forEach(i =>{
             parseList.push(i);
         });
-    
         this.searchKeywordList = parseList;
         // console.log('List => searchKeywordList ', JSON.parse(JSON.stringify(this.searchKeywordList)));
         
