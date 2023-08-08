@@ -1,0 +1,126 @@
+<apex:page renderAs="pdf"                                
+            showHeader="false"
+            sidebar="false"
+            standardStylesheets="false"
+            applyBodyTag="false"
+            applyHtmlTag="false"
+            language="utf-8">
+
+    <html>
+        <head>
+            <style type="/text/css">
+                html, body{
+                    font-family: 'Arial Unicode MS';
+                    
+                }
+                /* 페이지 설정 */
+                @page {
+                    /*A4 landscape (가로) *//* A4 portrait (세로) */
+                    size : A4 landscape; 
+                    margin-top: 5mm;
+                    margin-left: 5mm;
+                    margin-right: 5mm;
+                    margin-bottom: 0mm;
+                }
+                table {
+                    table-layout: fixed;
+                }
+                
+                .boxTable{
+                    width: 100%;
+                    border : 1px solid black; 
+                    height : 100%; 
+                    padding : 3mm;
+                    /* tr 간격조정 */
+                    border-collapse: separate;
+                    border-spacing: 20px;
+                }
+
+                div {
+                    border: 1px solid gray;
+                }
+                table td{
+                    /* border: 1px solid gray; */
+                } 
+            </style>
+        </head>
+
+        <body>
+            <!-- 머릿글 -->
+            <div style="display: flex; display: -webkit-box; width: 100% ">
+                <!-- 왼쪽 머릿글 -->
+                <div style="width: 50%">
+                    <table width="100%">
+                        <col width="25%" /><col width="5%" /><col width="70%" />
+                        <tr>
+                            <td>
+                                <apex:outputText value="영업그룹"></apex:outputText>
+                            </td>
+                            <td>
+                                <apex:outputText value=" : "></apex:outputText>
+                            </td>
+                            <td>
+                                <apex:outputText value="153 아이누리 ) 아이누리 1팀"></apex:outputText>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <apex:outputText value="영업사원"></apex:outputText>
+                            </td>
+                            <td>
+                                <apex:outputText value=" : "></apex:outputText>
+                            </td>
+                            <td>
+                                <apex:outputText value="00255262 우도희"></apex:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- 오른쪽 머릿글 -->
+                <div style="width: 50%">
+                    <table width="100%">
+                        <col width="50%" /><col width="5%" /><col width="45%" />
+                        <tr>
+                            <td><apex:outputText value="o" style="color: white"></apex:outputText></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr style="text-align : right;">
+                            <td >
+                                <apex:outputText value="고객사 팩스 번호"></apex:outputText>
+                            </td>
+                            <td>
+                                <apex:outputText value=" : "></apex:outputText>
+                            </td>
+                            <td>
+                                <apex:outputText value="031-333-3333"></apex:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 본문 -->
+            <div style="display: flex; width: 100%">
+                <div>
+                    <h1>ddd</h1>
+                </div>
+                <div style="border-right: solid 2px black;"></div>
+                <div></div>
+                <div>
+                    <h1>ddd</h1>
+                </div>
+            </div>
+
+            <!-- 풋터 -->
+            <div style="display: flex; width: 100%">
+                <div>
+                    
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </body>
+    </html>
+</apex:page>

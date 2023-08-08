@@ -2,7 +2,7 @@
   @description       : 
   @author            : yeonji.lim@dkbmc.com
   @group             : 
-  @last modified on  : 08-07-2023
+  @last modified on  : 08-08-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
 <apex:page renderAs="pdf"                                  
@@ -18,6 +18,7 @@
             <style type="/text/css">
                 html, body{
                     font-family: 'Arial Unicode MS';
+                    font-size: 14px;
                     
                 }
                 /* 페이지 설정 */
@@ -40,7 +41,18 @@
                     padding : 3mm;
                     /* tr 간격조정 */
                     border-collapse: separate;
-                    border-spacing: 20px;
+                    border-spacing: 15px;
+                }
+
+                .tableLine{
+                    border-collapse: collapse;
+                }
+                .tableLine>tbody td{
+                    border: 1px solid black;
+                    font-size: 12px;
+                }
+                .blackLine{
+                    border: 1px solid black;
                 }
 
                 table td{
@@ -58,7 +70,7 @@
                 <tr>
                     <td>
                         <table width="100%">
-                            <col width="25%" /><col width="5%" /><col width="70%" />
+                            <col width="15%" /><col width="5%" /><col width="80%" />
                             <tr>
                                 <td>
                                     <apex:outputText value="영업그룹"></apex:outputText>
@@ -86,7 +98,7 @@
                     <td></td>
                     <td>
                         <table width="100%">
-                            <col width="50%" /><col width="5%" /><col width="45%" />
+                            <col width="70%" /><col width="5%" /><col width="25%" />
                             <tr>
                                 <td><apex:outputText value="o" style="color: white"></apex:outputText></td>
                                 <td></td>
@@ -107,8 +119,9 @@
                     </td>
                 </tr>
 
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->                
                 <!-- 박스 -->
-                <tr style="height:75%;">
+                <tr>
                     <!-- 거래내역 통지서 -->
                     <td>
                         <table class="boxTable">
@@ -129,28 +142,237 @@
 
                             <tr>
                                 <td>
-                                    <apex:outputText value="  날로 번창하심을 축원하오며, 귀사의 2023년 01월01일부터 2028년 08월02일까지의 거래 내역을 아래와 같이 통지드립니다."></apex:outputText>
+                                    &nbsp;&nbsp;
+                                    <apex:outputText value="날로 번창하심을 축원하오며, 귀사의 2023년 01월01일부터 2028년 08월02일까지의 거래 내역을 아래와 같이 통지드립니다."></apex:outputText>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table style="width: 100%;">
+                                        <col width="5%" /><col width="20%" /><col width="5%" /><col width="70%" />
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="우 편 번 호"></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value=" : "></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value="11500"></apex:outputText>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="주"></apex:outputText> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <apex:outputText value="소"></apex:outputText> 
+                                            </td>
+                                            <td>
+                                                <apex:outputText value=" : "></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value=""></apex:outputText>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="상"></apex:outputText> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <apex:outputText value="호"></apex:outputText> 
+                                            </td>
+                                            <td>
+                                                <apex:outputText value=" : "></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value="한마음청소년수련원"></apex:outputText>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="대"></apex:outputText> &nbsp;&nbsp;
+                                                <apex:outputText value="표"></apex:outputText> &nbsp;&nbsp;
+                                                <apex:outputText value="자"></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value=" : "></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value="이기현"></apex:outputText>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="거래선코드"></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value=" : "></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value="104901002, 한마음청소년수"></apex:outputText>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table class="tableLine">
+                                        <thead>
+                                            <tr style="text-align: center;">
+                                                <td colspan="4">
+                                                    <apex:outputText value="- 아래 -"></apex:outputText>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr style="text-align: center;">
+                                                <td>
+                                                    <apex:outputText value="잔 고"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="매 출"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="회 입"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="08월 02일"></apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr style="text-align: center;">
+                                                <td>
+                                                    <apex:outputText value="2023년 08월 01월"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="08월"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="08월"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="잔고(A)"></apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr style="text-align: center;">
+                                                <td>
+                                                    <apex:outputText value="2023년 01월 01일"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="01  ~  08월"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="01  ~  08월"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="미결어음(B)"></apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr style="text-align: right;">
+                                                <td>
+                                                    <apex:outputText value="-271,112"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="0"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="0"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="-271,112"></apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr style="text-align: right;">
+                                                <td>
+                                                    <apex:outputText value="-271,112"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="0"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="0"></apex:outputText>
+                                                </td>
+                                                <td>
+                                                    <apex:outputText value="0"></apex:outputText>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr style="" >
+                                                <td colspan="4">
+                                                    &nbsp; &nbsp;
+                                                    <apex:outputText value="현재 귀사의 외상잔고는 "></apex:outputText>
+                                                    <apex:outputText value="(A)-271,112" style="text-decoration:underline;"></apex:outputText>
+                                                    <apex:outputText value="이고, 이중 "></apex:outputText>
+                                                    <apex:outputText value="(B)0" style="text-decoration:underline;"></apex:outputText>
+                                                    <apex:outputText value="원은 폐사에서 미결제 어음으로 보관하고 있사오니 바쁘시더라도 친히 귀사의 잔액을 확인하여 주시기 바랍니다."></apex:outputText>
+                                                </td>
+                                            </tr>
+                                        </tfoot>    
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table>
+                                        <col width="40%" /><col width="30%" /><col width="5%" /><col width="25%" />
+                                        <tr>
+                                            <td><apex:outputText value="0" style="color: white;"></apex:outputText></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td rowspan="3" style="text-align: right;">
+                                                <apex:image width="80px" height="70px" url="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAyMTNfMjM4%2FMDAxNjEzMjI2NDMzMzEz.QOFVAgZlEjU0ct-hYe6-H_dQt1dB66sctg0TNFcC9Acg.E_yReW3Cx0PWIqpZGL2WGeGGcCqMvbh4ADS3X78p6T8g.PNG.mint2753%2F%25B1%25E8%25BC%25B1%25BC%25F7%2527s_signature_%252812%2529.png"></apex:image>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="씨제이프레시웨이"></apex:outputText>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="대표이사"></apex:outputText>
+                                                &nbsp; &nbsp; 
+                                                <apex:outputText value="정성필"></apex:outputText>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                         </table>
                     </td>
 
                     <td>
+                        <table style="height: 75%;">
+                            <tr>
+                                <td style="border-right: solid 1px black;">
+                                    <div style="height: 610px;"></div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
                     </td>
 
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
                     <!-- 외상잔고 확인서 -->
                     <td>
                         <table class="boxTable">
-                            <!-- <col width="5%" /><col width="95%" /> -->
                             <tr>
-                                <!-- <td></td> -->
                                 <td>
                                     <apex:outputText value="(회수용)"></apex:outputText>
                                 </td>
                             </tr>
 
                             <tr>
-                                <!-- <td></td> -->
                                 <td>
                                     <apex:outputText value="외 상 잔 고 확 인 서" style="font-size: 20px; text-decoration:underline;"></apex:outputText>
                                 </td>
@@ -158,7 +380,260 @@
 
                             <tr>
                                 <td>
-                                    <apex:outputText value="씨 제 이 프 레 시 웨 이 귀 하" style="font-size: 20px; text-decoration:underline;"></apex:outputText>
+                                    <table>
+                                        <col width="5%" /><col width="95%" />
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="씨 제 이 프 레 시 웨 이 귀 하" style="font-size: 20px; text-decoration:underline;"></apex:outputText>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <apex:outputText value="아래 양식에 기재된 금액과 귀사의 2023년01월01일부터 2023년 08월02일까지의 거래잔액임을 확인하고 이에 서명날인하여 통지드립니다." ></apex:outputText> <br/>
+                                    <!-- <apex:outputText value="2023년 08월02일까지의 거래잔액임을 확인하고 이에 서명날인하여 통지드립니다." style="font-size: 15px;"></apex:outputText><br/> -->
+                                </td>
+                            </tr>
+
+                            <tr style="text-align : right;">
+                                <td>
+                                    <apex:outputText value="2023년"></apex:outputText>&nbsp;
+                                    <apex:outputText value="08월"></apex:outputText>&nbsp;
+                                    <apex:outputText value="02월"></apex:outputText>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table style="width: 100%;">
+                                        <col width="20%" /><col width="20%" /><col width="5%" /><col width="50%" />
+                                        <!-- <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td style="text-align : right;">
+                                                <apex:outputText value="2023년"></apex:outputText>&nbsp;
+                                                <apex:outputText value="08월"></apex:outputText>&nbsp;
+                                                <apex:outputText value="02월"></apex:outputText>
+                                            </td>
+                                        </tr> -->
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="거래선코드"></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value=" : "></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value="104901002, 한마음청소년수"></apex:outputText>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="상"></apex:outputText> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <apex:outputText value="호"></apex:outputText> 
+                                            </td>
+                                            <td>
+                                                <apex:outputText value=" : "></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value="한마음청소년수련원"></apex:outputText>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <apex:outputText value="대"></apex:outputText> &nbsp;&nbsp;
+                                                <apex:outputText value="표"></apex:outputText> &nbsp;&nbsp;
+                                                <apex:outputText value="자"></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value=" : "></apex:outputText>
+                                            </td>
+                                            <td>
+                                                <apex:outputText value="이기현"></apex:outputText>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <!-- 한줄띄우기 -->
+                            <tr>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table style="border-collapse: collapse; font-size: 12px;">
+                                        <col width="1%" /><col width="24.75%" /><col width="24.75%" /><col width="24.75%" /><col width="24.75%" />
+                                        <tbody>
+                                            <tr style="text-align: center;">
+                                                <td></td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="잔 고"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="매 출"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="회 입"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="08월 02일"></apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr style="text-align: center;">
+                                                <td></td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="2023년 08월 01월"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="08월"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="08월"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="잔고(A)"></apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr style="text-align: center;">
+                                                <td></td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="2023년 01월 01일"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="01  ~  08월"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="01  ~  08월"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="미결어음(B)"></apex:outputText>
+                                                </td>
+                                            </tr>
+                  
+                                            <tr style="text-align: right;">
+                                                <td>
+                                                    <apex:outputText value="가 "></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="-271,112"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="0"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="0"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="-271,112"></apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr style="text-align: right;">
+                                                <td></td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="-271,112"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="0"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="0"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="0"></apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr style="text-align: right;">
+                                                <td>
+                                                    <apex:outputText value="나 "></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="0" style="color: white"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value=""></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value=""></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value=""></apex:outputText>
+                                                </td>
+                                            </tr>
+                                            <tr style="text-align: right;">
+                                                <td></td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value="0" style="color: white"></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value=""></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value=""></apex:outputText>
+                                                </td>
+                                                <td class="blackLine">
+                                                    <apex:outputText value=""></apex:outputText>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr style="font-size: 14px;">
+                                                <td colspan="5">
+                                                    &nbsp; &nbsp; &nbsp;
+                                                    <apex:outputText value=" * 귀사와 폐사의 거래 잔액이 상이할 경우 (나)란에 기입함."></apex:outputText>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <div style="height: 24px;"></div>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <table>
+                            <col width="15%" /><col width="3%" /><col width="82%" />
+                            <tr>
+                                <td>
+                                    <apex:outputText value="영업그룹"></apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value=" : "></apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value="158 아이누리 )아이누리 1팀"></apex:outputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:outputText value="담당사원"></apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value=" : "></apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value="00255262 우도희"></apex:outputText>
                                 </td>
                             </tr>
                         </table>
