@@ -326,7 +326,7 @@
                                             <td></td>
                                             <td></td>
                                             <td rowspan="3" style="text-align: right;">
-                                                <apex:image width="80px" height="70px" url="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAyMTNfMjM4%2FMDAxNjEzMjI2NDMzMzEz.QOFVAgZlEjU0ct-hYe6-H_dQt1dB66sctg0TNFcC9Acg.E_yReW3Cx0PWIqpZGL2WGeGGcCqMvbh4ADS3X78p6T8g.PNG.mint2753%2F%25B1%25E8%25BC%25B1%25BC%25F7%2527s_signature_%252812%2529.png"></apex:image>
+                                                <apex:image width="60px" height="70px" url="{!$Resource.sample}"></apex:image>
                                             </td>
                                         </tr>
                                         <tr>
@@ -351,11 +351,24 @@
                         </table>
                     </td>
 
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                    <!-- 가운데 세로 선 -->
                     <td>
                         <table style="height: 75%;">
                             <tr>
                                 <td style="border-right: solid 1px black;">
-                                    <div style="height: 610px;"></div>
+                                    <div style="height: 270px;"></div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:image width="60px" height="70px" url="{!$Resource.sample}"></apex:image>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-right: solid 1px black;">
+                                    <div style="height: 270px;"></div>
                                 </td>
                                 <td></td>
                             </tr>
@@ -396,7 +409,6 @@
                                 <td>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <apex:outputText value="아래 양식에 기재된 금액과 귀사의 2023년01월01일부터 2023년 08월02일까지의 거래잔액임을 확인하고 이에 서명날인하여 통지드립니다." ></apex:outputText> <br/>
-                                    <!-- <apex:outputText value="2023년 08월02일까지의 거래잔액임을 확인하고 이에 서명날인하여 통지드립니다." style="font-size: 15px;"></apex:outputText><br/> -->
                                 </td>
                             </tr>
 
