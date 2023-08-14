@@ -1,4 +1,12 @@
-<apex:page renderAs="pdf"                                  
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 08-14-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<apex:page 
+            renderAs="pdf"                             
             showHeader="false"
             sidebar="false"
             standardStylesheets="false"
@@ -11,14 +19,14 @@
             <style type="/text/css">
                 html, body{
                     font-family: 'Arial Unicode MS';
+                    /* font-family: Dialog; */
                     font-size: 14px;
-                    
                 }
                 /* 페이지 설정 */
                 @page {
                     /*A4 landscape (가로) *//* A4 portrait (세로) */
                     size : A4 landscape; 
-                    margin-top: 5mm;
+                    margin-top: 17mm;
                     margin-left: 5mm;
                     margin-right: 5mm;
                     margin-bottom: 0mm;
@@ -29,20 +37,20 @@
                 
                 .boxTable{
                     width: 100%;
-                    border : 1px solid black; 
                     height : 100%; 
+                    border : 1px solid black; 
                     padding : 3mm;
-                    /* tr 간격조정 */
-                    border-collapse: separate;
-                    border-spacing: 15px;
                 }
 
                 .tableLine{
                     border-collapse: collapse;
+                    
                 }
                 .tableLine>tbody td{
+                    height: 33px;
                     border: 1px solid black;
-                    font-size: 12px;
+                    text-align: center;
+                    
                 }
                 .blackLine{
                     border: 1px solid black;
@@ -56,29 +64,681 @@
 
         <body>
             <table>
-                <col width="30%" /><col width="30%" /><col width="30%" />
+                <col width="33%" /><col width="0.5%" /><col width="33%" /><col width="0.5%" /><col width="33%" />
                 <tr>
 <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->                                    
                     <!-- 첫번째 박스 -->
                     <td>
-                        <table class="boxTable">
+                        <table class="boxTable tableLine">
                             <col width="16.6%"/><col width="16.6%"/><col width="16.6%"/><col width="16.6%"/><col width="16.6%"/><col width="16.6%"/>
+                            
+                            <tbody>
+                                <!-- 입금표 -->
+                                <tr>
+                                    <td colspan="6" rowspan="3" >
+                                        <table style="border: 0px">
+                                            <tr>
+                                                <td style="border: 0px; text-align: left; vertical-align : bottom;">
+                                                    &nbsp;&nbsp;
+                                                    <apex:outputText value="( 외 상 )"></apex:outputText> 
+                                                </td>
+                                                <td colspan="6" rowspan="2" style="text-align: left; font-size: 24px; border: 0px;"> 
+                                                    <apex:outputText value="입"></apex:outputText>&nbsp;&nbsp;&nbsp;
+                                                    <apex:outputText value="금"></apex:outputText>&nbsp;&nbsp;&nbsp;
+                                                    <apex:outputText value="표"></apex:outputText> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 0px; text-align: left; vertical-align : top;">
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <apex:outputText value="매출금"></apex:outputText> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border: 0px;"></td>
+                                                <td colspan="6" style="text-align: right; border: 0px;">
+                                                    <apex:outputText value="( 공급받는자 보관용 )"></apex:outputText> 
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr></tr>
+                                <tr></tr>
+
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputText value="작성년월일"></apex:outputText>
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="2023년 05월 31일"></apex:outputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <apex:outputText value="( 주 ) 신우식자재마트"></apex:outputText> 
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:outputText value="거래선"></apex:outputText>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:outputText value="318451001"></apex:outputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="등록번호"></apex:outputText> 
+                                    </td>
+                                    <td colspan="5" style="text-align: left;">
+                                        <apex:outputText value="603-81-11270"></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="상"></apex:outputText>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:outputText value="호"></apex:outputText> 
+                                    </td>
+                                    <td colspan="2" style="text-align: left; font-size: 12px;">
+                                        <apex:outputText value="씨제이프레시웨이"></apex:outputText><br/>
+                                        <apex:outputText value="주식회사"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="성명"></apex:outputText> 
+                                    </td>
+                                    <td colspan="2" style="text-align: left;">
+                                        <apex:outputText value="정성필"></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="소"></apex:outputText>&nbsp;
+                                        <apex:outputText value="재"></apex:outputText>&nbsp;
+                                        <apex:outputText value="지"></apex:outputText> 
+                                    </td>
+                                    <td colspan="5">
+                                        <apex:outputText value="경기도 용인시 기흥구 기곡로32 ( 하갈동 )"></apex:outputText> 
+                                    </td>
+                                </tr>
+                                
+
+                                
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="입금부서"></apex:outputText> 
+                                    </td>
+                                    <td colspan="3">
+                                        <apex:outputText value="유통 ) 유통경북팀"></apex:outputText>
+                                    </td>
+                                    <td colspan="2">
+                                        <apex:outputText value="269"></apex:outputText>
+                                    </td>
+                                </tr> 
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="사원"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="이명희"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="코드"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="251902"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="제품"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputText value="임 금 구 분"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="대체"></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputText value="금 액"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="151,434"></apex:outputText> 
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="4"> 
+                                        <apex:outputText value="어"></apex:outputText><br/> 
+                                        <apex:outputText value="음"></apex:outputText><br/> 
+                                        <apex:outputText value="내"></apex:outputText><br/> 
+                                        <apex:outputText value="용"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="어음구분"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="추심(BI) 교환(BE) 이체(BR)"></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="어음번호"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="결제일자"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="발행은행"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="비"></apex:outputText><br/> 
+                                        <apex:outputText value="고"></apex:outputText> 
+                                    </td>
+                                    <td colspan="3">
+                                        <apex:outputText value="5 월 유통점 자금 장려금"></apex:outputText> 
+                                    </td>
+                                    <td colspan="2">
+                                        <apex:outputText value="거 래 선"></apex:outputText><br/>
+                                        <apex:outputText value="확 "></apex:outputText> &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:outputText value="인"></apex:outputText>  
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="4">
+                                        <apex:outputText value="위금액을 영수함"></apex:outputText><br/> 
+                                    </td>
+                                    <td colspan="2" rowspan="2">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <apex:outputText value="7110390144"></apex:outputText><br/> 
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6" style="text-align: center;">
+                                        <apex:outputText value="2023년"></apex:outputText>&nbsp;&nbsp;
+                                        <apex:outputText value="08월"></apex:outputText>&nbsp;&nbsp;
+                                        <apex:outputText value="04일"></apex:outputText>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            
                         </table>
                     </td>
 
+                    <!-- 박스 사이 간격조정 -->
+                    <td></td>
 <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->                                    
                     <!-- 두번째 박스 -->
                     <td>
-                        <table class="boxTable">
+                        <table class="boxTable tableLine">
                             <col width="16.6%"/><col width="16.6%"/><col width="16.6%"/><col width="16.6%"/><col width="16.6%"/><col width="16.6%"/>
+                            
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">
+                                        <apex:outputText value="입금부서"></apex:outputText>
+                                    </td>
+                                    <td colspan="3">
+                                        <apex:outputText value="관리부서"></apex:outputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="기안"></apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="조정"></apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="결정"></apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="출납"></apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="확인"></apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="조정"></apex:outputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputText value="작성년월일"></apex:outputText>
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="2023년 05월 31일"></apex:outputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <apex:outputText value="( 주 ) 신우식자재마트"></apex:outputText> 
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:outputText value="거래선"></apex:outputText>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:outputText value="318451001"></apex:outputText>
+                                    </td>
+                                </tr>
+                                <!-- 입금표 -->
+                                <tr>
+                                    <td colspan="6" rowspan="3" >
+                                        <table style="border: 0px">
+                                            <tr>
+                                                <td colspan="1" style="border: 0px; text-align: left; vertical-align : bottom;">
+                                                    &nbsp;&nbsp;
+                                                    <apex:outputText value="( 외 상 )"></apex:outputText> 
+                                                </td>
+                                                <td colspan="5" rowspan="2" style="text-align: left; font-size: 24px; border: 0px;"> 
+                                                    &nbsp;
+                                                    <apex:outputText value="입"></apex:outputText>&nbsp;&nbsp;&nbsp;
+                                                    <apex:outputText value="금"></apex:outputText>&nbsp;&nbsp;&nbsp;
+                                                    <apex:outputText value="표"></apex:outputText> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1" style="border: 0px; text-align: left; vertical-align : top;">
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <apex:outputText value="매출금"></apex:outputText> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="border: 0px;"></td>
+                                                <td colspan="4" style="text-align: right; border: 0px;">
+                                                    <apex:outputText value="( 판매과 보관용 )"></apex:outputText> 
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr></tr>
+                                <tr></tr>
+                                
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="입금부서"></apex:outputText> 
+                                    </td>
+                                    <td colspan="3">
+                                        <apex:outputText value="유통 ) 유통경북팀"></apex:outputText>
+                                    </td>
+                                    <td colspan="2">
+                                        <apex:outputText value="269"></apex:outputText>
+                                    </td>
+                                </tr> 
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="사원"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="이명희"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="코드"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="251902"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="제품"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputText value="임 금 구 분"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="대체"></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputText value="금 액"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="151,434"></apex:outputText> 
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="4"> 
+                                        <apex:outputText value="어"></apex:outputText><br/> 
+                                        <apex:outputText value="음"></apex:outputText><br/> 
+                                        <apex:outputText value="내"></apex:outputText><br/> 
+                                        <apex:outputText value="용"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="어음구분"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="추심(BI) 교환(BE) 이체(BR)"></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="어음번호"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="결제일자"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="발행은행"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="비"></apex:outputText><br/> 
+                                        <apex:outputText value="고"></apex:outputText> 
+                                    </td>
+                                    <td colspan="3">
+                                        <apex:outputText value="5 월 유통점 자금 장려금"></apex:outputText> 
+                                    </td>
+                                    <td colspan="2">
+                                        <apex:outputText value="거 래 선"></apex:outputText><br/>
+                                        <apex:outputText value="확 "></apex:outputText> &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:outputText value="인"></apex:outputText>  
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="4">
+                                        <apex:outputText value="위금액을 영수함"></apex:outputText><br/> 
+                                    </td>
+                                    <td colspan="2" rowspan="2">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <apex:outputText value="7110390144"></apex:outputText><br/> 
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6" style="text-align: center;">
+                                        <apex:outputText value="2023년"></apex:outputText>&nbsp;&nbsp;
+                                        <apex:outputText value="08월"></apex:outputText>&nbsp;&nbsp;
+                                        <apex:outputText value="04일"></apex:outputText>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            
                         </table>
                     </td>
                     
+                    <!-- 박스 사이 간격조정 -->
+                    <td></td>
 <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->                                    
                     <!-- 세번째 박스 -->
                     <td>
-                        <table class="boxTable">
+                        <table class="boxTable tableLine">
                             <col width="16.6%"/><col width="16.6%"/><col width="16.6%"/><col width="16.6%"/><col width="16.6%"/><col width="16.6%"/>
+                            
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">
+                                        <apex:outputText value="입금부서"></apex:outputText>
+                                    </td>
+                                    <td colspan="3">
+                                        <apex:outputText value="관리부서"></apex:outputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="기안"></apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="조정"></apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="결정"></apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="출납"></apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="확인"></apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="조정"></apex:outputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputText value="작성년월일"></apex:outputText>
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="2023년 05월 31일"></apex:outputText>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <apex:outputText value="( 주 ) 신우식자재마트"></apex:outputText> 
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:outputText value="거래선"></apex:outputText>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:outputText value="318451001"></apex:outputText>
+                                    </td>
+                                </tr>
+                                <!-- 입금표 -->
+                                <tr>
+                                    <td colspan="6" rowspan="3" >
+                                        <table style="border: 0px">
+                                            <tr>
+                                                <td colspan="1" style="border: 0px; text-align: left; vertical-align : bottom;">
+                                                    &nbsp;&nbsp;
+                                                    <apex:outputText value="( 외 상 )"></apex:outputText> 
+                                                </td>
+                                                <td colspan="5" rowspan="2" style="text-align: left; font-size: 24px; border: 0px;"> 
+                                                    &nbsp;
+                                                    <apex:outputText value="입"></apex:outputText>&nbsp;&nbsp;&nbsp;
+                                                    <apex:outputText value="금"></apex:outputText>&nbsp;&nbsp;&nbsp;
+                                                    <apex:outputText value="표"></apex:outputText> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1" style="border: 0px; text-align: left; vertical-align : top;">
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <apex:outputText value="매출금"></apex:outputText> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="border: 0px;"></td>
+                                                <td colspan="4" style="text-align: right; border: 0px;">
+                                                    <apex:outputText value="( 관리부서 보관용 )"></apex:outputText> 
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr></tr>
+                                <tr></tr>
+                                
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="입금부서"></apex:outputText> 
+                                    </td>
+                                    <td colspan="3">
+                                        <apex:outputText value="유통 ) 유통경북팀"></apex:outputText>
+                                    </td>
+                                    <td colspan="2">
+                                        <apex:outputText value="269"></apex:outputText>
+                                    </td>
+                                </tr> 
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="사원"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="이명희"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="코드"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="251902"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="제품"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputText value="임 금 구 분"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="대체"></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <apex:outputText value="금 액"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="151,434"></apex:outputText> 
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td rowspan="4"> 
+                                        <apex:outputText value="어"></apex:outputText><br/> 
+                                        <apex:outputText value="음"></apex:outputText><br/> 
+                                        <apex:outputText value="내"></apex:outputText><br/> 
+                                        <apex:outputText value="용"></apex:outputText> 
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="어음구분"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value="추심(BI) 교환(BE) 이체(BR)"></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="어음번호"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="결제일자"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="발행은행"></apex:outputText> 
+                                    </td>
+                                    <td colspan="4">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <apex:outputText value="비"></apex:outputText><br/> 
+                                        <apex:outputText value="고"></apex:outputText> 
+                                    </td>
+                                    <td colspan="3">
+                                        <apex:outputText value="5 월 유통점 자금 장려금"></apex:outputText> 
+                                    </td>
+                                    <td colspan="2">
+                                        <apex:outputText value="거 래 선"></apex:outputText><br/>
+                                        <apex:outputText value="확 "></apex:outputText> &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <apex:outputText value="인"></apex:outputText>  
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="4">
+                                        <apex:outputText value="위금액을 영수함"></apex:outputText><br/> 
+                                    </td>
+                                    <td colspan="2" rowspan="2">
+                                        <apex:outputText value=""></apex:outputText> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <apex:outputText value="7110390144"></apex:outputText><br/> 
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6" style="text-align: center;">
+                                        <apex:outputText value="2023년"></apex:outputText>&nbsp;&nbsp;
+                                        <apex:outputText value="08월"></apex:outputText>&nbsp;&nbsp;
+                                        <apex:outputText value="04일"></apex:outputText>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            
                         </table>
                     </td>
                 </tr>
