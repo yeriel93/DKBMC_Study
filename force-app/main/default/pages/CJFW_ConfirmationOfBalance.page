@@ -2,7 +2,7 @@
   @description       : 
   @author            : yeonji.lim@dkbmc.com
   @group             : 
-  @last modified on  : 08-08-2023
+  @last modified on  : 08-21-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
 <apex:page renderAs="pdf"                                  
@@ -325,6 +325,7 @@
                                             <td><apex:outputText value="0" style="color: white;"></apex:outputText></td>
                                             <td></td>
                                             <td></td>
+                                            <!-- 도장 이미지 -->
                                             <td rowspan="3" style="text-align: right;">
                                                 <apex:image width="60px" height="70px" url="{!$Resource.sample}"></apex:image>
                                             </td>
