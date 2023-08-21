@@ -41,18 +41,18 @@
 
 
     <!-- Page Attribute -->
-    <aura:attribute name="recordId" type="String" description="영업기회 Record Id"/>
+    <aura:attribute name="recordId" type="String" description=""/>
     <aura:attribute name="prefix" type="String" description="현 Org Base URL"/>
     <aura:attribute name="vfPageUrl" type="String" description="미리보기 Vfp 주소"/>
     <aura:attribute name="saveType" Type="String" description="파일 생성 유형 (PDF/Excel)"/>    
 
     <!-- Field Select Attribute -->
-    <aura:attribute name="isOpenFieldSelect" type="Boolean" default="false" description="필드 선택 화면 Open 여부"/>
+    <!-- <aura:attribute name="isOpenFieldSelect" type="Boolean" default="false" description="필드 선택 화면 Open 여부"/>
     <aura:attribute name="listAvailable" type="List" default="[]" description="선택 가능 필드 리스트"/>
     <aura:attribute name="listRequiredField" type="List" default="[]" description="필수 필드 리스트"/>
     <aura:attribute name="listSelected" type="List" default="[]" description="선택된 필드 리스트(임시)"/>
     <aura:attribute name="listSelectedSave" type="List" default="[]" description="선택된 필드 리스트(확정)"/>
-    <aura:attribute name="listSelectedLabel" type="List" default="[]" description="선택된 필드 리스트 한글명"/>
+    <aura:attribute name="listSelectedLabel" type="List" default="[]" description="선택된 필드 리스트 한글명"/> -->
 
     <!-- Etc. Attribute -->
     <aura:attribute name="isMobile" type="Boolean" default="false" description="Mobile, DeskTop 구분자"/>
@@ -71,7 +71,7 @@
     <aura:if isTrue="{!!v.isMobile}">
         <div class="slds-col modal-header slds-modal__header">
             <h2 class="title slds-text-heading_medium">
-                견적서 파일 생성 미리보기
+                잔고확인서 파일 생성 미리보기
             </h2>
         </div>
     </aura:if>

@@ -3,7 +3,10 @@
      * @description 초기화 (Prefix 및 필드 선택 관련 정보 조회)
      */
     getInitData : function(component) {
+        // c. => apex Controller 호출 (back단)
+        // v. => aura component에 선언 변수 호출 (view단)
         let action = component.get("c.getInitData");
+
         let recordId = component.get("v.recordId");
 		action.setCallback(this, function(response) {
             let state = response.getState();

@@ -7,7 +7,12 @@
         if ( $A.get("$Browser.formFactor") != 'DESKTOP')
             component.set('v.isMobile', true);
         console.log('isMobile ::' +  component.get('v.isMobile'));
-        helper.getInitData(component);        
+        
+        let visualforceUrl = '/apex/CJFW_ConfirmationOfBalance';
+        component.set("v.vfPageUrl", visualforceUrl);
+        
+        // helper 호출
+        // helper.getInitData(component);        
     },
 
     /**
