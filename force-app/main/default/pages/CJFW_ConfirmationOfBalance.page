@@ -2,7 +2,7 @@
   @description       : 
   @author            : yeonji.lim@dkbmc.com
   @group             : 
-  @last modified on  : 08-21-2023
+  @last modified on  : 08-22-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
 <apex:page renderAs="pdf"                                  
@@ -124,7 +124,7 @@
                 <tr>
                     <!-- 거래내역 통지서 -->
                     <td>
-                        <table class="boxTable">
+                        <table class="boxTable" style="position: relative;">
                             <!-- <col width="5%" /><col width="95%" /> -->
                             <tr>
                                 <!-- <td></td> -->
@@ -327,7 +327,7 @@
                                             <td></td>
                                             <!-- 도장 이미지 -->
                                             <td rowspan="3" style="text-align: right;">
-                                                <apex:image width="60px" height="70px" url="{!$Resource.sample}"></apex:image>
+                                                <apex:image width="85px" height="75px" url="{!$Resource.sample}" style="position: absolute; z-index: 1; top: 515px; left: 380px;"></apex:image>
                                             </td>
                                         </tr>
                                         <tr>
@@ -355,23 +355,13 @@
 <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
                     <!-- 가운데 세로 선 -->
                     <td>
-                        <table style="height: 75%;">
+                        <table style="position: relative">
                             <tr>
-                                <td style="border-right: solid 1px black;">
-                                    <div style="height: 270px;"></div>
+                                <td style="height: 630px; border-right: solid 1px black;"></td>
+                                <!-- 도장 이미지 -->
+                                <td style="height: 630px;">
+                                    <apex:image width="70px" height="65px" url="{!$Resource.sample}" style="position: absolute; z-index: 1; top: 270px; left: -1px;"></apex:image>
                                 </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <apex:image width="60px" height="70px" url="{!$Resource.sample}"></apex:image>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="border-right: solid 1px black;">
-                                    <div style="height: 270px;"></div>
-                                </td>
-                                <td></td>
                             </tr>
                         </table>
                     </td>
@@ -425,16 +415,6 @@
                                 <td>
                                     <table style="width: 100%;">
                                         <col width="20%" /><col width="20%" /><col width="5%" /><col width="50%" />
-                                        <!-- <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="text-align : right;">
-                                                <apex:outputText value="2023년"></apex:outputText>&nbsp;
-                                                <apex:outputText value="08월"></apex:outputText>&nbsp;
-                                                <apex:outputText value="02월"></apex:outputText>
-                                            </td>
-                                        </tr> -->
                                         <tr>
                                             <td></td>
                                             <td>
