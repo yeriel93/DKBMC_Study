@@ -1,0 +1,158 @@
+<!--
+* ==================================================================================
+*   File Name   : QuoteExcelCreate.cmp
+*   Author      : Minje.Kim
+*   Date        : 2022.09.29
+*   Description : Quote PDF Modal Create
+*   Modification Log
+* ==================================================================================
+*   Ver     Date          Author          Modification
+* ==================================================================================
+*   1.0     2022.09.29    Minje.Kim    Create
+* ==================================================================================
+-->
+
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:isUrlAddressable">
+
+    <!-- <ltng:require scripts="{!join(',', $Resource.common_jszip, $Resource.common_xlsx)}"/>  -->
+
+    <!-- CSS -->
+    <aura:html tag="style">
+        .slds-modal__container{
+            min-width: 80% !important;
+            max-width: fit-content !important;
+            padding: 0 20px;
+        }
+
+        .cuf-content {
+            padding: 0 0rem !important;
+        }
+
+        .slds-p-around--medium {
+            padding: 0rem !important;
+        }
+
+        .slds-modal__content {
+            overflow-y: hidden !important;
+            height: unset !important;
+            max-height: unset !important;
+        }
+    </aura:html>
+
+
+    <!-- Page Attribute -->
+    <aura:attribute name="recordId" type="String" description="영업기회 Record Id"/>
+    <aura:attribute name="prefix" type="String" description="현 Org Base URL"/>
+    <aura:attribute name="vfPageUrl" type="String" description="미리보기 Vfp 주소"/>
+    <aura:attribute name="saveType" Type="String" description="파일 생성 유형 (PDF/Excel)"/>    
+
+    <!-- Field Select Attribute -->
+    <aura:attribute name="isOpenFieldSelect" type="Boolean" default="false" description="필드 선택 화면 Open 여부"/>
+    <aura:attribute name="listAvailable" type="List" default="[]" description="선택 가능 필드 리스트"/>
+    <aura:attribute name="listRequiredField" type="List" default="[]" description="필수 필드 리스트"/>
+    <aura:attribute name="listSelected" type="List" default="[]" description="선택된 필드 리스트(임시)"/>
+    <aura:attribute name="listSelectedSave" type="List" default="[]" description="선택된 필드 리스트(확정)"/>
+    <aura:attribute name="listSelectedLabel" type="List" default="[]" description="선택된 필드 리스트 한글명"/>
+
+    <!-- Etc. Attribute -->
+    <aura:attribute name="isMobile" type="Boolean" default="false" description="Mobile, DeskTop 구분자"/>
+    <aura:attribute name="showSpinner" type="Boolean" description="Spinner"/>
+    
+    <!-- Handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.fnInit}"/>
+
+    <!-- Contents -->
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner alternativeText="Loading" size="large" variant="brand" />
+    </aura:if>
+
+    <!-- modal header -->
+    <!-- 견적 파일 생성 미리보기 화면 -->
+    <aura:if isTrue="{!!v.isMobile}">
+        <div class="slds-col modal-header slds-modal__header">
+            <h2 class="title slds-text-heading_medium">
+                견적서 파일 생성 미리보기
+            </h2>
+        </div>
+    </aura:if>
+
+    <!-- modal Content -->
+    <div class="modal-body slds-modal__content" style="{!v.isMobile ? 'position:relative;min-height:90vh; margin:0; padding:0':'position:relative;min-height:80vh;'}">
+        <aura:if isTrue="{!v.isMobile}">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table--fixed-layout" style="height:10vh;padding-top:1vh;padding-bottom:1vh;width:100%;text-align:center;background-color:rgb(250, 250, 249);">
+                <tr>         
+                    <td style="text-align:center; padding-bottom:0px">                                
+                        <lightning:icon iconName="action:back"  size="x-small" onclick="{!c.fnCancel}"/>
+                        <br/>
+                        <small><small>닫기</small></small>
+                    </td>   
+                    <!-- <td style="text-align:center; padding-bottom:0px">                                
+                        <lightning:icon iconName="action:edit" size="x-small" onclick="{!c.fnToggleFieldSelect}"/>
+                        <br/>
+                        <small><small>항목 변경</small></small>
+                    </td>      -->
+                    <td style="text-align:center; padding-bottom:0px">
+                        <lightning:icon aura:id="PDF" iconName="action:record" class="Icon_Red" size="x-small" onclick="{!c.fnCreateFile}"/>
+                        <br/>
+                        <small><small>PDF로 저장</small></small>
+                    </td>             
+                    <!-- <td style="text-align:center; padding-bottom:0px">                         
+                        <lightning:icon aura:id="Excel" iconName="action:record" size="x-small" onclick="{!c.fnCreateFile}"/>
+                        <br/>
+                        <small><small>Excel로 저장</small></small>
+                    </td> -->
+                </tr>
+            </table>
+        </aura:if>
+        
+        <!-- spinner -->
+        <div style="position:absolute; line-height: 80vh; width:100%; min-height:inherit; text-align:center"> 
+            <b><big>미리보기를 생성중 입니다. 잠시 기다려주세요</big></b> 
+        </div>
+
+        <!-- visualforce page -->
+        <iframe aura:id="vfFrameMaster" class="iFrameStyle" src="{!v.vfPageUrl}" style="position:absolute; width:100%; min-height:inherit;"/>
+        
+        <!-- 견적 파일 생성 시 조회될 필드 선택화면 -->
+        <!-- <aura:if isTrue="{!v.isOpenFieldSelect}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container" style="{!v.isMobile ? 'margin:0; padding:0; width: 100%; min-width: 100% !important' : ' width:fit-content;' }">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"> 항목 변경 </h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="min-height: 35%;">
+                        <lightning:layout multipleRows="true">
+                            <lightning:layoutItem size="12">
+                                <lightning:dualListbox  variant="label-hidden" 
+                                                        options="{!v.listAvailable}"
+                                                        requiredOptions="{!v.listRequiredField}" 
+                                                        value="{!v.listSelected}"
+                                                        onchange="{!c.fnHandleChangeDuallistBox}"
+                                                        sourceLabel="사용 가능한 필드"
+                                                        selectedLabel="표시 필드"
+                                                        />
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" label="취소" onclick="{! c.fnToggleFieldSelect }"/>
+                        <lightning:button variant="brand" label="저장" onclick="{! c.fnSaveFieldSelect }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if> -->
+
+    </div>
+        
+    <!-- modal footer -->
+    <aura:if isTrue="{!!v.isMobile}">
+        <div class="slds-col modal-footer slds-modal__footer">
+            <lightning:button variant="neutral" label="닫기" onclick="{!c.fnCancel}"/>
+            <!-- <lightning:button variant="neutral" label="항목 변경" onclick="{!c.fnToggleFieldSelect}"/> -->
+            <lightning:button aura:id="PDF" variant="brand" label="PDF로 저장" onclick="{!c.fnCreateFile}"/>
+            <!-- <lightning:button aura:id="Excel" variant="brand" label="Excel로 저장" onclick="{!c.fnCreateFile}"/> -->
+        </div>
+    </aura:if>
+
+</aura:component>
