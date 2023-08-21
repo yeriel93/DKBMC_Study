@@ -2,7 +2,7 @@
   @description       : 
   @author            : yeonji.lim@dkbmc.com
   @group             : 
-  @last modified on  : 08-14-2023
+  @last modified on  : 08-21-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
 <apex:page renderAs="pdf"                             
@@ -37,6 +37,7 @@
                 .boxTable{
                     width: 100%;
                     height : 100%; 
+                    /* height : 630px;  */
                     border : 1px solid black; 
                     padding : 3mm;
                 }
@@ -73,7 +74,7 @@
                             
                             <tbody>
                                 <!-- 입금표 -->
-                                <tr>
+                                <tr> 
                                     <td colspan="6" rowspan="3" >
                                         <table style="border: 0px">
                                             <tr>
@@ -81,7 +82,7 @@
                                                     &nbsp;&nbsp;
                                                     <apex:outputText value="( 외 상 )"></apex:outputText> 
                                                 </td>
-                                                <td colspan="6" rowspan="2" style="text-align: left; font-size: 24px; border: 0px;"> 
+                                                <td rowspan="2" style="text-align: left; font-size: 24px; border: 0px;"> 
                                                     <apex:outputText value="입"></apex:outputText>&nbsp;&nbsp;&nbsp;
                                                     <apex:outputText value="금"></apex:outputText>&nbsp;&nbsp;&nbsp;
                                                     <apex:outputText value="표"></apex:outputText> 
@@ -135,7 +136,7 @@
                                         <apex:outputText value="상"></apex:outputText>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <apex:outputText value="호"></apex:outputText> 
                                     </td>
-                                    <td colspan="2" style="text-align: left; font-size: 12px;">
+                                    <td colspan="2" style="text-align: left; font-size: 10px;">
                                         <apex:outputText value="씨제이프레시웨이"></apex:outputText><br/>
                                         <apex:outputText value="주식회사"></apex:outputText> 
                                     </td>
@@ -356,11 +357,11 @@
                                     <td colspan="6" rowspan="3" >
                                         <table style="border: 0px">
                                             <tr>
-                                                <td colspan="1" style="border: 0px; text-align: left; vertical-align : bottom;">
+                                                <td style="border: 0px; text-align: left; vertical-align : bottom;">
                                                     &nbsp;&nbsp;
                                                     <apex:outputText value="( 외 상 )"></apex:outputText> 
                                                 </td>
-                                                <td colspan="5" rowspan="2" style="text-align: left; font-size: 24px; border: 0px;"> 
+                                                <td rowspan="2" style="text-align: left; font-size: 24px; border: 0px;"> 
                                                     &nbsp;
                                                     <apex:outputText value="입"></apex:outputText>&nbsp;&nbsp;&nbsp;
                                                     <apex:outputText value="금"></apex:outputText>&nbsp;&nbsp;&nbsp;
@@ -580,13 +581,13 @@
                                 <!-- 입금표 -->
                                 <tr>
                                     <td colspan="6" rowspan="3" >
-                                        <table style="border: 0px">
+                                        <table >
                                             <tr>
-                                                <td colspan="1" style="border: 0px; text-align: left; vertical-align : bottom;">
+                                                <td style="border: 0px; text-align: left; vertical-align : bottom;">
                                                     &nbsp;&nbsp;
                                                     <apex:outputText value="( 외 상 )"></apex:outputText> 
                                                 </td>
-                                                <td colspan="5" rowspan="2" style="text-align: left; font-size: 24px; border: 0px;"> 
+                                                <td rowspan="2" style="text-align: left; font-size: 24px; border: 0px;"> 
                                                     &nbsp;
                                                     <apex:outputText value="입"></apex:outputText>&nbsp;&nbsp;&nbsp;
                                                     <apex:outputText value="금"></apex:outputText>&nbsp;&nbsp;&nbsp;
@@ -600,8 +601,8 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2" style="border: 0px;"></td>
-                                                <td colspan="4" style="text-align: right; border: 0px;">
+                                                <td colspan="1" style="border: 0px;"></td>
+                                                <td colspan="5" style="text-align: right; border: 0px;">
                                                     <apex:outputText value="( 관리부서 보관용 )"></apex:outputText> 
                                                 </td>
                                             </tr>
