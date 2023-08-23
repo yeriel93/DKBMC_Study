@@ -22,17 +22,22 @@
 
 
     handleRowAction : function(cmp, event, helper){
-        var action = event.getParam('action');
-        var row = event.getParam('row');
+        try {
+            var action = event.getParam('action');
+            var row = event.getParam('row');
+            console.log('row =', row);
 
-        switch (action.name) {
-            case 'edit':
-                helper.udpateData(cmp, row);
-                break;
+            switch (action.name) {
+                case 'edit':
+                    helper.udpateData(cmp, row);
+                    break;
 
-            case 'delete':
-                helper.removeData(cmp, row);
-                break;
+                case 'delete':
+                    helper.removeData(cmp, row);
+                    break;
+            }
+        } catch (error) {
+            console.log('error Message = ', error.message);
         }
     },
 

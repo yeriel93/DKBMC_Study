@@ -33,10 +33,23 @@
 
     //레코드 삭제
     removeData: function(cmp, row){
-        // var rows = cmp.get('v.data');
-        // var rowIndex = rows.indexOf(row);
+        console.log('delete row = ', row);
+        
+        let action = cmp.get('c.removeRecord');
+        action.setParams({'recordId' : row.Id});
+        action.setCallback( this, function(response) {
+            if(response.getState()=='SUCCESS') {
+                var rows = cmp.get('v.data');
+                var rowIndex = rows.indexOf(row);
 
-        // rows.splice(rowIndex, 1);
-        // cmp.set('v.data', rows);
+                rows.splice(rowIndex, 1);
+                cmp.set('v.data', rows);
+            }
+            else if(response.getState()=='ERROR') {
+                console.log('getInitData ERROR =', response.getError()); 
+            }
+        });
+        
+        $A.enqueueAction( action ); //실행코드
     },
 })
