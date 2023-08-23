@@ -5,8 +5,9 @@
  * @last modified on  : 08-23-2023
  * @last modified by  : yeonji.lim@dkbmc.com
 **/
-public with sharing class cAccountController {
+public with sharing class cContactController {
     
+    // cContact List 가져오기
     @AuraEnabled
     public static List<cContact__c> getRelatedcContactList(String cAccountId){
         try {
@@ -29,4 +30,6 @@ public with sharing class cAccountController {
 
         }
     }
+
+    // record 삭제
 }

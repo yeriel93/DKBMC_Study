@@ -5,11 +5,12 @@
   @last modified on  : 08-23-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
-<aura:component implements="force:hasRecordId,flexiPage:availableForAllPageTypes" controller="cAccountController">
+<aura:component implements="force:hasRecordId,flexiPage:availableForAllPageTypes" controller="cContactController">
 
     <!-- Page Attribute -->
-    <aura:attribute name="iscContact" type="boolean" description="relatedcContact가 있는지 여부"/>
     <aura:attribute name="recordId" type="String" description=""/>
+    <aura:attribute name="iscContact" type="boolean" description="relatedcContact가 있는지 여부"/>
+    <aura:attribute name="Listlength" type="Integer" description="cContact List 갯수"/>
     
     <!-- dataTable Attribute -->
     <aura:attribute name="data" type="Object"/>
@@ -34,7 +35,7 @@
                     <div class="slds-media__body">
                         <h2 class="slds-card__header-title">
                             <a href="#" class="slds-card__header-link slds-truncate" title="aContacts">
-                                <span>cContacts</span>
+                                <span>cContact ({!v.Listlength})</span>
                             </a>
                         </h2>
                     </div>
@@ -52,7 +53,8 @@
                     keyField="id"
                     data="{!v.data}"
                     columns="{!v.columns}"
-                    hideCheckboxColumn="true">
+                    hideCheckboxColumn="true"
+                    onrowaction="{!c.handleRowAction}">
                 </lightning:datatable>
             </div>
     
@@ -62,7 +64,7 @@
             </footer>
         </article>
     </aura:if>
-    
+
 
     <!-- related cContact 없음 -->
     <aura:if isTrue="{!!v.iscContact}">
@@ -79,7 +81,7 @@
                     <div class="slds-media__body">
                         <h2 class="slds-card__header-title">
                             <a href="#" class="slds-card__header-link slds-truncate" title="aContacts">
-                                <span>cContacts</span>
+                                <span>cContact ({!v.Listlength})</span>
                             </a>
                         </h2>
                     </div>
