@@ -42,7 +42,7 @@
 
                     <!-- New button -->
                     <div class="slds-no-flex">
-                        <lightning:button variant="neutral" label="New" onclick=""/>
+                        <lightning:button variant="neutral" label="New" onclick="{!c.naviRecordNewpage}"/>
                     </div>
                 </header>
             </div>
@@ -88,7 +88,7 @@
 
                     <!-- New button -->
                     <div class="slds-no-flex">
-                        <lightning:button variant="neutral" label="New" onclick=""/>
+                        <lightning:button variant="neutral" label="New" onclick="{!c.naviRecordNewpage}"/>
                     </div>
                 </header>
             </div>

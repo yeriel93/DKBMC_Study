@@ -25,15 +25,17 @@
         try {
             var action = event.getParam('action');
             var row = event.getParam('row');
-            console.log('row =', row);
+            // console.log('row =', row);
 
             switch (action.name) {
                 case 'edit':
-                    helper.udpateData(cmp, row);
+                    helper.updateData(cmp, row);
                     break;
 
                 case 'delete':
                     helper.removeData(cmp, row);
+                    // 삭제 후 데이터 다시 불러오기 (초기화)
+                    helper.getInitData(cmp);
                     break;
             }
         } catch (error) {
@@ -41,4 +43,15 @@
         }
     },
 
+    //cContact new page로 이동
+    naviRecordNewpage: function(cmp, event, helper){
+        var navigateEvent = $A.get('e.force:navigateToURL');
+
+        if(navigateEvent){
+            navigateEvent.setParams({
+                "url": "/lightning/o/cContact__c/new"
+            });
+            navigateEvent.fire(); //event 발생
+        }
+    },
 })

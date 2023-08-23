@@ -28,7 +28,15 @@
 
     //레코드 수정페이지로 이동
     updateData: function(cmp, row){
-        
+        let recordId = row.Id;
+        var navigateEvent = $A.get('e.force:navigateToURL');
+
+        if(navigateEvent){
+            navigateEvent.setParams({
+                "url": "/lightning/r/cContact__c/" + recordId + "/edit"
+            });
+            navigateEvent.fire(); //event 발생
+        }
     },
 
     //레코드 삭제
