@@ -9,7 +9,11 @@
 
         // 컬럼
         cmp.set('v.columns',[
-            {label: 'Name', fieldName: 'Name', type: 'text'},
+            // {label: 'Name', fieldName: 'Name', type: 'text'},
+            { label: 'Name', 
+                fieldName: 'cContactURL', 
+                type:'url', 
+                typeAttributes:{ label:{fieldName: 'Name'}}},
             {label: 'Title', fieldName: 'Title__c', type: 'text'},
             {label: 'Phone', fieldName: 'Phone__c', type: 'text'},
             { type: 'action', typeAttributes: { rowActions: actions }},

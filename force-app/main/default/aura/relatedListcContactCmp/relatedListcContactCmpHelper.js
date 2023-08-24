@@ -11,7 +11,13 @@
                 let cContactList = response.getReturnValue();
                 cmp.set('v.data', cContactList);
                 cmp.set('v.Listlength', cContactList.length);
-                
+
+                cmp.get('v.data').forEach(i => {
+                    // console.log('i', i);
+                    i['cContactURL'] = '/lightning/r/cContact__c/'+ i['Id'] +'/view'
+                });
+
+
                 if(cContactList.length>0){
                     cmp.set('v.iscContact', true);
                 } else {
