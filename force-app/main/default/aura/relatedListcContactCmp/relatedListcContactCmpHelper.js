@@ -12,6 +12,7 @@
                 cmp.set('v.data', cContactList);
                 cmp.set('v.Listlength', cContactList.length);
 
+                // Name에 레코드 view page url 연결
                 cmp.get('v.data').forEach(i => {
                     // console.log('i', i);
                     i['cContactURL'] = '/lightning/r/cContact__c/'+ i['Id'] +'/view'
