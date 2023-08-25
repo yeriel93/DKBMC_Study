@@ -1,0 +1,36 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 08-25-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<apex:page  renderAs="pdf"                                   
+            showHeader="false"
+            sidebar="false"
+            standardStylesheets="false"
+            applyBodyTag="false"
+            applyHtmlTag="false"
+            language="utf-8">
+
+    <apex:includeLightning />
+    
+    <head>
+        <script type="text/javascript">
+            // LWC 컴포넌트를 렌더링하는 함수
+            function renderLWC() {
+                const lwcContainer = document.getElementById('lwcContainer');
+                const lwcComponent = document.createElement('c:cJFWConfirmationOfBalance'); 
+                lwcContainer.appendChild(lwcComponent);
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>되라되라되라되라 </h1>
+        <div id="lwcContainer"></div>
+    </body>
+    <h1>이건?  </h1>
+    
+
+</apex:page>

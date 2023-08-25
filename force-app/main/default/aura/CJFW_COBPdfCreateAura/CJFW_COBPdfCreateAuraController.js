@@ -8,7 +8,8 @@
             component.set('v.isMobile', true);
         console.log('isMobile ::' +  component.get('v.isMobile'));
         
-        let visualforceUrl = '/apex/CJFW_ConfirmationOfBalance';
+        // let visualforceUrl = '/apex/CJFW_ConfirmationOfBalance';
+        let visualforceUrl = '/apex/pdfTest';
         component.set("v.vfPageUrl", visualforceUrl);
         
         // helper 호출
