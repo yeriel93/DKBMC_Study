@@ -17,65 +17,27 @@
     
     <head>
         <script type="text/javascript">
-            // LWC 컴포넌트를 렌더링하는 함수
-            function renderLWC() {
-                const lwcContainer = document.getElementById('lwcContainer');
-                const lwcComponent = document.createElement('c:cJFWConfirmationOfBalance'); 
-                lwcContainer.appendChild(lwcComponent);
-            }
+           
+            // // LWC 컴포넌트를 렌더링하는 함수
+            // function renderLWC() {
+            //     const lwcContainer = document.getElementById('lwcContainer');
+            //     const lwcComponent = document.createElement('c:cJFWConfirmationOfBalance'); 
+            //     lwcContainer.appendChild(lwcComponent);
+            // }
         </script>
-
-        <style type="/text/css">
-            html, body{
-                font-family: 'Arial Unicode MS';
-                font-size: 14px;
-                
-            }
-            /* 페이지 설정 */
-            @page {
-                /*A4 landscape (가로) *//* A4 portrait (세로) */
-                size : A4 landscape; 
-                margin-top: 5mm;
-                margin-left: 5mm;
-                margin-right: 5mm;
-                margin-bottom: 0mm;
-            }
-            table {
-                table-layout: fixed;
-            }
-            
-            .boxTable{
-                width: 100%;
-                border : 1px solid black; 
-                height : 100%; 
-                padding : 3mm;
-                /* tr 간격조정 */
-                border-collapse: separate;
-                border-spacing: 15px;
-            }
-
-            .tableLine{
-                border-collapse: collapse;
-            }
-            .tableLine>tbody td{
-                border: 1px solid black;
-                font-size: 12px;
-            }
-            .blackLine{
-                border: 1px solid black;
-            }
-
-            table td{
-                /* border: 1px solid gray; */
-            } 
-        </style>
     </head>
 
     <body>
+        <aura:application>
+            <c:pdfTestCmp/>
+        </aura:application>
+
+
+
         <h1>되라되라되라되라 </h1>
         <div id="lwcContainer"></div>
     </body>
-    <h1>이건?  </h1>
+    
     
 
 </apex:page>

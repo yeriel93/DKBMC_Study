@@ -1,0 +1,10 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 08-28-2023
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<aura:component>
+    <c:cJFWConfirmationOfBalance></c:cJFWConfirmationOfBalance>
+</aura:component>	
