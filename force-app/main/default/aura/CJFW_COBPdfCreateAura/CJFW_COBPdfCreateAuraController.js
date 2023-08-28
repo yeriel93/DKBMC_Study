@@ -8,7 +8,13 @@
             component.set('v.isMobile', true);
         console.log('isMobile ::' +  component.get('v.isMobile'));
         
-        let visualforceUrl = '/apex/CJFW_ConfirmationOfBalance';
+        // 잔고확인서
+        // let visualforceUrl = '/apex/CJFW_ConfirmationOfBalance';
+        
+        // 
+        let visualforceUrl = '/apex/CJFW_TransactionStatement';
+
+        // 테스트
         // let visualforceUrl = '/apex/pdfTest';
         component.set("v.vfPageUrl", visualforceUrl);
         
