@@ -106,9 +106,9 @@
         </aura:if>
         
         <!-- spinner -->
-        <div style="position:absolute; line-height: 80vh; width:100%; min-height:inherit; text-align:center"> 
+        <!-- <div style="position:absolute; line-height: 80vh; width:100%; min-height:inherit; text-align:center"> 
             <b><big>미리보기를 생성중 입니다. 잠시 기다려주세요</big></b> 
-        </div>
+        </div> -->
 
         <!-- visualforce page -->
         <!-- <iframe aura:id="vfFrameMaster" class="iFrameStyle" src="{!v.vfPageUrl}" style="position:absolute; width:100%; min-height:inherit;"/> -->

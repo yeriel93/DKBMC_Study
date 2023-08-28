@@ -2,14 +2,581 @@
   @description       : 
   @author            : yeonji.lim@dkbmc.com
   @group             : 
-  @last modified on  : 08-25-2023
+  @last modified on  : 08-28-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
 <template>
-    <div>
-        <h1>PDF 출력 테스트</h1>
-        <p>PDF로 출력할 내용입니다.</p>
-    </div>
-    
-    <button onclick={generatePDF}>PDF로 출력</button>
+
+   <section>
+        <table width="100%">
+            <!-- col (column width 값으로 칸별 비율 설정) -->
+            <col width="45%" /><col width="5%" /><col width="45%" />
+
+            <!-- 첫줄 -->
+            <tr>
+                <td>
+                    <table width="100%">
+                        <col width="15%" /><col width="5%" /><col width="80%" />
+                        <tr>
+                            <td>
+                                <lightning-formatted-text value="영업그룹" ></lightning-formatted-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-text value=" : " ></lightning-formatted-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-text value="153 아이누리 ) 아이누리 1팀" ></lightning-formatted-text>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <lightning-formatted-text value="영업사원" ></lightning-formatted-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-text value=" : " ></lightning-formatted-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-text value="00255262 우도희" ></lightning-formatted-text>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td></td>
+                <td>
+                    <table width="100%">
+                        <col width="70%" /><col width="5%" /><col width="25%" />
+                        <tr>
+                            <td><lightning-formatted-text value="o" style="color: white"></lightning-formatted-text></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align : right;">
+                                <lightning-formatted-text value="고객사 팩스 번호" ></lightning-formatted-text>
+                            </td>
+                            <td style="text-align : right;">
+                                <lightning-formatted-text value=" : " ></lightning-formatted-text>
+                            </td>
+                            <td style="text-align : right;">
+                                <lightning-formatted-text value="031-333-3333" ></lightning-formatted-text>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->                
+            <!-- 박스 -->
+            <tr>
+                <!-- 거래내역 통지서 -->
+                <td>
+                    <table class="boxTable" style="position: relative;">
+                        <!-- <col width="5%" /><col width="95%" /> -->
+                        <tr>
+                            <td>
+                                <lightning-formatted-text value="(보관용)" ></lightning-formatted-text>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- <td></td> -->
+                            <td>
+                                <lightning-formatted-text value="거 래 내 역 통 지 서" style="font-size: 20px; text-decoration:underline;"></lightning-formatted-text>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;
+                                <lightning-formatted-text value="날로 번창하심을 축원하오며, 귀사의 2023년 01월01일부터 2028년 08월02일까지의 거래 내역을 아래와 같이 통지드립니다." ></lightning-formatted-text>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <table style="width: 100%;">
+                                    <col width="5%" /><col width="20%" /><col width="5%" /><col width="70%" />
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="우 편 번 호" ></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value=" : " ></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value="11500" ></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="주" ></lightning-formatted-text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <lightning-formatted-text value="소" ></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value=" : " ></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value="" ></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="상" ></lightning-formatted-text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <lightning-formatted-text value="호" ></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value=" : " ></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value="" ></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="대" ></lightning-formatted-text>
+                                            <lightning-formatted-text value="표" ></lightning-formatted-text>
+                                            <lightning-formatted-text value="자" ></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value=" : " ></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value="이기현" ></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="거래선코드" ></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value=" : " ></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value="104901002, 한마음청소년수" ></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <table class="tableLine">
+                                    <thead>
+                                        <tr>
+                                            <td colspan="4" style="text-align: center;">
+                                                <lightning-formatted-text value="- 아래 -" ></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="text-align: center;">
+                                            <td>
+                                                <lightning-formatted-text value="잔 고" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="매 출" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="회 입" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="08월 02일" ></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                        <tr style="text-align: center;">
+                                            <td>
+                                                <lightning-formatted-text value="2023년 08월 01월" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="08월" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="08월" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="잔고(A)" ></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                        <tr style="text-align: center;">
+                                            <td>
+                                                <lightning-formatted-text value="2023년 01월 01일" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="01  ~  08월" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="01  ~  08월" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="미결어음(B)" ></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                        <tr style="text-align: right;">
+                                            <td>
+                                                <lightning-formatted-text value="-271,112" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="0" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="0" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="-271,112" ></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                        <tr style="text-align: right;">
+                                            <td>
+                                                <lightning-formatted-text value="-271,112" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="0" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="0" ></lightning-formatted-text>
+                                            </td>
+                                            <td>
+                                                <lightning-formatted-text value="0" ></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr style="" >
+                                            <td colspan="4">
+                                                &nbsp; &nbsp;
+                                                <lightning-formatted-text value="현재 귀사의 외상잔고는 " ></lightning-formatted-text>
+                                                <lightning-formatted-text value="(A)-271,112" style="text-decoration:underline;"></lightning-formatted-text>
+                                                <lightning-formatted-text value="이고, 이중 " ></lightning-formatted-text>
+                                                <lightning-formatted-text value="(B)0" style="text-decoration:underline;"></lightning-formatted-text>
+                                                <lightning-formatted-text value="원은 폐사에서 미결제 어음으로 보관하고 있사오니 바쁘시더라도 친히 귀사의 잔액을 확인하여 주시기 바랍니다."></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                    </tfoot>    
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <table>
+                                    <col width="40%" /><col width="30%" /><col width="5%" /><col width="25%" />
+                                    <tr>
+                                        <td><lightning-formatted-text value="0" style="color: white;"></lightning-formatted-text></td>
+                                        <td></td>
+                                        <td></td>
+                                        <!-- 도장 이미지 -->
+                                        <td rowspan="3" style="text-align: right;">
+                                            <img src={imageUrl} class="imaTag" width="85px" height="75px" style="position: absolute; z-index: 1; top: 462px; left: 420px;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="씨제이프레시웨이" ></lightning-formatted-text>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="대표이사" ></lightning-formatted-text>
+                                            &nbsp; &nbsp; 
+                                            <lightning-formatted-text value="정성필" ></lightning-formatted-text>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <!-- 가운데 세로 선 -->
+                <td>
+                    <table style="position: relative">
+                        <tr>
+                            <td style="height: 570px; border-right: solid 1px black;"></td>
+                            <!-- 도장 이미지 -->
+                            <td>
+                                <img src={imageUrl} class="imaTag" width="70px" height="65px" style="position: absolute; z-index: 1; top: 244px; left: 0px;">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <!-- 외상잔고 확인서 -->
+                <td>
+                    <table class="boxTable">
+                        <tr>
+                            <td>
+                                <lightning-formatted-text value="(회수용)"></lightning-formatted-text>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <lightning-formatted-text value="외 상 잔 고 확 인 서" style="font-size: 20px; text-decoration:underline;"></lightning-formatted-text>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <table>
+                                    <col width="5%" /><col width="95%" />
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="씨 제 이 프 레 시 웨 이 귀 하" style="font-size: 20px; text-decoration:underline;"></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <lightning-formatted-text value="아래 양식에 기재된 금액과 귀사의 2023년01월01일부터 2023년 08월02일까지의 거래잔액임을 확인하고 이에 서명날인하여 통지드립니다." ></lightning-formatted-text> <br/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align : right;">
+                                <lightning-formatted-text value="2023년"></lightning-formatted-text>&nbsp;
+                                <lightning-formatted-text value="08월"></lightning-formatted-text>&nbsp;
+                                <lightning-formatted-text value="02월"></lightning-formatted-text>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <table style="width: 100%;">
+                                    <col width="20%" /><col width="20%" /><col width="5%" /><col width="50%" />
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="거래선코드"></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value=" : "></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value="104901002, 한마음청소년수"></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="상"></lightning-formatted-text> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <lightning-formatted-text value="호"></lightning-formatted-text> 
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value=" : "></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value="한마음청소년수련원"></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <lightning-formatted-text value="대"></lightning-formatted-text> &nbsp;&nbsp;
+                                            <lightning-formatted-text value="표"></lightning-formatted-text> &nbsp;&nbsp;
+                                            <lightning-formatted-text value="자"></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value=" : "></lightning-formatted-text>
+                                        </td>
+                                        <td>
+                                            <lightning-formatted-text value="이기현"></lightning-formatted-text>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <table style="border-collapse: collapse; font-size: 12px;">
+                                    <col width="3%" /><col width="24.75%" /><col width="24.75%" /><col width="24.75%" /><col width="24.75%" />
+                                    <tbody>
+                                        <tr style="text-align: center;">
+                                            <td></td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="잔 고"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="매 출"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="회 입"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="08월 02일"></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                        <tr style="text-align: center;">
+                                            <td></td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="2023년 08월 01월"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="08월"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="08월"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="잔고(A)"></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                        <tr style="text-align: center;">
+                                            <td></td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="2023년 01월 01일"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="01  ~  08월"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="01  ~  08월"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="미결어음(B)"></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                
+                                        <tr style="text-align: right;">
+                                            <td>
+                                                <lightning-formatted-text value="가 "></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="-271,112"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="0"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="0"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="-271,112"></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                        <tr style="text-align: right;">
+                                            <td></td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="-271,112"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="0"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="0"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="0"></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                        <tr style="text-align: right;">
+                                            <td>
+                                                <lightning-formatted-text value="나 "></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="0" style="color: white"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value=""></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value=""></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value=""></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                        <tr style="text-align: right;">
+                                            <td></td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value="0" style="color: white"></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value=""></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value=""></lightning-formatted-text>
+                                            </td>
+                                            <td class="blackLine">
+                                                <lightning-formatted-text value=""></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr style="font-size: 14px;">
+                                            <td colspan="5">
+                                                &nbsp; &nbsp; &nbsp;
+                                                <lightning-formatted-text value=" * 귀사와 폐사의 거래 잔액이 상이할 경우 (나)란에 기입함."></lightning-formatted-text>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        <!-- 테이블 사이즈 맞추기 -->
+                        <tr>
+                            <td>
+                                <div style="height: 36px;"></div>
+                            </td>
+                        </tr>
+
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <table>
+                        <col width="15%" /><col width="3%" /><col width="82%" />
+                        <tr>
+                            <td>
+                                <lightning-formatted-text value="영업그룹"></lightning-formatted-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-text value=" : "></lightning-formatted-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-text value="158 아이누리 )아이누리 1팀"></lightning-formatted-text>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <lightning-formatted-text value="담당사원"></lightning-formatted-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-text value=" : "></lightning-formatted-text>
+                            </td>
+                            <td>
+                                <lightning-formatted-text value="00255262 우도희"></lightning-formatted-text>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+   </section>
 </template>
