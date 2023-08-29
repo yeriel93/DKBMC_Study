@@ -5,6 +5,474 @@
   @last modified on  : 08-29-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
-<apex:page>
+<apex:page renderAs="pdf"                             
+            showHeader="false"
+            sidebar="false"
+            standardStylesheets="false"
+            applyBodyTag="false"
+            applyHtmlTag="false"
+            language="utf-8">
 
+    <html>
+        <head>
+            <style type="/text/css">
+                html, body{
+                    font-family: 'Arial Unicode MS';
+                    font-size: 14px;
+                }
+                /* 페이지 설정 */
+                @page {
+                    /*A4 landscape (가로) *//* A4 portrait (세로) */
+                    size : A4 landscape; 
+                    margin-top: 17mm;
+                    margin-left: 5mm;
+                    margin-right: 5mm;
+                    margin-bottom: 0mm;
+                }
+
+                /* 전체 테이블 */
+                .boxTable{
+                    width: 100%;
+                    height : 100%; 
+                    /* padding : 3mm; */
+                }
+
+                /* 기본정보 테이블 */
+                .tableLine{
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                .tableLine>tbody td{
+                    height: 33px;
+                    border: 1px solid black;
+                    text-align: center;
+                }
+
+                /* 납품 테이블 */
+                .deliveryTable{
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                .deliveryTable>thead td{
+                    height: 55px;
+                    border: 1px solid black;
+                    background-color: #D5D5D5;
+                    text-align: center;
+                }
+                .deliveryTable>tbody td{
+                    height: 33px;
+                    border: 1px solid black;
+                    text-align: center;
+                    font-size: 11px;
+                }
+                .deliveryTable>tfoot td{
+                    height: 40px;
+                    border: 1px solid black;
+                    background-color: #D5D5D5;
+                    text-align: center;
+                    font-size: 11px;
+                }
+
+                table td{
+                    /* border: 1px solid gray; */
+                } 
+            </style>
+        </head>
+
+        <body>
+            <table class="boxTable">
+                <tbody>
+                    <!-- 기본정보 -->
+                    <tr>
+                        <td>
+                            <table class="tableLine" style="position: relative">
+                                <!-- 공급받는자 -->
+                                <col width="3%"/><col width="17.5%"/><col width="7%"/><col width="17.5%"/>
+                                <!-- 공급자 -->
+                                <col width="3%"/><col width="10%"/><col width="20%"/><col width="7%"/><col width="15%"/>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="9" style="height: 35px;">
+                                            <apex:outputText value="거 래 명 세 표" style="font-weight: bolder; font-size: 16px"></apex:outputText>
+                                            <apex:image width="68px" height="68px" url="{!$Resource.sample}" style="position: absolute; z-index: 1; top: 45px; left: 650px;"></apex:image>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="4">
+                                            <apex:outputText value="공"></apex:outputText><br/> 
+                                            <apex:outputText value="급"></apex:outputText><br/> 
+                                            <apex:outputText value="받"></apex:outputText><br/> 
+                                            <apex:outputText value="는"></apex:outputText><br/> 
+                                            <apex:outputText value="자"></apex:outputText>
+                                        </td>
+                                        <td colspan="3">
+                                            <apex:outputText value="2022년 11월 16일"></apex:outputText>
+                                        </td>
+                                        <td rowspan="4">
+                                            <apex:outputText value="공"></apex:outputText><br/> 
+                                            <apex:outputText value="급"></apex:outputText><br/> 
+                                            <apex:outputText value="자"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="등록번호"></apex:outputText>
+                                        </td>
+                                        <td colspan="3">
+                                            <apex:outputText value="60381127"></apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <apex:outputText value="(주) 썬밸리아이엔티"></apex:outputText>
+                                            <apex:outputText value=" (5438100035)"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="상호"></apex:outputText>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <apex:outputText value=" 씨제이프레시웨이주식회사"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="성명"></apex:outputText>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <apex:outputText value="정성필"></apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <apex:outputText value="02-2149-6062"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="팩스"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value=""></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="소재지"></apex:outputText>
+                                        </td>
+                                        <td colspan="3" style="text-align: left;">
+                                            <apex:outputText value=" 경기도 용인시 기흥구 기곡로32 (하갈동)"></apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <apex:outputText value="아래와 같이 계산합니다."></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="업태"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="도매"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="종목"></apex:outputText>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <apex:outputText value=" 기타음식료품외"></apex:outputText>
+                                        </td>
+                                    </tr>
+
+                                    
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->                                    
+                    <!-- 납품표 -->
+                    <tr>
+                        <td>
+                            <table class="deliveryTable">
+                                <col width="7.5%"/><col width="15%"/><col width="7.5%"/><col width="5%"/>
+                                <col width="5%"/><col width="6%"/><col width="6%"/><col width="6%"/>
+                                <col width="6%"/><col width="10%"/><col width="8.6%"/><col width="8.6%"/><col width="8.6%"/>
+
+                                <thead>
+                                    <tr>
+                                        <td><apex:outputText value="납품일자"></apex:outputText></td>
+                                        <td><apex:outputText value="품목"></apex:outputText></td>
+                                        <td><apex:outputText value="원산지"></apex:outputText></td>
+                                        <td>
+                                            <apex:outputText value="주문"></apex:outputText><br/>
+                                            <apex:outputText value="수량"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="주문"></apex:outputText><br/>
+                                            <apex:outputText value="단위"></apex:outputText>
+                                        </td>
+                                        <td><apex:outputText value="중량"></apex:outputText></td>
+                                        <td><apex:outputText value="단가"></apex:outputText></td>
+                                        <td><apex:outputText value="세액"></apex:outputText></td>
+                                        <td><apex:outputText value="금액"></apex:outputText></td>
+                                        <td><apex:outputText value="BL"></apex:outputText></td>
+                                        <td><apex:outputText value="이력번호"></apex:outputText></td>
+                                        <td><apex:outputText value="창고"></apex:outputText></td>
+                                        <td><apex:outputText value="비고"></apex:outputText></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <apex:outputText value="2022-11-16"></apex:outputText>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <apex:outputText value="파인애플(직수입_CROWNLESS_9수 13.5kg/BOX)"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="필리핀"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="75"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="BOX"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="30,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="2,250,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="MCPU2222904223"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="-"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="한국초저온_농산"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value=""></apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <apex:outputText value="2022-11-16"></apex:outputText>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <apex:outputText value="파인애플(직수입_7수 12kg/BOX)"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="필리핀"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="225"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="BOX"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="30,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="6,750,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="MCPU2222904223"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="-"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="한국초저온_농산"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="입차시간2시"></apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <apex:outputText value="2022-11-16"></apex:outputText>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <apex:outputText value="파인애플(직수입_CROWNLESS_9수 13.5kg/BOX)"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="필리핀"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="75"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="BOX"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="30,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="2,250,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="MCPU2222904252"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="-"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="한국초저온_농산"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="입차시간2시"></apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <apex:outputText value="2022-11-16"></apex:outputText>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <apex:outputText value="파인애플(직수입_6수 12kg/BOX)"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="필리핀"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="150"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="BOX"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="30,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="4,500,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="MCPU2222904252"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="-"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="한국초저온_농산"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value=""></apex:outputText>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <apex:outputText value="2022-11-16"></apex:outputText>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <apex:outputText value="파인애플(직수입_CROWNLESS_9수 13.5kg/BOX)"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="필리핀"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="75"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="BOX"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="30,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="2,250,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="MCPU2222904252"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="-"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="한국초저온_농산"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="입차시간2시"></apex:outputText>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3">
+                                            <apex:outputText value="합계" style="font-size: 14px;"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="1,050"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value=""></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="240,000"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="0"></apex:outputText>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="31,500,000"></apex:outputText>
+                                        </td>
+                                        <td colspan="4">
+                                            <apex:outputText value=""></apex:outputText>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>  
+                        </td>          
+                    </tr>
+                </tbody>
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->                
+                <tfoot>
+                    <table>
+                        <col width="1%"/><col width="1%"/><col width="8%"/><col width="8%"/><col width="82%"/>
+                        <tr style="font-size: 15px; height: 45px;">
+                            <td></td>
+                            <td>
+                                <apex:outputText value="■ " style="font-size: 22px;"></apex:outputText> 
+                            </td>
+                            <td>
+                                <apex:outputText value="입금계좌:"></apex:outputText> 
+                            </td>
+                            <td>
+                                <apex:outputText value="우리은행"></apex:outputText> 
+                            </td>
+                            <td>
+                                <apex:outputText value="( 예금주: 씨제이프레시웨이주식회사 )"></apex:outputText> 
+                            </td>
+                        </tr>
+                    </table>       
+                </tfoot>
+            </table>
+        </body>
+    </html>
 </apex:page>
