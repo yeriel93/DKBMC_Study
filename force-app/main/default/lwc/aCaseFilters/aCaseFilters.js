@@ -45,6 +45,7 @@ export default class ACaseFilters extends LightningElement {
     searchHandle(){
         try {
             const list = this.template.querySelectorAll('.inputTag');
+            console.log('tag ', list);
             this.searchKeywordList = [];
 
             list.forEach(i => {
@@ -57,7 +58,7 @@ export default class ACaseFilters extends LightningElement {
 
                 this.searchKeywordList.push(this.Keywords);                    
             });
-            // console.log('filter => searchKeywordsList =', JSON.parse(JSON.stringify(this.searchKeywordList)));
+            console.log('filter => searchKeywordsList =', JSON.parse(JSON.stringify(this.searchKeywordList)));
 
             publish(this.messageContext, aCase_FILTERED_MESSAGE, {
                 filters: this.searchKeywordList
