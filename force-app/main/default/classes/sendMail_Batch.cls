@@ -35,7 +35,8 @@ public class sendMail_Batch implements Database.Batchable<SObject> {
                     'To view your case <a href=https://dkbmc175-dev-ed.develop.lightning.force.com/lightning/r/aCase__c/'+c.Id+'/view>click here.</a>');
                 }
             }
-
+            
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------
             // visualforce page를 PDF로 변환해서 파일 첨부하기
             Pagereference pageRef = Page.CJFW_WageTable;
             Blob pdfBlob;
@@ -47,15 +48,15 @@ public class sendMail_Batch implements Database.Batchable<SObject> {
             attachment.setBody(pdfBlob);
             mail.setFileAttachments(new Messaging.EmailFileAttachment[] { attachment });
 
-
-            // // visualforce page로 그린 화면을 메일에 그리기?
-            // // visaulforce 에서 이미 pdf로 랜더링을 했을경우 Blob.toString()이 안됨!!!!
-            // Pagereference pageRef = Page.CJFW_WageTable; 
-            // Blob pageBlob = pageRef.getContent(); // Visualforce 페이지를 Blob으로 가져옴
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+            // visualforce page로 그린 화면을 메일에 그리기?
+            // visaulforce 에서 이미 pdf로 랜더링을 했을경우 Blob.toString()이 안됨!!!!
+            Pagereference pageRef = Page.CJFW_WageTable; 
+            Blob pageBlob = pageRef.getContent(); // Visualforce 페이지를 Blob으로 가져옴
             
-            // // Blob을 UTF-8 문자열로 디코딩
-            // String pageHtml = pageBlob.toString();
-            // mail.setHtmlBody(pageHtml);
+            // Blob을 UTF-8 문자열로 디코딩
+            String pageHtml = pageBlob.toString();
+            mail.setHtmlBody(pageHtml);
 
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
 
