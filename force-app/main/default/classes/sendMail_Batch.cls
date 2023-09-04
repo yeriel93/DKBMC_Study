@@ -2,7 +2,7 @@
  * @description       : aCase__c record에 status가 cloesd인 경우 메일 발송
  * @author            : yeonji.lim@dkbmc.com
  * @group             : 
- * @last modified on  : 09-01-2023
+ * @last modified on  : 09-04-2023
  * @last modified by  : yeonji.lim@dkbmc.com
 **/
 public class sendMail_Batch implements Database.Batchable<SObject> {
@@ -51,7 +51,6 @@ public class sendMail_Batch implements Database.Batchable<SObject> {
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
             // visualforce page로 그린 화면을 메일에 그리기?
             // visaulforce 에서 이미 pdf로 랜더링을 했을경우 Blob.toString()이 안됨!!!!
-            Pagereference pageRef = Page.CJFW_WageTable; 
             Blob pageBlob = pageRef.getContent(); // Visualforce 페이지를 Blob으로 가져옴
             
             // Blob을 UTF-8 문자열로 디코딩
