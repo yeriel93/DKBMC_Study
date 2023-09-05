@@ -2,230 +2,240 @@
   @description       : 
   @author            : yeonji.lim@dkbmc.com
   @group             : 
-  @last modified on  : 07-25-2023
+  @last modified on  : 09-05-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
 <template>
-    <div class="slds-template__container">
-        <header>
-            <div class="slds-page-header">
-                <div class="slds-page-header__row">
-                    <div class="slds-page-header__col-title">
-                        <div class="slds-media">
-                            <div class="slds-media__figure">
-                                <span class="slds-icon_container">
-                                    <lightning-icon icon-name="custom:custom99" title="custom99" size="mideum"></lightning-icon>
-                                </span>
-                            </div>
-                            <div class="slds-media__body">
-                                <div class="slds-page-header__name">
-                                    <div class="slds-page-header__name-title">
-                                        <h1>
-                                            <a href="https://dkbmc175-dev-ed.develop.lightning.force.com/lightning/o/aAccount__c/list?filterName=00B5i00000Ly8jGEAR">
-                                                <span>aAccounts</span>
-                                            </a>
-                                            <span> > </span>
-                                            <a href="">
-                                                <span> {aAccountName} </span>
-                                            </a>
-                                            <span class="slds-page-header__title slds-truncate" style="font-size: 18px;">aContacts</span>
-                                        </h1>
-                                    </div>
-                                </div>
-                            </div>
+    <header>
+        <div class="slds-page-header">
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container">
+                                <lightning-icon icon-name="custom:custom99" title="custom99" size="mideum"></lightning-icon>
+                            </span>
                         </div>
-                    </div>
-                    <div class="slds-page-header__col-actions">
-                        <div class="slds-page-header__controls">
-                            <!-- 첫번째줄 버튼div -->
-                            <div class="slds-page-header__control">
-                                <ul class="slds-button-group-list">
-                                    <li>
-                                        <button class="slds-button slds-button_neutral">New</button>
-                                    </li>
-                                </ul>
+                        <div class="slds-media__body">
+                            <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                    <h1>
+                                        <a href="https://dkbmc175-dev-ed.develop.lightning.force.com/lightning/o/aAccount__c/list?filterName=00B5i00000Ly8jGEAR">
+                                            <span>aAccounts</span>
+                                        </a>
+                                        <span> > </span>
+                                        <a href="">
+                                            <span> {aAccountName} </span>
+                                        </a>
+                                        <span class="slds-page-header__title slds-truncate" style="font-size: 18px;">aContacts</span>
+                                    </h1>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- 두번째줄 버튼들 div -->
-                <div class="slds-page-header__row">
-                    <div class="slds-page-header__col-meta slds-align-bottom">
-                        <p class="slds-page-header__meta-text" style="font-size: 12px;">10 items • Updated 13 minutes ago</p>
-                    </div>
-                    <div class="slds-page-header__col-controls">
-                        <div class="slds-page-header__controls">
-                            <div class="slds-page-header__control">
-                                <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
-                                    <lightning-button-icon icon-name="utility:settings" title="List View Controls"></lightning-button-icon>
-                                </div>
-                            </div>
+                <div class="slds-page-header__col-actions">
+                    <div class="slds-page-header__controls">
+                        <!-- 첫번째줄 버튼div -->
+                        <div class="slds-page-header__control">
+                            <ul class="slds-button-group-list">
+                                <li>
+                                    <button class="slds-button slds-button_neutral">New</button>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="slds-page-header__control">
-                        <lightning-button-icon icon-name="utility:loop" title="Refresh" onclick={refreshList}></lightning-button-icon>
-                    </div>
-                    <div class="slds-page-header__control">
-                        <lightning-button-icon icon-name="utility:filterList" title="Show quick filters"></lightning-button-icon>
                     </div>
                 </div>
             </div>
-        </header>
-<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <!-- body -->
-        <div>
-            <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
-                <thead>
-                    <tr class="slds-line-height_reset">
-                        <th class="slds-text-align_right slds-cell_action-mode" scope="col" style="width:3.25rem">
-                            <span id="column-group-header" class="slds-assistive-text">Choose a row</span>
-                            <div class="slds-th__action slds-th__action_form">
-                                <div class="slds-checkbox">
-                                    <input type="checkbox" name="options" id="checkbox-unique-id-589" value="checkbox-unique-id-589" tabindex="0" 
-                                            aria-labelledby="check-select-all-label column-group-header"/>
-                                    <label class="slds-checkbox__label" for="checkbox-unique-id-589" id="check-select-all-label">
-                                        <span class="slds-checkbox_faux"></span>
-                                        <span class="slds-form-element__label slds-assistive-text">Select All</span>
-                                    </label>
-                                </div>
+            <!-- 두번째줄 버튼들 div -->
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-meta slds-align-bottom">
+                    <p class="slds-page-header__meta-text" style="font-size: 12px;">10 items • Updated 13 minutes ago</p>
+                </div>
+                <!-- <div class="slds-page-header__col-controls">
+                    <div class="slds-page-header__controls">
+                        <div class="slds-page-header__control">
+                            <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+                                <lightning-button-icon icon-name="utility:settings" title="List View Controls"></lightning-button-icon>
                             </div>
-                        </th>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="slds-page-header__control">
+                    <lightning-button-icon icon-name="utility:loop" title="Refresh" onclick={refreshList}></lightning-button-icon>
+                </div>
+                <!-- <div class="slds-page-header__control">
+                    <lightning-button-icon icon-name="utility:filterList" title="Show quick filters"></lightning-button-icon>
+                </div> -->
+            </div>
 
-                        <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
-                            <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
-                                <span class="slds-assistive-text">Sort by: </span>
-                                <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-                                    <span class="slds-truncate" title="Name">Name</span>
-                                    <span class="slds-icon_container slds-icon-utility-arrowdown">
-                                        <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
-                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </a>
-                            <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" aria-haspopup="true" tabindex="-1" title="Show Name column actions">
-                                <lightning-button-icon icon-name="utility:chevrondown" title="Refresh"></lightning-button-icon>
-                            </button>
-                            <div class="slds-resizable">
-                                <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-1072" max="1000" min="20" tabindex="0" />
-                                <span class="slds-resizable__handle">
-                                    <span class="slds-resizable__divider"></span>
-                                </span>
-                            </div>
-                        </th>
+            
 
-                        <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
-                            <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
-                                <span class="slds-assistive-text">Sort by: </span>
-                                <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-                                    <span class="slds-truncate" title="Name">Title</span>
-                                    <span class="slds-icon_container slds-icon-utility-arrowdown">
-                                        <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
-                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </a>
-                            <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" aria-haspopup="true" tabindex="-1" title="Show Name column actions">
-                                <lightning-button-icon icon-name="utility:chevrondown" title="Refresh"></lightning-button-icon>
-                            </button>
-                            <div class="slds-resizable">
-                                <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="0" />
-                                <span class="slds-resizable__handle">
-                                    <span class="slds-resizable__divider"></span>
-                                </span>
-                            </div>
-                        </th>
-
-                        <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
-                            <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
-                                <span class="slds-assistive-text">Sort by: </span>
-                                <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-                                    <span class="slds-truncate" title="Name">Email</span>
-                                    <span class="slds-icon_container slds-icon-utility-arrowdown">
-                                        <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
-                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </a>
-                            <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" aria-haspopup="true" tabindex="-1" title="Show Name column actions">
-                                <lightning-button-icon icon-name="utility:chevrondown" title="Refresh"></lightning-button-icon>
-                            </button>
-                            <div class="slds-resizable">
-                                <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="0" />
-                                <span class="slds-resizable__handle">
-                                    <span class="slds-resizable__divider"></span>
-                                </span>
-                            </div>
-                        </th>
-
-                        <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
-                            <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
-                                <span class="slds-assistive-text">Sort by: </span>
-                                <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-                                    <span class="slds-truncate" title="Name">Phone</span>
-                                    <span class="slds-icon_container slds-icon-utility-arrowdown">
-                                        <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
-                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
-                                        </svg>
-                                    </span>
-                                </div>
-                            </a>
-                            <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" aria-haspopup="true" tabindex="-1" title="Show Name column actions">
-                                <lightning-button-icon icon-name="utility:chevrondown" title="Refresh"></lightning-button-icon>
-                            </button>
-                            <div class="slds-resizable">
-                                <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="0" />
-                                <span class="slds-resizable__handle">
-                                    <span class="slds-resizable__divider"></span>
-                                </span>
-                            </div>
-                        </th>
-                        <th style="width: 5%;"></th>
-                    </tr>
-                </thead>
-
-                <!-- tbody aContact목록 -->
-                <tbody>
-                    <template for:each={aContactList} for:item="aCon" for:index="i">
-                        <tr aria-selected="false" class="slds-hint-parent" key={aCon.Id}>
-                            <td class="slds-text-align_right" role="gridcell">
-                                <div class="slds-checkbox">
-                                    <input type="checkbox" name="options" id="checkbox-01" value="checkbox-01" tabindex="-1" aria-labelledby="check-button-label-01 column-group-header" />
-                                    <label class="slds-checkbox__label" for="checkbox-01" id="check-button-label-01">
-                                        <span class="slds-checkbox_faux"></span>
-                                        <span class="slds-form-element__label slds-assistive-text">Select item 1</span>
-                                    </label>
-                                </div>
-                            </td>
-
-                            <td>
-                                <div class="slds-truncate"><p>{aCon.Name}</p></div>
-                            </td>
-                            <td>
-                                <div class="slds-truncate"><p>{aCon.Title__c}</p></div>
-                            </td>
-                            <td>
-                                <div class="slds-truncate"><p>{aCon.Email__c}</p></div>
-                            </td>
-                            <td>
-                                <div class="slds-truncate"><p>{aCon.Phone__c}</p></div>
-                            </td>
-
-                            <td class="slds-cell_action-mode" role="gridcell">
-                                <div class="lgc-bg slds-button_icon-x-small">
-                                    <lightning-button-menu alternative-text="Show menu" icon-size="small">
-                                        <lightning-menu-item value="Edit" label="Edit" onclick={recordEdit} data-msg={aCon.Id}></lightning-menu-item>
-                                        <lightning-menu-item value="Delete" label="Delete" onclick={recordDelete} data-msg={aCon.Id}></lightning-menu-item>
-                                    </lightning-button-menu>
-                                </div>
-                            </td>   
-                        </tr>
-                    </template>
-                </tbody>
-            </table>
         </div>
-    </div> 
+    </header>
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    
+    <!-- body -->
+    <div style="background-color: rgb(238, 238, 238); height: 500px;">
+        <lightning-datatable
+            key-field="id"
+            data={aContactList}
+            columns={columns}
+            onrowaction={handleRowAction}>
+        </lightning-datatable>
+    </div>
 
+    <!-- <div>
+        <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-text-align_right slds-cell_action-mode" scope="col" style="width:3.25rem">
+                        <span id="column-group-header" class="slds-assistive-text">Choose a row</span>
+                        <div class="slds-th__action slds-th__action_form">
+                            <div class="slds-checkbox">
+                                <input type="checkbox" name="options" id="checkbox-unique-id-589" value="checkbox-unique-id-589" tabindex="0" 
+                                        aria-labelledby="check-select-all-label column-group-header"/>
+                                <label class="slds-checkbox__label" for="checkbox-unique-id-589" id="check-select-all-label">
+                                    <span class="slds-checkbox_faux"></span>
+                                    <span class="slds-form-element__label slds-assistive-text">Select All</span>
+                                </label>
+                            </div>
+                        </div>
+                    </th>
+
+                    <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Name">Name</span>
+                                <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                    <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
+                        <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" aria-haspopup="true" tabindex="-1" title="Show Name column actions">
+                            <lightning-button-icon icon-name="utility:chevrondown" title="Refresh"></lightning-button-icon>
+                        </button>
+                        <div class="slds-resizable">
+                            <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-1072" max="1000" min="20" tabindex="0" />
+                            <span class="slds-resizable__handle">
+                                <span class="slds-resizable__divider"></span>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Name">Title</span>
+                                <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                    <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
+                        <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" aria-haspopup="true" tabindex="-1" title="Show Name column actions">
+                            <lightning-button-icon icon-name="utility:chevrondown" title="Refresh"></lightning-button-icon>
+                        </button>
+                        <div class="slds-resizable">
+                            <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="0" />
+                            <span class="slds-resizable__handle">
+                                <span class="slds-resizable__divider"></span>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Name">Email</span>
+                                <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                    <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
+                        <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" aria-haspopup="true" tabindex="-1" title="Show Name column actions">
+                            <lightning-button-icon icon-name="utility:chevrondown" title="Refresh"></lightning-button-icon>
+                        </button>
+                        <div class="slds-resizable">
+                            <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="0" />
+                            <span class="slds-resizable__handle">
+                                <span class="slds-resizable__divider"></span>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable slds-cell_action-mode" scope="col">
+                        <a class="slds-th__action slds-text-link_reset" href="#" role="button" tabindex="0">
+                            <span class="slds-assistive-text">Sort by: </span>
+                            <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                <span class="slds-truncate" title="Name">Phone</span>
+                                <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                    <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                        </a>
+                        <button class="slds-button slds-button_icon slds-th__action-button slds-button_icon-x-small" aria-haspopup="true" tabindex="-1" title="Show Name column actions">
+                            <lightning-button-icon icon-name="utility:chevrondown" title="Refresh"></lightning-button-icon>
+                        </button>
+                        <div class="slds-resizable">
+                            <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" max="1000" min="20" tabindex="0" />
+                            <span class="slds-resizable__handle">
+                                <span class="slds-resizable__divider"></span>
+                            </span>
+                        </div>
+                    </th>
+                    <th style="width: 5%;"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <template for:each={aContactList} for:item="aCon" for:index="i">
+                    <tr aria-selected="false" class="slds-hint-parent" key={aCon.Id}>
+                        <td class="slds-text-align_right" role="gridcell">
+                            <div class="slds-checkbox">
+                                <input type="checkbox" name="options" id="checkbox-01" value="checkbox-01" tabindex="-1" aria-labelledby="check-button-label-01 column-group-header" />
+                                <label class="slds-checkbox__label" for="checkbox-01" id="check-button-label-01">
+                                    <span class="slds-checkbox_faux"></span>
+                                    <span class="slds-form-element__label slds-assistive-text">Select item 1</span>
+                                </label>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="slds-truncate"><p>{aCon.Name}</p></div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate"><p>{aCon.Title__c}</p></div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate"><p>{aCon.Email__c}</p></div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate"><p>{aCon.Phone__c}</p></div>
+                        </td>
+
+                        <td class="slds-cell_action-mode" role="gridcell">
+                            <div class="lgc-bg slds-button_icon-x-small">
+                                <lightning-button-menu alternative-text="Show menu" icon-size="small">
+                                    <lightning-menu-item value="Edit" label="Edit" onclick={recordEdit} data-msg={aCon.Id}></lightning-menu-item>
+                                    <lightning-menu-item value="Delete" label="Delete" onclick={recordDelete} data-msg={aCon.Id}></lightning-menu-item>
+                                </lightning-button-menu>
+                            </div>
+                        </td>   
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div> -->
+    
 </template>

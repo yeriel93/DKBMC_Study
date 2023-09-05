@@ -4,9 +4,26 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
 import relatedaContact from '@salesforce/apex/aAccountController.relatedaContact'
 
+const actions = [
+    {label: 'Edit', name: 'Edit'},
+    {label: 'Delete', name: 'Delete'}
+];
+
+const columns = [
+    { label: 'Name', fieldName: 'Name' },
+    { label: 'Title', fieldName: 'Title__c' },
+    { label: 'Email', fieldName: 'Email__c' },
+    { label: 'phone', fieldName: 'Phone__c' },
+    {
+        type: 'action',
+        typeAttributes: { rowActions: actions },
+    },
+];
+
 export default class AContactViewAll extends NavigationMixin(LightningElement) {
     @api aAccountId;
     @api aAccountName;
+    columns = columns;
     data;
     error;
     aContactList;
@@ -38,16 +55,29 @@ export default class AContactViewAll extends NavigationMixin(LightningElement) {
         this.callaContactList();
     }
 
+    handleRowAction(event) {
+        const actionName = event.detail.action.name;
+        const row = event.detail.row;
+        switch (actionName) {
+            case 'Edit':
+                this.recordEdit(row);
+                break;
+            case 'Delete':
+                this.recordDelete(row);
+                break;
+            default:
+        }
+    }
+
     // Edit
-    recordEdit(event){
-            this.targetId = event.target.dataset.msg;
-            console.log('TargetId =>', this.targetId);
+    recordEdit(row){
+        // console.log('TargetId =>', row.Id);
 
         // aContact__c Edit page로 이동
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
             attributes: {
-                recordId: this.targetId,
+                recordId: row.Id,
                 objectApiName: 'aContact__c',
                 actionName: 'edit'
             },
@@ -55,11 +85,10 @@ export default class AContactViewAll extends NavigationMixin(LightningElement) {
     }
 
     // Delete
-    recordDelete(event){
-        this.targetId = event.target.dataset.msg;
-        console.log('DeleteId =>', this.targetId);
+    recordDelete(row){
+        // console.log('TargetId =>', row.Id);
 
-        deleteRecord(this.targetId)
+        deleteRecord(row.Id)
         .then(() => {
             this.dispatchEvent(
                 new ShowToastEvent({
@@ -69,6 +98,7 @@ export default class AContactViewAll extends NavigationMixin(LightningElement) {
                 })
             );
             
+            // 목록 새로고침
             this.callaContactList();
             
         })
