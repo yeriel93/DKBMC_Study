@@ -44,7 +44,7 @@ export default class ContactRelatedList extends NavigationMixin(LightningElement
             this.aContactList = data;
             this.error = undefined;
             this.aContactListlength = this.aContactList.length;
-            this.aContactList = this.aContactList.slice(0,6);
+            this.aContactList = this.aContactList.slice(0,6); //최대 6개까지만 보일 수 있도록 설정
             // console.log('recordId =>', this.recordId);
             // console.log('aContactList => ', this.aContactList);
             // console.log('data =>', data);
