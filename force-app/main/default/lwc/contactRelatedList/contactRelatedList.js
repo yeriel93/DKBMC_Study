@@ -44,6 +44,7 @@ export default class ContactRelatedList extends NavigationMixin(LightningElement
             this.aContactList = data;
             this.error = undefined;
             this.aContactListlength = this.aContactList.length;
+            this.aContactList = this.aContactList.slice(0,6);
             // console.log('recordId =>', this.recordId);
             // console.log('aContactList => ', this.aContactList);
             // console.log('data =>', data);
