@@ -2,7 +2,7 @@
   @description       : 
   @author            : yeonji.lim@dkbmc.com
   @group             : 
-  @last modified on  : 06-19-2023
+  @last modified on  : 09-05-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
 <template>
@@ -70,7 +70,9 @@
 
         <!-- footer -->
         <footer class="slds-card__footer">
-            <a class="slds-card__footer-action" href={viewAllUrl}>View All</a>
+            <!-- <a class="slds-card__footer-action" href={viewAllUrl}>View All</a> -->
+            <a class="slds-card__footer-action" href="javascript:void(0)" onclick={generateViewAllUrl}>View All</a>
+            <!-- <button onclick={generateViewAllUrl}>View All</button> -->
         </footer>
 
         <!-- New Contact Modal -->

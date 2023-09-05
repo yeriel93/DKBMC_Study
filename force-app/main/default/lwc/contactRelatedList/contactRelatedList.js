@@ -28,7 +28,7 @@ export default class ContactRelatedList extends NavigationMixin(LightningElement
             this.error = undefined;
             // console.log('data =>', data);
             this.recordName = data.fields.Name.value;
-            this.generateViewAllUrl();
+            // this.generateViewAllUrl();
         }
     }
 
@@ -113,9 +113,9 @@ export default class ContactRelatedList extends NavigationMixin(LightningElement
         });
     }
 
-    //url 만들어서 원하는 데이터 같이 던져주기 (쿼리스트링느낌?)
+    
     generateViewAllUrl(){
-        this[NavigationMixin.GenerateUrl]({
+        this[NavigationMixin.Navigate]({
             type: 'standard__component',
             attributes: {
                 componentName: 'c__aContactViewAllAura'
@@ -125,9 +125,21 @@ export default class ContactRelatedList extends NavigationMixin(LightningElement
                 c__aAccountId : this.recordId 
             }
         })
-        .then(url => {
-            this.viewAllUrl = url
-            console.log('this.viewAllUrl =>', this.viewAllUrl);
-        });
+
+        //url 만들어서 원하는 데이터 같이 던져주기 (쿼리스트링느낌?) -> 데이터 담긴 url을 만들어서 변수에 담고 페이지 생성시 변수에 담아주면됨
+        // this[NavigationMixin.GenerateUrl]({
+        //     type: 'standard__component',
+        //     attributes: {
+        //         componentName: 'c__aContactViewAllAura'
+        //     },
+        //     state: {
+        //         c__recordName : this.recordName,
+        //         c__aAccountId : this.recordId 
+        //     }
+        // })
+        // .then(url => {
+        //     this.viewAllUrl = url
+        //     console.log('this.viewAllUrl =>', this.viewAllUrl);
+        // });
     }
 }
