@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : yeonji.lim@dkbmc.com
  * @group             : 
- * @last modified on  : 06-20-2023
+ * @last modified on  : 09-06-2023
  * @last modified by  : yeonji.lim@dkbmc.com
 **/
 public with sharing class aAccountController {
@@ -29,7 +29,7 @@ public with sharing class aAccountController {
         
         try {
             List<aContact__c> aConList = [
-                SELECT Id, Name, FirstName__c, LastName__c, Title__c, Email__c, Phone__c
+                SELECT Id, Name, FirstName__c, LastName__c, Title__c, Department__c, Birthdate__c, Phone__c
                 FROM aContact__c
                 WHERE aAccountId__c = :aAccountId
             ];

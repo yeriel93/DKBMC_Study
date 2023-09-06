@@ -44,8 +44,8 @@ export default class RelatedaContactList extends LightningElement {
             'LastName__c': '',
             'FirstName__c': '',
             'Title__c': '',
-            'Email__c': '',
             'Phone__c': '',
+            'Department__c': '',
             'aAccountId__c' : this.recordId
         };
         this.aContactList.push(test);

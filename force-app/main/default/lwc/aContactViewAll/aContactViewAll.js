@@ -12,7 +12,7 @@ const actions = [
 const columns = [
     { label: 'Name', fieldName: 'Name' },
     { label: 'Title', fieldName: 'Title__c' },
-    { label: 'Email', fieldName: 'Email__c' },
+    { label: 'Department', fieldName: 'Department__c' },
     { label: 'phone', fieldName: 'Phone__c' },
     {
         type: 'action',
