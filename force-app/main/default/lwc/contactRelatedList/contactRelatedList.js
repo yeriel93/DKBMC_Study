@@ -7,6 +7,7 @@ import relatedaContact from '@salesforce/apex/aAccountController.relatedaContact
 
 export default class ContactRelatedList extends NavigationMixin(LightningElement) {
     @api recordId;
+    @api objectApiName;
     @api recordName;
     @track viewAllUrl = '';
 
@@ -35,6 +36,7 @@ export default class ContactRelatedList extends NavigationMixin(LightningElement
 
     connectedCallback(){
         this.getaCotactList();
+        console.log('object',this.objectApiName);
     }
     
     // aContact List 불러오기
@@ -135,7 +137,8 @@ export default class ContactRelatedList extends NavigationMixin(LightningElement
             },
             state: {
                 c__recordName : this.recordName,
-                c__aAccountId : this.recordId 
+                c__aAccountId : this.recordId, 
+                c__objectName : this.objectApiName
             }
         })
         .then(url => {

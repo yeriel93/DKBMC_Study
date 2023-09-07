@@ -9,5 +9,8 @@
 
         let recordId = pageRef.state.c__aAccountId;
         component.set('v.recordId', recordId);
+
+        let objectName = pageRef.state.c__objectName;
+        component.set('v.objectName', objectName);
     }
 })

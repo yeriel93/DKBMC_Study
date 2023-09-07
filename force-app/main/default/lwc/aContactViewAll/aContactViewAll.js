@@ -3,6 +3,8 @@ import { deleteRecord } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
 import relatedaContact from '@salesforce/apex/aAccountController.relatedaContact'
+import getNametoId from '@salesforce/apex/aContactController.getNametoId'
+// import { getObjectInfo } from "lightning/uiObjectInfoApi";
 
 const actions = [
     {label: 'Edit', name: 'Edit'},
@@ -23,15 +25,30 @@ const columns = [
 export default class AContactViewAll extends NavigationMixin(LightningElement) {
     @api aAccountId;
     @api aAccountName;
+    @api objectName;
     columns = columns;
     data;
     error;
     aContactList;
+    name;
     
     connectedCallback(){
         // console.log('aAccountId', this.aAccountId);
         // console.log('aAccountName', this.aAccountName);
+        this.getName();
         this.callaContactList();
+    }
+
+    getName(){
+        getNametoId(({objName: this.objectName, Id: this.aAccountId}))
+        .then((data)=>{
+            console.log('data =>', data);
+            console.log('Name =>', data[0].Name);
+            this.name = data[0].Name;
+        })
+        .catch((error)=>{
+            console.log('getNametoId error = ', error);
+        });
     }
 
     callaContactList(){
@@ -41,7 +58,7 @@ export default class AContactViewAll extends NavigationMixin(LightningElement) {
             this.error = undefined;
             this.aContactListlength = this.aContactList.length;
             // console.log('aAccountId =>', this.aAccountId);
-            console.log('aContactList => ', this.aContactList);
+            // console.log('aContactList => ', this.aContactList);
             // console.log('data =>', data);
         })
         .catch((error)=>{
@@ -50,11 +67,16 @@ export default class AContactViewAll extends NavigationMixin(LightningElement) {
         });
     }
 
+    NewModal(){
+        
+    }
+
     //새로고침
     refreshList(){
         this.callaContactList();
     }
 
+    //rowAction
     handleRowAction(event) {
         const actionName = event.detail.action.name;
         const row = event.detail.row;
