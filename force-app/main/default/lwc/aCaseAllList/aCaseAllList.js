@@ -193,7 +193,7 @@ export default class ACaseAllList extends NavigationMixin(LightningElement) {
     handleSave(event){
         this.showSpinner = true;
         this.allList = false;
-        // console.log('draftValues', event.detail.draftValues);
+        console.log('draftValues', event.detail.draftValues);
         this.saveDraftValues = event.detail.draftValues;
         
         const recordInputs = this.saveDraftValues.slice().map(draft => {
@@ -238,6 +238,8 @@ export default class ACaseAllList extends NavigationMixin(LightningElement) {
         this.sortBy = event.detail.fieldName;
         this.sortDirection = event.detail.sortDirection;
         this.sortData(this.sortBy, this.sortDirection);
+        console.log('sortBy', this.sortBy);
+        console.log('sortDirection', this.sortDirection);
     }
 
     //정렬 데이터
