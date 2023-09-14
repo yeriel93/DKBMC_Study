@@ -7,8 +7,6 @@
 -->
 <aura:component implements="force:hasRecordId,flexiPage:availableForAllPageTypes" controller="cContactController">
     
-    <aura:attribute name="isTest" type="boolean" default="false" description="lwc modal test"/>
-
     <!-- Page Attribute -->
     <aura:attribute name="recordId" type="String" description=""/>
     <aura:attribute name="iscContact" type="boolean" description="relatedcContact가 있는지 여부"/>
@@ -45,8 +43,10 @@
 
                     <!-- New button -->
                     <div class="slds-no-flex">
-                        <!-- <lightning:button variant="neutral" label="New" onclick="{!c.naviRecordNewpage}"/> -->
+                        <!-- LWC Lightning Modal 띄우는 버튼 -->
                         <c:testParentElement></c:testParentElement>
+                        
+                        <lightning:button variant="neutral" label="New" onclick="{!c.naviRecordNewpage}" class="slds-m-left_x-small"/>
                     </div>
                 </header>
             </div>

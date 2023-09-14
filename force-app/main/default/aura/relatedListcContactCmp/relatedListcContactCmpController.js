@@ -50,15 +50,13 @@
     //cContact new page로 이동
     naviRecordNewpage: function(cmp, event, helper){
 
-        cmp.set('v.isTest', true);
+        var navigateEvent = $A.get('e.force:navigateToURL');
 
-        // var navigateEvent = $A.get('e.force:navigateToURL');
-
-        // if(navigateEvent){
-        //     navigateEvent.setParams({
-        //         "url": "/lightning/o/cContact__c/new"
-        //     });
-        //     navigateEvent.fire(); //event 발생
-        // }
+        if(navigateEvent){
+            navigateEvent.setParams({
+                "url": "/lightning/o/cContact__c/new"
+            });
+            navigateEvent.fire(); //event 발생
+        }
     },
 })
