@@ -2,15 +2,18 @@
   @description       : 
   @author            : yeonji.lim@dkbmc.com
   @group             : 
-  @last modified on  : 08-23-2023
+  @last modified on  : 09-14-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
 <aura:component implements="force:hasRecordId,flexiPage:availableForAllPageTypes" controller="cContactController">
+    
+    <aura:attribute name="isTest" type="boolean" default="false" description="lwc modal test"/>
 
     <!-- Page Attribute -->
     <aura:attribute name="recordId" type="String" description=""/>
     <aura:attribute name="iscContact" type="boolean" description="relatedcContact가 있는지 여부"/>
     <aura:attribute name="Listlength" type="Integer" description="cContact List 갯수"/>
+    
     
     <!-- dataTable Attribute -->
     <aura:attribute name="data" type="Object"/>
@@ -46,6 +49,11 @@
                     </div>
                 </header>
             </div>
+
+            <!-- aura button 눌렀을때 열릴 lwc lightning Modal -->
+            <aura:if isTrue="{!v.isTest}">
+                <c:testParentElement></c:testParentElement>
+            </aura:if>
 
             <!-- body -->
             <div class="slds-card__body">
