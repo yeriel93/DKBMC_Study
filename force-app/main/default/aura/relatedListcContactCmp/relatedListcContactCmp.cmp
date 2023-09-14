@@ -45,14 +45,15 @@
 
                     <!-- New button -->
                     <div class="slds-no-flex">
-                        <lightning:button variant="neutral" label="New" onclick="{!c.naviRecordNewpage}"/>
+                        <!-- <lightning:button variant="neutral" label="New" onclick="{!c.naviRecordNewpage}"/> -->
+                        <c:testParentElement></c:testParentElement>
                     </div>
                 </header>
             </div>
 
             <!-- aura button 눌렀을때 열릴 lwc lightning Modal -->
             <aura:if isTrue="{!v.isTest}">
-                <c:testParentElement></c:testParentElement>
+                
             </aura:if>
 
             <!-- body -->

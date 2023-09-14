@@ -3,7 +3,7 @@ import TestLightningModal from 'c/testLightningModal';
 
 export default class TestParentElement extends LightningElement {
     
-    connectedCallback(){
+    handleOpen(){
         this.openModal();
     }
 
