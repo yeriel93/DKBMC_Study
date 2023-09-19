@@ -43,7 +43,7 @@ export default class AContactViewAll extends NavigationMixin(LightningElement) {
         getNametoId(({objName: this.objectName, Id: this.aAccountId}))
         .then((data)=>{
             console.log('data =>', data);
-            console.log('Name =>', data[0].Name);
+            console.log('data =>', data[0].Name);
             this.name = data[0].Name;
         })
         .catch((error)=>{
@@ -68,7 +68,7 @@ export default class AContactViewAll extends NavigationMixin(LightningElement) {
     }
 
     NewModal(){
-        
+
     }
 
     //새로고침

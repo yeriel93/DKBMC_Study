@@ -5,7 +5,7 @@
   @last modified on  : 08-28-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
-<apex:page  renderAs="pdf"                                   
+<apex:page renderAs="pdf"                                   
             showHeader="false"
             sidebar="false"
             standardStylesheets="false"
@@ -17,7 +17,14 @@
     
     <head>
         <script type="text/javascript">
-           
+            $Lightning.use("c:MyApp", function() {
+                $Lightning.createComponent("c:cJFWConfirmationOfBalance", {},
+                    "lwcContainer",
+                    function(cmp) {
+                        // 컴포넌트가 생성되었을 때 실행되는 콜백 함수
+                    }
+                );
+            });
             // // LWC 컴포넌트를 렌더링하는 함수
             // function renderLWC() {
             //     const lwcContainer = document.getElementById('lwcContainer');
@@ -28,16 +35,10 @@
     </head>
 
     <body>
-        <aura:application>
-            <c:pdfTestCmp/>
-        </aura:application>
-
-
-
         <h1>되라되라되라되라 </h1>
         <div id="lwcContainer"></div>
     </body>
-    
+    <h1>이건?  </h1>
     
 
 </apex:page>

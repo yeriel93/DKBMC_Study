@@ -358,12 +358,41 @@
                         <table style="position: relative">
                             <tr>
                                 <td style="height: 630px; border-right: solid 1px black;"></td>
-                                <!-- 도장 이미지 -->
                                 <td style="height: 630px;">
                                     <apex:image width="70px" height="65px" url="{!$Resource.sample}" style="position: absolute; z-index: 1; top: 270px; left: -1px;"></apex:image>
                                 </td>
                             </tr>
                         </table>
+                        <!-- <table style="height:100%; position: absolute">
+                            <col width="50%" /><col width="50%" />
+                            <tr>
+                                <td style="border-right: solid 1px black;">
+                                    <div style="height: 540px;"></div>
+                                </td>
+                                <td>
+                                    <apex:image width="70px" height="65px" url="{!$Resource.sample}" style="position: absolute; z-index: 1; top: 0px; left: 300px;"></apex:image>
+                                </td>
+                            </tr>
+                        </table> -->
+                        <!-- <table style="height: 75%; position: absolute">
+                            <tr>
+                                <td style="border-right: solid 1px black;">
+                                    <div style="height: 270px;"></div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <apex:image width="85px" height="75px" url="{!$Resource.sample}" style="position: absolute; z-index: 1; top: 400px; left: 380px;"></apex:image>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-right: solid 1px black;">
+                                    <div style="height: 270px;"></div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table> -->
                     </td>
 
 <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->

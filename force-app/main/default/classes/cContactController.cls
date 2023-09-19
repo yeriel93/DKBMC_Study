@@ -35,10 +35,11 @@ public with sharing class cContactController {
     @AuraEnabled
     public static void removeRecord(String recordId){
         try {
+
             System.debug('delete recordId = ' + recordId);
             
             delete new cContact__c(Id = recordId);
-
+            
         } catch (Exception e) {
             System.debug('message =>' + e.getMessage());
             System.debug('trace =>' + e.getStackTraceString());

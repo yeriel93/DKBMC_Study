@@ -66,4 +66,4 @@ public class sendMail_Batch implements Database.Batchable<SObject> {
     }
 
 	public void finish(Database.BatchableContext BC){}
-} 
+}

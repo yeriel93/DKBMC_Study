@@ -5,7 +5,7 @@
   @last modified on  : 09-01-2023
   @last modified by  : yeonji.lim@dkbmc.com
 -->
-<apex:page renderAs="pdf"                             
+<apex:page renderAs="pdf"
             showHeader="false"
             sidebar="false"
             standardStylesheets="false"

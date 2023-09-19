@@ -9,7 +9,8 @@ export default class TestParentElement extends LightningElement {
 
     async openModal (){
         const result = await TestLightningModal.open({
-            size : 'medium'
+            size : 'medium',
+            headerTitle : '모달입니당'
         });
 
         console.log('result = ', result);
