@@ -1,0 +1,125 @@
+<!--
+  @description       : 
+  @author            : yeonji.lim@dkbmc.com
+  @group             : 
+  @last modified on  : 2024-05-08
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-show slds-modal slds-fade-in-open slds-modal_small">
+        <div class="slds-modal__container">
+            <lightning-button-icon icon-name="utility:close" 
+                                    alternative-text="close" 
+                                    size="large" 
+                                    variant="bare-inverse" 
+                                    class="slds-button slds-button_icon slds-modal__close" 
+                                    onclick={modalClose}>
+            </lightning-button-icon>
+    
+            <div class="slds-scrollable_y" style="background: white;">
+                <!-- header -->
+                <header class="slds-modal__header">
+                    <h1  class="slds-modal__title slds-hyphenate">Edit </h1>
+                </header>
+                
+                <!-- body -->
+                <div class="fieldContainer slds-m-around_x-small">
+                    <div class="slds-grid slds-wrap slds-m-horizontal_small">
+
+                        <div class="slds-size_1-of-2 slds-box_small">
+                            <lightning-input type="text" label="Assigned To" value={AssignedValue} required="true"></lightning-input>
+                            <lightning-combobox name="Subject"
+                                                label="Subject"
+                                                value={SubjectValue}
+                                                options={SubjectOptions}
+                                                onchange={SubjectChange}
+                                                required="true">
+                            </lightning-combobox>
+                            <lightning-input type="Date" 
+                                            label="Due Date" 
+                                            onchange={DateChange}
+                                            value={DateValue}>
+                            </lightning-input>
+                            <lightning-combobox name="Priority"
+                                                label="Priority"
+                                                value={PriorityValue}
+                                                options={PriorityOptions}
+                                                onchange={PriorityChange}
+                                                required="true"> 
+                            </lightning-combobox>
+                        </div>
+
+                        <div class="slds-size_1-of-2 slds-box_small">
+                            <lightning-combobox name="Status"
+                                                label="Status"
+                                                value={StatusValue}
+                                                options={StatusOptions}
+                                                onchange={StatusChange}>
+                            </lightning-combobox>
+                            <lightning-input type="text" label="Name" value={NameValue}></lightning-input>
+                            <lightning-input type="text" label="Related To" value={RelatedValue}></lightning-input>
+                            <!-- <lightning-record-picker label="Accounts"
+                                                    placeholder="Search Accounts..."
+                                                    object-api-name="Account">
+                            </lightning-record-picker> -->
+                        </div>
+                        
+                    </div>
+
+                    <div class="slds-grid slds-wrap slds-m-horizontal_small">
+                        <div class = "slds-size_1-of-2 slds-box_small">
+                            <fieldset>
+                                <legend>Created By</legend>
+                                <p>
+                                    <span class="record-avatar-container slds-avatar slds-avatar_x-small slds-avatar--circle icon slds-m-right_xx-small slds-avatar_profile-image-small" style="background-color: #1B96FF"></span>
+                                    {createdByName}, <lightning-formatted-date-time value={createdDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                                                                                    minute="2-digit"></lightning-formatted-date-time>
+                                </p>
+                            </fieldset>
+                        </div>
+                        <div class="slds-size_1-of-2 slds-box_small">
+                            <fieldset>
+                                <legend>Last Modified By</legend>
+                                <p>
+                                    <span class="record-avatar-container slds-avatar slds-avatar_x-small slds-avatar--circle icon slds-m-right_xx-small slds-avatar_profile-image-small" style="background-color: #1B96FF"></span>
+                                    {lastModifiedByName}, <lightning-formatted-date-time value={lastModifiedDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                                                                        minute="2-digit"></lightning-formatted-date-time>
+                                </p>
+                            </fieldset>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-m-horizontal_small">
+                        <div class="slds-box_small">
+                            <lightning-input type="text" label="Comments" value={CommentValue} style="height: 80px;"></lightning-input>
+                        </div>
+                    </div>
+                
+                </div>
+                
+                <!-- footer -->
+                <div class="slds-modal__footer slds-grid slds-is-absolute" style="width: 100%; justify-content: end;">
+                    <lightning-button class="slds-m-horizontal_xx-small"
+                                        label="Save &amp; New"
+                                        type="submit"
+                                        onclick={saveNew}>
+                    </lightning-button>
+
+                    <lightning-button class="slds-m-horizontal_xx-small"
+                                        label="Cancel" 
+                                        onclick={modalClose}>
+                    </lightning-button>
+                    
+                    <lightning-button class="slds-m-horizontal_xx-small" 
+                                    variant="brand" 
+                                    label="Save" 
+                                    type="submit"
+                                    onclick={save}>
+                    </lightning-button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 검은색 배경처리 -->
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

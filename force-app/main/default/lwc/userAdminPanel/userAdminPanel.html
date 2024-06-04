@@ -1,0 +1,39 @@
+<!--
+  @description       : 
+  @author            : woomg@dkbmc.com
+  @group             : 
+  @last modified on  : 2024-02-15
+  @last modified by  : woomg@dkbmc.com
+-->
+<template>
+	<div class="slds-box main-panel">
+		<lightning-layout multiple-rows="true">
+			<lightning-layout-item size="2">
+				<div class="slds-var-p-right_x-small">
+					<lightning-tabset>
+						<lightning-tab label="License Status">
+							<c-user-admin-license></c-user-admin-license>
+						</lightning-tab>
+					</lightning-tabset>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item size="10">
+				<div class="slds-var-p-left_x-small slds-var-p-right_x-small">
+					<lightning-tabset active-tab-value={activeTab}>
+						<lightning-tab label="Users" value="users" onactive={clickTab}>
+							<c-user-admin-users is-admin={isAdmin} onmoveto={moveToTab}></c-user-admin-users>
+						</lightning-tab>
+						<lightning-tab label="Not Logined In Time" value="lazyusers" onactive={clickTab}>
+							<c-user-admin-not-logined-users is-admin={isAdmin}></c-user-admin-not-logined-users>
+						</lightning-tab>
+						<template if:true={isAdmin}>
+							<lightning-tab label="Change Ownership" value="ownership" onactive={clickTab}>
+								<c-user-admin-change-owner is-admin={isAdmin}></c-user-admin-change-owner>
+							</lightning-tab>
+						</template>
+					</lightning-tabset>
+				</div>
+			</lightning-layout-item>
+		</lightning-layout>
+	</div>
+</template>

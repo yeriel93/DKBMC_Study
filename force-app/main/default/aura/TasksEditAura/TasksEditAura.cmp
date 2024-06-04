@@ -1,0 +1,14 @@
+<aura:component implements="force:hasRecordId,lightning:actionOverride,force:lightningQuickActionWithoutHeader,lightning:isUrlAddressable" 
+                access="global">
+
+    <!-- Id값 가져와서 LWC에 넘겨주기 -->
+    <aura:attribute name="recordId" type="String"/>
+
+    <!-- Handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.fnInit}"/>
+
+    <div>
+        <c:taskEdit recordId="{!v.recordId}"></c:taskEdit>
+    </div>
+
+</aura:component>

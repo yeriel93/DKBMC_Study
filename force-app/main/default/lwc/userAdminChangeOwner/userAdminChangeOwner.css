@@ -1,0 +1,31 @@
+.content-body {
+	border-top : solid 1px #DDDBDA;
+	height : 500px;
+}
+
+.footer-button {
+	text-align: right;
+}
+
+.object-list li:nth-child(odd) .object-line {
+    background-color: #F7F7F7;
+}
+.object-list li:nth-child(even) .object-line {
+    background-color: #FFFFFF;
+}
+
+.dummy-actions {
+	height: 32px;
+}
+
+.fixed-width {
+	width: 30px;
+	text-align: right;
+}
+
+.record-list {
+	height: 500px;
+    border-top: solid 1px #DDDBDA;
+    border-left: solid 1px #DDDBDA;
+    margin-top: 3px;
+}

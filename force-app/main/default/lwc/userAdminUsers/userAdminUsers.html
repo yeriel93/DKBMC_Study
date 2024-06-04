@@ -1,0 +1,125 @@
+<!--
+  @description       : 
+  @author            : woomg@dkbmc.com
+  @group             : 
+  @last modified on  : 2024-02-15
+  @last modified by  : woomg@dkbmc.com
+-->
+<template>
+	<div class="main-panel">
+		<template if:true={showSpinner}>
+			<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+		</template>	
+		<article class="slds-card slds-card_boundary">
+			<div class="slds-page-header custom-page-header slds-shrink-none slds-is-relative">
+				<lightning-layout>
+					<lightning-layout-item size="3">
+						<div class="slds-has-flexi-truncate firstHeaderRow">
+							<div class="slds-media slds-no-space slds-grow">
+								<lightning-icon icon-name={iconName} size="small" class="slds-var-m-right_small"></lightning-icon>
+								<div class="slds-media__body slds-align-middle">
+									<h2 class="slds-card__header-title">
+										<span class="slds-truncate slds-var-m-right_xx-small">{title}</span>
+										<!--span class="slds-shrink-none slds-m-right_xx-small">({count})</span-->
+									</h2>
+								</div>
+							</div>
+						</div>	
+					</lightning-layout-item>
+					<lightning-layout-item size="9">
+						<div class="slds-align-top slds-var-p-bottom_xx-small">
+							<lightning-layout>
+								<lightning-layout-item size="2">
+									<div class="field-group">
+										<lightning-combobox options={profiles} value={profile} label="Profile" onchange={changeProfile}></lightning-combobox>
+									</div>
+								</lightning-layout-item>
+								<lightning-layout-item size="2">
+									<div class="field-group">
+										<lightning-input value={searchText} label="Search" placeholder="Name or SSO Id..." onchange={changeSearch}></lightning-input>
+									</div>
+								</lightning-layout-item>
+								<!-- <lightning-layout-item size="2">
+									<div class="field-group">
+										<lightning-combobox options={divisions} value={division} label="Division" onchange={changeDIvision}></lightning-combobox>
+									</div>
+								</lightning-layout-item> -->
+								<lightning-layout-item size="2">
+									<div class="button-group">
+										<lightning-input type="checkbox" label="Include inactive" name="inactive" class="inactive" onchange={changeInactive}></lightning-input>
+									</div>
+								</lightning-layout-item>
+								<lightning-layout-item size="5">
+									<div if:true={isAdmin} class="button-group">
+										<lightning-button-group class="slds-var-m-left_xx-small">
+											<lightning-button label="Edit User" onclick={editUser}></lightning-button>
+											<lightning-button label="New User" onclick={newUser}></lightning-button>
+											<lightning-button label="Reset P/W" onclick={resetPassword}></lightning-button>
+										</lightning-button-group>
+										<lightning-button-group class="slds-var-m-left_xx-small">
+											<lightning-button label="Transfer" onclick={transferUser}></lightning-button>
+										</lightning-button-group>
+									</div>
+								</lightning-layout-item>
+							</lightning-layout>
+						</div>	
+					</lightning-layout-item>
+				</lightning-layout>
+				<template if:true={hasRows}>
+					<div class="slds-grid">
+						<div class="slds-col slds-align-bottom">
+							<p class="slds-text-body_small">
+								<span>{summary}</span>
+							</p>
+						</div>
+						<div class="slds-col slds-no-flex slds-grid slds-align-bottom slds-shrink"></div>
+					</div>	
+				</template>
+			</div>
+	
+			<lightning-layout>
+				<lightning-layout-item size="3">
+					<div class="roletree">
+						<div class="container" lwc:dom="manual"></div>
+					</div>
+				</lightning-layout-item>
+				<lightning-layout-item size="9">
+					<div class="table-panel">
+						<template if:true={hasRows}>
+							<div class="slds-grid listViewContainer">
+								<div class="data-table">
+									<lightning-datatable
+										key-field="Id"
+										data={userList}
+										columns={columns}
+										enable-infinite-loading
+										selected-rows={selectedRows}
+										onloadmore={loadMore}
+										onrowselection={selectRow}>
+									</lightning-datatable>
+								</div>
+							</div>
+						</template>	
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>	
+		</article>
+	</div>
+
+	<template if:true={showEditModal}>
+		<c-user-admin-edit-user-modal user-id={userId} onclose={closeModal}></c-user-admin-edit-user-modal>
+	</template>
+
+	<template if:true={showNewModal}>
+		<c-user-admin-new-user-modal user-data={userData} onclose={closeModal}></c-user-admin-new-user-modal>
+	</template>
+
+	<template if:true={showResetModal}>
+		<c-user-admin-password-reset-modal users={selectedUsers} onclose={closeModal}></c-user-admin-password-reset-modal>
+	</template>
+
+	<template if:true={showTransferModal}>
+		<c-user-admin-transfer-user-modal old-user={selectedUser} user-data={userData} onclose={closeModal}></c-user-admin-transfer-user-modal>
+	</template>
+
+</template>

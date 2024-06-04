@@ -1,0 +1,63 @@
+<!--
+  @description       : 
+  @author            : woomg@dkbmc.com
+  @group             : 
+  @last modified on  : 2024-02-15
+  @last modified by  : woomg@dkbmc.com
+-->
+<template>
+	<section
+		role="dialog"
+		tabindex="-1"
+		class="slds-modal slds-fade-in-open slds-modal_small"
+		aria-hidden="true"
+		aria-modal="true"
+		aria-describedby="modal-content-detail-node">
+
+		<article class="slds-modal__container">
+			<lightning-button-icon
+				class="slds-modal__close"
+				title="Close"
+				icon-name="utility:close"
+				icon-class="slds-button_icon-inverse"
+				onclick={closeModal}
+			></lightning-button-icon>
+			<header class="slds-modal__header">
+				<h2 class="slds-modal__title slds-hyphenate">{title}</h2>
+			</header>
+			<div class="slds-modal__content slds-is-relative ">
+				<template if:true={showSpinner}>
+					<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+				</template>			
+				<div class="slds-var-p-around_small">
+					<div class="list-pane">
+						<lightning-datatable
+							key-field="Id"
+							columns={columns}
+							data={users}
+							hide-checkbox-column>
+						</lightning-datatable>
+					</div>
+				</div>
+			</div>
+			<footer class="slds-modal__footer">
+				<lightning-button
+					class="slds-var-m-right_small"
+					variant="neutral"
+					type="button"
+					onclick={closeModal}
+					label="Cancel">
+				</lightning-button>
+				<lightning-button
+					class="slds-var-m-right_small"
+					variant="brand"
+					type="button"
+					onclick={clickMake}
+					label={title}>
+				</lightning-button>
+			</footer>
+		</article>
+
+	</section>
+	<div class="slds-backdrop slds-backdrop_open"></div>
+</template>

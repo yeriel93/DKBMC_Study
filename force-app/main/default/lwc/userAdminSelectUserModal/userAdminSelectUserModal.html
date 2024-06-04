@@ -1,0 +1,83 @@
+<!--
+  @description       : 
+  @author            : woomg@dkbmc.com
+  @group             : 
+  @last modified on  : 04-06-2024
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+	<section
+		role="dialog"
+		tabindex="-1"
+		class="slds-modal slds-fade-in-open slds-modal_small"
+		aria-hidden="true"
+		aria-modal="true"
+		aria-describedby="modal-content-detail-node">
+
+		<article class="slds-modal__container">
+			<lightning-button-icon
+				class="slds-modal__close"
+				title="Close"
+				icon-name="utility:close"
+				icon-class="slds-button_icon-inverse"
+				onclick={closeModal}
+			></lightning-button-icon>
+			<header class="slds-modal__header">
+				<h2 class="slds-modal__title slds-hyphenate">Select Employee</h2>
+			</header>
+			<div class="slds-modal__content slds-is-relative ">
+				<template if:true={showSpinner}>
+					<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+				</template>			
+				<div class="slds-var-p-around_small">
+					<div class="slds-var-p-around_small search-text">
+						<lightning-layout>
+							<lightning-layout-item size="4">
+								<label class="slds-form-element__label">
+									&nbsp;
+								</label>
+							</lightning-layout-item>
+							<lightning-layout-item size="6">
+								<div onkeypress={onkeypressSearch}>
+									<lightning-input class="searchText" value={searchText} label="Search" placeholder="Name or Id..." variant="label-hidden"></lightning-input>
+								</div>
+							</lightning-layout-item>
+							<lightning-layout-item size="2">
+								<lightning-button label="Search" onclick={clickSearch} variant="brand"></lightning-button>
+							</lightning-layout-item>
+						</lightning-layout>
+					</div>
+					<div class="list-pane">
+						<lightning-datatable
+							key-field="Id"
+							columns={columns}
+							data={users}
+							enable-infinite-loading
+							max-row-selection="1"
+							onloadmore={loadMore}
+							onrowselection={selectRow}>
+						</lightning-datatable>
+					</div>
+				</div>
+			</div>
+			<footer class="slds-modal__footer">
+				<lightning-button
+					class="slds-var-m-right_small"
+					variant="neutral"
+					type="button"
+					onclick={closeModal}
+					label="Cancel">
+				</lightning-button>
+				<lightning-button
+					class="slds-var-m-right_small"
+					variant="brand"
+					type="button"
+					onclick={clickSelect}
+					label="Select">
+				</lightning-button>
+			</footer>
+		</article>
+
+	</section>
+	<div class="slds-backdrop slds-backdrop_open"></div>
+</template>
