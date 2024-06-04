@@ -2,8 +2,13 @@
  * @description       : 
  * @author            : woomg@dkbmc.com
  * @group             : 
+<<<<<<< HEAD
  * @last modified on  : 04-06-2024
  * @last modified by  : yeonji.lim@dkbmc.com
+=======
+ * @last modified on  : 2024-02-15
+ * @last modified by  : woomg@dkbmc.com
+>>>>>>> 7afa8b8403a033141c3abbded2bd9343195391dc
 **/
 @isTest
 public with sharing class UserAdminController_Test {
@@ -14,9 +19,15 @@ public with sharing class UserAdminController_Test {
         profileId = [SELECT id FROM Profile LIMIT 1].id;
 
         user = new User(
+<<<<<<< HEAD
             Username='SysAdminTestuser99@partner.test.com',
             LastName='test',
             Email='SysAdminTestuser99@partner.test.com',
+=======
+            Username='SysAdminTestuser99@partner.samsung.com',
+            LastName='test',
+            Email='SysAdminTestuser99@partner.samsung.com',
+>>>>>>> 7afa8b8403a033141c3abbded2bd9343195391dc
             Alias='test',
             TimeZoneSidKey='Asia/Seoul',
             LocaleSidKey='ko',

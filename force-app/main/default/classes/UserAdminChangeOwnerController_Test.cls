@@ -2,8 +2,13 @@
  * @description       : 
  * @author            : woomg@dkbmc.com
  * @group             : 
+<<<<<<< HEAD
  * @last modified on  : 04-06-2024
  * @last modified by  : yeonji.lim@dkbmc.com
+=======
+ * @last modified on  : 2024-01-31
+ * @last modified by  : woomg@dkbmc.com
+>>>>>>> 7afa8b8403a033141c3abbded2bd9343195391dc
 **/
 @IsTest
 public with sharing class UserAdminChangeOwnerController_Test {
@@ -14,9 +19,15 @@ public with sharing class UserAdminChangeOwnerController_Test {
         profileId = [SELECT id FROM Profile LIMIT 1].id;
 
         user1 = new User(
+<<<<<<< HEAD
             Username='test01@partner.test.com',
             LastName='test01',
             Email='test01@partner.test.com',
+=======
+            Username='test01@partner.samsung.com',
+            LastName='test01',
+            Email='test01@partner.samsung.com',
+>>>>>>> 7afa8b8403a033141c3abbded2bd9343195391dc
             Alias='test01',
             TimeZoneSidKey='Asia/Seoul',
             LocaleSidKey='ko',
@@ -28,9 +39,15 @@ public with sharing class UserAdminChangeOwnerController_Test {
         insert user1;
 
         user2 = new User(
+<<<<<<< HEAD
             Username='test02@partner.test.com',
             LastName='test02',
             Email='test02@partner.test.com',
+=======
+            Username='test02@partner.samsung.com',
+            LastName='test02',
+            Email='test02@partner.samsung.com',
+>>>>>>> 7afa8b8403a033141c3abbded2bd9343195391dc
             Alias='test02',
             TimeZoneSidKey='Asia/Seoul',
             LocaleSidKey='ko',

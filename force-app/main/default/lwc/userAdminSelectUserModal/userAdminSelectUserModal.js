@@ -2,8 +2,13 @@
  * @description       : 
  * @author            : woomg@dkbmc.com
  * @group             : 
+<<<<<<< HEAD
  * @last modified on  : 04-06-2024
  * @last modified by  : yeonji.lim@dkbmc.com
+=======
+ * @last modified on  : 2024-02-15
+ * @last modified by  : woomg@dkbmc.com
+>>>>>>> 7afa8b8403a033141c3abbded2bd9343195391dc
 **/
 const DEBUG = false;
 
@@ -22,7 +27,11 @@ const columns = [
     // { label: 'Username', fieldName: 'Username' },
     // { label: 'Division', fieldName: 'Division' },
     // { label: 'Department', fieldName: 'Department' },
+<<<<<<< HEAD
     { label: 'Id', fieldName: 'FederationIdentifier' },
+=======
+    { label: 'KNOX Id', fieldName: 'FederationIdentifier' },
+>>>>>>> 7afa8b8403a033141c3abbded2bd9343195391dc
 ];
 
 export default class UserAdminSelectUserModal extends LightningElement {
