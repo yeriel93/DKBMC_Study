@@ -1,0 +1,82 @@
+<!--
+  @description       : 
+  @author            : woomg@dkbmc.com
+  @group             : 
+  @last modified on  : 2024-02-15
+  @last modified by  : woomg@dkbmc.com
+-->
+<template>
+	<!-- Can not use lightning-card becuase dot not draw box-border in the tab, so apply source html of lightning-card -->
+	<div class="slds-box" style="padding:0;">
+		<article class="slds-card">
+			<div class="slds-card__header slds-grid">
+				<header class="slds-media slds-media_center slds-has-flexi-truncate">
+					<div class="slds-media__body">
+						<h2 class="slds-card__header-title" aria-level="2">
+							<span class="slds-text-heading_small slds-truncate">
+								<h3>Available Licenses</h3>
+							</span>
+						</h2>
+					</div>
+				</header>
+			</div>
+			<div class="slds-card__body">
+				<div class="slds-p-horizontal_small">
+					<div class="license-available">
+						<lightning-formatted-number value={licenses.avail}></lightning-formatted-number>
+					</div>
+				</div>
+			</div>
+			<div class="slds-card__footer">
+				<div>
+					Used&nbsp;:&nbsp;
+					<lightning-formatted-number value={licenses.used}></lightning-formatted-number>
+					<lightning-formatted-text value=" / "></lightning-formatted-text>
+					Total&nbsp;:&nbsp;<lightning-formatted-number value={licenses.total}></lightning-formatted-number>
+				</div>
+			</div>
+		</article>
+	</div>
+	<div class="slds-p-top_xx-small">&nbsp;</div>
+	<div class="slds-box" style="padding:0;">
+		<article class="slds-card">
+			<div class="slds-card__header slds-grid">
+				<header class="slds-media slds-media_center slds-has-flexi-truncate">
+					<div class="slds-media__body">
+						<h2 class="slds-card__header-title" aria-level="2">
+							<span class="slds-text-heading_small slds-truncate">
+								<h3>Licenses By Division</h3>
+							</span>
+						</h2>
+					</div>
+				</header>
+			</div>
+			<div class="slds-card__body">
+				<div class="slds-p-horizontal_small">
+					<table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+						<thead>
+							<tr class="slds-line-height_reset">
+								<th class="" scope="col">
+									<div class="slds-truncate" title="DIvision">Division</div>
+								</th>
+								<th class="" scope="col">
+									<div class="slds-truncate" title="Licenses">Licenses</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="slds-hint-parent">
+								<td data-label="Division">
+									<div class="slds-truncate">Korea</div>
+								</td>
+								<td data-label="Licenses">
+									<div class="slds-truncate"><lightning-formatted-number value={licenses.Korea}></lightning-formatted-number></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</article>
+	</div>
+</template>

@@ -1,0 +1,100 @@
+<!--
+  @description       : 
+  @author            : woomg@dkbmc.com
+  @group             : 
+  @last modified on  : 2024-02-15
+  @last modified by  : woomg@dkbmc.com
+-->
+<template>
+	<section
+		role="dialog"
+		tabindex="-1"
+		class="slds-modal slds-fade-in-open slds-modal_small"
+		aria-hidden="true"
+		aria-modal="true"
+		aria-describedby="modal-content-detail-node">
+
+		<lightning-record-edit-form
+		id="editUser"
+		record-id={userId}
+		object-api-name="User"
+		onsubmit={handleSubmit}
+		onsuccess={handleSuccess}>
+
+			<article class="slds-modal__container">
+				<lightning-button-icon
+					class="slds-modal__close"
+					title="Close"
+					icon-name="utility:close"
+					icon-class="slds-button_icon-inverse"
+					onclick={closeModal}
+				></lightning-button-icon>
+				<header class="slds-modal__header">
+					<h2 class="slds-modal__title slds-hyphenate">Edit User</h2>
+				</header>
+				<div class="slds-modal__content slds-is-relative ">
+					<div class="slds-var-p-top_small">
+						<lightning-layout multiple-rows="true">
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.LastName}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.ProfileId}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.FirstName}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.RoleId}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.Alias}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.Title}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.Username}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.IsActive}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.Email}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.SSOID}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.Division}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								<lightning-input-field field-name={User.Department}></lightning-input-field>
+							</lightning-layout-item>
+							<lightning-layout-item size="6" padding="horizontal-small">
+								&nbsp;
+							</lightning-layout-item>
+						</lightning-layout>
+					</div>
+				</div>
+				<footer class="slds-modal__footer">
+					<lightning-button
+						class="slds-var-m-right_small"
+						variant="neutral"
+						type="button"
+						onclick={closeModal}
+						label="Cancel">
+					</lightning-button>
+					<lightning-button
+						class="slds-var-m-right_small"
+						variant="brand"
+						type="submit"
+						label="Save">
+					</lightning-button>
+				</footer>
+			</article>
+
+		</lightning-record-edit-form>
+	</section>
+	<div class="slds-backdrop slds-backdrop_open"></div>
+</template>

@@ -1,0 +1,156 @@
+<!--
+  @description       : 
+  @author            : woomg@dkbmc.com
+  @group             : 
+  @last modified on  : 04-06-2024
+  @last modified by  : yeonji.lim@dkbmc.com
+-->
+<template>
+	<template if:true={showSpinner}>
+		<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+	</template>	
+	<lightning-layout>
+		<lightning-layout-item size="6">
+			<article class="slds-card slds-card_boundary slds-var-m-right_x-small">
+				<div class="slds-page-header custom-page-header slds-shrink-none slds-is-relative">
+					<div class="slds-has-flexi-truncate firstHeaderRow">
+						<div class="slds-media slds-no-space slds-grow">
+							<lightning-icon icon-name="standard:orders" size="small" class="slds-var-m-right_small"></lightning-icon>
+							<div class="slds-media__body slds-align-middle">
+								<h2 class="slds-card__header-title">
+									<span class="slds-truncate slds-var-m-right_xx-small">{username}</span>
+									<span class="slds-shrink-none slds-var-m-right_xx-small">&nbsp;owned following records.</span>
+								</h2>
+							</div>
+							<div class="slds-no-flex">
+								<lightning-button label="Select User" onclick={clickSelect}></lightning-button>
+							</div>
+						</div>
+					</div>	
+					<div class="slds-grid">
+						<div class="slds-col slds-align-bottom">
+							<p class="slds-text-body_small">
+								<span>{numOfSelectedOwned}</span>
+							</p>
+						</div>
+						<div class="slds-col slds-no-flex slds-grid slds-align-bottom slds-shrink"></div>
+					</div>	
+				</div>
+				<div class="content-body"><!-- slds-card__body slds-card__body_inner -->
+					<lightning-layout>
+						<lightning-layout-item size="4" class="slds-var-p-around_x-small">
+							<nav class="slds-nav-vertical slds-box slds-box_x-small">
+								<div class="slds-nav-vertical__section">
+									<ul class="object-list">
+										<template for:each={ownedList} for:item="object">
+											<li key={object.name} class={object.classRow}>
+												<span
+													class="slds-nav-vertical__action object-line"
+													title={object.label}
+													data-name={object.name}
+													onclick={clickOwnedObject}>
+													<span class="slds-truncate">{object.label}</span>
+													<span class={object.classCount}>
+														<lightning-formatted-number value={object.count} class="fixed-width"></lightning-formatted-number>
+													</span>
+												</span>
+											</li>
+										</template>
+									</ul>
+								</div>
+							</nav>		
+						</lightning-layout-item>
+						<lightning-layout-item size="8" class="slds-var-p-left_x-small">
+							<div class="record-list">
+								<lightning-datatable
+									key-field="id"
+									columns={ownedColumns}
+									data={ownedRecords}
+									enable-infinite-loading
+									onrowselection={selectOwnedRecord}
+									onloadmore={loadMoreOwned}>
+								</lightning-datatable>
+							</div>
+						</lightning-layout-item>
+					</lightning-layout>
+				</div>
+				<footer class="slds-card__footer footer-button">
+					<lightning-button label="Change Owner" onclick={clickChangeOwner}></lightning-button>
+				</footer>
+			</article>
+		</lightning-layout-item>
+		<lightning-layout-item size="6">
+			<article class="slds-card slds-card_boundary slds-var-m-left_x-small">
+				<div class="slds-page-header custom-page-header slds-shrink-none slds-is-relative">
+					<div class="slds-has-flexi-truncate firstHeaderRow">
+						<div class="slds-media slds-no-space slds-grow">
+							<lightning-icon icon-name="standard:customers" size="small" class="slds-var-m-right_small"></lightning-icon>
+							<div class="slds-media__body slds-align-middle">
+								<h2 class="slds-card__header-title">
+									<span class="slds-truncate slds-var-m-right_xx-small">{username}</span>
+									<span class="slds-shrink-none slds-var-m-right_xx-small">&nbsp;is member of following records.</span>
+								</h2>
+							</div>
+							<div class="slds-no-flex">
+								<div class="dummy-actions">&nbsp;</div>
+							</div>
+						</div>
+					</div>	
+					<div class="slds-grid">
+						<div class="slds-col slds-align-bottom">
+							<p class="slds-text-body_small">
+								<span>{numOfSelectedMembered}</span>
+							</p>
+						</div>
+						<div class="slds-col slds-no-flex slds-grid slds-align-bottom slds-shrink"></div>
+					</div>	
+				</div>
+				<div class="content-body"><!-- slds-card__body slds-card__body_inner -->
+					<lightning-layout>
+						<lightning-layout-item size="4" class="slds-var-p-around_x-small">
+							<nav class="slds-nav-vertical slds-box slds-box_x-small">
+								<div class="slds-nav-vertical__section">
+									<ul class="object-list">
+										<template for:each={memberedList} for:item="object">
+											<li key={object.name} class={object.classRow}>
+												<span
+													class="slds-nav-vertical__action object-line"
+													title={object.label}
+													data-name={object.name}
+													onclick={clickMemberedObject}>
+													<span class="slds-truncate">{object.label}</span>
+													<span class={object.classCount}>
+														<lightning-formatted-number value={object.count} class="fixed-width"></lightning-formatted-number>
+													</span>
+												</span>
+											</li>
+										</template>
+									</ul>
+								</div>
+							</nav>		
+						</lightning-layout-item>
+						<lightning-layout-item size="8" class="slds-var-p-left_x-small">
+							<div class="record-list">
+								<lightning-datatable
+									key-field="id"
+									columns={memberedColumns}
+									data={memberedRecords}
+									enable-infinite-loading
+									onrowselection={selectMemberedRecord}
+									onloadmore={loadMoreMembered}>
+								</lightning-datatable>
+							</div>		
+						</lightning-layout-item>
+					</lightning-layout>
+				</div>
+				<footer class="slds-card__footer footer-button">
+					<lightning-button label="Remove Member" onclick={clickRemoveMember} class="slds-var-m-right_small"></lightning-button>
+				</footer>
+			</article>
+		</lightning-layout-item>
+	</lightning-layout>
+
+	<template if:true={showSelectModal}>
+		<c-user-admin-select-user-modal mode={selectMode} onclose={closeModal}></c-user-admin-select-user-modal>
+	</template>
+</template>

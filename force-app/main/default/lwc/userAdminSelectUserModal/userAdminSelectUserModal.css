@@ -1,0 +1,16 @@
+.main-pane {
+	background-color: #FFFFFF;
+}
+
+.list-pane {
+	height: 300px;
+	border-top: solid 1px #DDDBDA;
+}
+
+.search-text {
+	text-align: right;
+}
+
+.search-text label {
+	width: 100%;
+}
