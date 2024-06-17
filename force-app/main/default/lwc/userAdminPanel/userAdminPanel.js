@@ -2,10 +2,11 @@
  * @description       : 
  * @author            : woomg@dkbmc.com
  * @group             : 
- * @last modified on  : 2024-02-15
- * @last modified by  : woomg@dkbmc.com
+ * @last modified on  : 05-06-2024
+ * @last modified by  : yeonji.lim@dkbmc.com
 **/
-const DEBUG = false;
+const DEBUG = false;	// 디버그 모드 비활성화
+// const DEBUG = true;		// 디버그 모드 활성화
 
 import { LightningElement, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
@@ -17,9 +18,14 @@ export default class UserAdminPanel extends LightningElement {
 	@track	isAdmin = false;
 	@track	activeTab = 'users';
 
+	/* 
+    * 로그인한 User의 profile이 Admin인지 체크
+    */
 	async connectedCallback(){
 		try {
-			const result = checkSystemAdmin();
+			const result = await checkSystemAdmin();
+			// ⬇ 이렇게만 작동시키면 비동기 작업이 완료이 되지 않아 결과값을 콘솔에 찍었을때 "Promise {<pending>}" 이런식으로 찍힘	
+			// const result = checkSystemAdmin();	
 
 			this.log('checkSystemAdmin -> ', result);
 			this.isAdmin = result;
@@ -33,6 +39,7 @@ export default class UserAdminPanel extends LightningElement {
 		// event.preventDefault();
 		// event.stopPropagation();
 		this.activeTab = event.target.value;
+		this.log("tab click = ", this.activeTab);
 	}
 
 	log(msg, variable){ if(DEBUG){ console.log(msg, variable == undefined ? '' : variable); } }

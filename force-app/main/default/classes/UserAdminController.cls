@@ -2,19 +2,23 @@
  * @description       : 
  * @author            : woomg@dkbmc.com
  * @group             : 
- * @last modified on  : 2024-02-15
- * @last modified by  : woomg@dkbmc.com
+ * @last modified on  : 05-06-2024
+ * @last modified by  : yeonji.lim@dkbmc.com
 **/
 public without sharing class UserAdminController {
 
+    /* 
+    * 로그인한 User의 profile이 Admin인지 체크
+    */
     @AuraEnabled
     public static Boolean checkSystemAdmin(){
 
         Boolean isSysAdmin = false;
 
         try {
+            // Name 필드를 사용하여 레코드를 생성할 수 없는 경우
             if (!Schema.sObjectType.Profile.fields.Name.isCreateable()) {
-                throw new AuraHandledException('Not permitted');
+                throw new AuraHandledException('Not permitted');    // 허용되지 않음
             }
             
             String profileName = [SELECT Name FROM Profile WHERE Id = :UserInfo.getprofileId()].Name;
