@@ -1,0 +1,11 @@
+.SearchBar{
+    display: flex;
+    padding: 10px;
+    margin-bottom: 25px;
+    justify-content: space-evenly;
+} 
+
+.searchButton{
+    width: 9%;
+    margin-top: 23px;
+}

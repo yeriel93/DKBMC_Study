@@ -1,6 +1,7 @@
 <template>
-    <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-show slds-modal slds-fade-in-open slds-modal_small">
-        <div class="slds-modal__container">
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-label="Meaningful description of the modal content" class="slds-show slds-modal slds-fade-in-open">
+        <div class="slds-modal__container" style="min-width:99%; max-width:99%; padding:0; height:100vh">
+            <!-- X 버튼 -->
             <lightning-button-icon icon-name="utility:close" 
                                     alternative-text="close" 
                                     size="large" variant="bare-inverse" 
@@ -8,48 +9,76 @@
                                     onclick={modalClose}>
             </lightning-button-icon>
 
-            <div class="slds-scrollable_y" style="background-color :white;">
-                <!-- header -->
-                <header class="slds-modal__header">
-                    <h1  class="slds-modal__title slds-hyphenate">구매 요청</h1>
-                </header>
-
-                <!-- body -->
-                <div class="slds-m-around_x-small" style="height: 60vh;">
-                    
-                </div>
+            <!-- header -->
+            <header class="slds-modal__header">
+                <h1  class="slds-modal__title slds-hyphenate">구매 요청</h1>
+            </header>
+            
+            <!-- body -->
+            <div class="slds-modal__content slds-scrollable_y slds-grid" style="height: 60vh;">
                 
-                <!-- footer -->
-                <div class="slds-modal__footer slds-grid slds-grid_align-center slds-is-absolute" style="width: 100%;">
-                    <lightning-button class="slds-m-horizontal_xx-small"
-                                        label="Cancel" 
-                                        onclick={modalClose}>
-                    </lightning-button>
+                <!-- 구매요청 품목 선택 [S] -->
+                <div class="slds-size_5-of-12 slds-p-around_xxx-small" style="border-right: 2px solid #c9c9c9;">
+                    <!-- 검색 -->
+                    <div class="SearchBar">
+                        <lightning-combobox label="분류"
+                                            value={catecoryValue}
+                                            placeholder="Select Catecory"
+                                            options={catecoryOptions}
+                                            onchange={handleCatecoryChange} 
+                                            style="width: 40%;">
+                        </lightning-combobox>
 
-                    <lightning-button class="slds-m-horizontal_xx-small"
-                                        label="Save &amp; New"
-                                        type="submit"
-                                        onclick={saveNew}>
-                    </lightning-button>
+                        <lightning-input type="search" 
+                                        label="검색어" 
+                                        style="width: 40%;">
+                        </lightning-input>
 
-                    <lightning-button class="slds-m-horizontal_xx-small" 
-                                    variant="brand" 
-                                    label="Save" 
-                                    type="submit"
-                                    onclick={save}>
-                    </lightning-button>
+                        <lightning-button variant="brand" 
+                                            label="검색" 
+                                            onclick={handleClick} 
+                                            class="searchButton">
+                        </lightning-button>
+                    </div>
+
+                    <!-- 검색결과 데이터 List-->
+                    <div >
+                        <lightning-datatable key-field="id"
+                                            data={data}
+                                            columns={columns}>
+                        </lightning-datatable>
+                    </div>
                 </div>
-                
+
+                <!-- 구매요청 선택목록 [S] -->
+                <div class="slds-size_7-of-12 slds-p-around_xxx-small" >
+
+                </div>
             </div>
+            
+            <!-- footer -->
+            <div class="slds-modal__footer slds-grid slds-grid_align-center" style="width: 100%;">
+                <lightning-button class="slds-m-horizontal_xx-small"
+                                    label="Cancel" 
+                                    onclick={modalClose}>
+                </lightning-button>
+
+                <lightning-button class="slds-m-horizontal_xx-small"
+                                    label="Save &amp; New"
+                                    type="submit"
+                                    onclick={saveNew}>
+                </lightning-button>
+
+                <lightning-button class="slds-m-horizontal_xx-small" 
+                                variant="brand" 
+                                label="Save" 
+                                type="submit"
+                                onclick={save}>
+                </lightning-button>
+            </div>
+                
         </div>
     </section>
     <!-- 검은색 배경처리 -->
     <div class="slds-backdrop slds-backdrop_open"></div>
-    <!-- <section>
-        <lightning-modal-header label="My Modal Heading"></lightning-modal-header>
-        <lightning-modal-body> Content: {content} </lightning-modal-body>
-        <lightning-modal-footer>
-            <lightning-button label="OK" onclick={handleOkay}></lightning-button>
-        </lightning-modal-footer>
-    </section> -->
 </template>
